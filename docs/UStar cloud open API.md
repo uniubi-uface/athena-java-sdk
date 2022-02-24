@@ -21,7 +21,7 @@
 * Request method：`POST`
 * Request header：`Content-Type: application/json;charset=UTF-8`
 
-| 字段名称            | 位置   | 类型   | 是否必须 | 说明                                                         |
+| Field Name            | Location   | Type   | Required | Description                                                         |
 | ------------------- | ------ | ------ | -------- | ------------------------------------------------------------ |
 | sdkRequestKey     | header | String | Y        | Request KEY                                                  |
 | requestKeyVersion | header | String | Y        | the version of Request KEY                                   |
@@ -58,7 +58,7 @@ The above json string is then encrypted with AES as the request body
  ```
 
 Example of request body in Postman
-![Postman body img1](C:\Users\jingmu\AppData\Roaming\Typora\typora-user-images/image1.png)
+![Postman body img1](./img/image1.png)
 
 ### 1.2.2 Unencrypted Interface
 
@@ -76,7 +76,7 @@ The above json string serves as a request body
 
 Example of request body in Postman
 
-![Postman body img2](C:\Users\jingmu\AppData\Roaming\Typora\typora-user-images/image2.png)
+![Postman body img2](./img/image2.png)
 
 # 2 Secret Key<a id="2"></a>
 

@@ -15,7 +15,7 @@
 ### Athena Java SDK Example
 
 * [API simple example](./sdk-examples/api-simple-example)
-* [API springbot example](./sdk-examples/api-springbot-example)
+* [API springboot example](./sdk-examples/api-springbot-example)
 * [message receive example](./sdk-examples/message-receive-example)
 
 ### Maven dependency
