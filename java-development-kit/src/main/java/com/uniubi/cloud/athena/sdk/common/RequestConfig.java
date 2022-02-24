@@ -14,9 +14,9 @@ import lombok.Data;
 public class RequestConfig {
 
     /**
-     * fixme sdk中的这个地址需要修复？或者对外说明
+     * endPoint
      */
-    private String endPoint = "http://localhost:8080";
+    private String endPoint = "https://www.ustar-cloud.com/api";
 
     private String publicKey;
 

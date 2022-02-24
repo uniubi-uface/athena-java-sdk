@@ -20,7 +20,6 @@
         <dependency>
             <groupId>com.uniubi.cloud.athena</groupId>
             <artifactId>java-development-kit</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>io.spring.javaformat</groupId>

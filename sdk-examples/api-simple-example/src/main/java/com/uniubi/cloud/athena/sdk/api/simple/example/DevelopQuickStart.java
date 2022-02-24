@@ -27,7 +27,7 @@ public class DevelopQuickStart {
         requestConfig.setReadTimeoutMills(3000L);
         // 3. set your public key
         requestConfig.setPublicKey(PUBLIC_KEY);
-        // 4. set service end point
+        // 4. set service end point if necessary
         requestConfig.setEndPoint("https://www.ustar-cloud.com/api");
         // 5. create the AthenaSdkApiClient
         AthenaSdkApiClient athenaSdkApiClient = new AthenaSdkApiClient(ACCESS_KEY, ACCESS_SECRET, requestConfig);
