@@ -34,6 +34,11 @@ public class DeveloperConstants {
     public static final String HEADER_REQUEST_KEY_NAME = "sdkRequestKey";
 
     /**
+     * 请求头 requestKey版本的名称
+     */
+    public static final String HEADER_REQUEST_KEY_VERSION = "requestKeyVersion";
+
+    /**
      * 请求头 accessToken的名称
      */
     public static final String HEADER_ACCESS_TOKEN_NAME = "sdkAccessToken";
@@ -42,11 +47,6 @@ public class DeveloperConstants {
      * 请求头 aesKey的名称
      */
     public static final String HEADER_SECRET_KEY_NAME = "sdkSecretKey";
-
-    /**
-     * 请求头 requestKey版本的名称
-     */
-    public static final String HEADER_REQUEST_KEY_VERSION = "requestKeyVersion";
 
     /**
      * 请求头 语言名称

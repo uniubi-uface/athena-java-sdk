@@ -23,14 +23,14 @@
 
 | 字段名称            | 位置   | 类型   | 是否必须 | 说明                                                         |
 | ------------------- | ------ | ------ | -------- | ------------------------------------------------------------ |
-| SDK_REQUEST_KEY     | header | String | Y        | 请求KEY                                                      |
-| REQUEST_KEY_VERSION | header | String | Y        | 请求接口的版本                                               |
-| SDK_ACCESS_TOKEN    | header | String | Y        | 从服务端获取的token                                          |
-| SDK_SECRET_KEY      | header | String | Y        | AES KEY经过[RSA publicKey](#2)加密后的密文                   |
+| sdkRequestKey     | header | String | Y        | 请求KEY                                                      |
+| requestKeyVersion | header | String | Y        | 请求接口的版本                                               |
+| sdkAccessToken    | header | String | Y        | 从服务端获取的token                                          |
+| sdkSecretKey      | header | String | Y        | AES KEY经过[RSA publicKey](#2)加密后的密文                   |
 | lang                | header | String | Y        | 语言种类，具体请看[字典3.1](#3.1)                            |
 | requestData         | body   | String | Y        | requestData分为加密和不加密两种，具体请参考[requestData说明](#requestData) |
 
-* `SDK_ACCESS_TOKEN`: 有效期为1天，失效后可重新获取
+* `sdkAccessToken`: 有效期为1天，失效后可重新获取
 
 * `AES KEY`: AES KEY由开发者自己生成，每次请求key建议不同，生成规则参见[2.2](#2.2)
 
@@ -82,7 +82,7 @@ Postman中request body 示例
 
 > 管理员在UStarCloud开发者接入平台页面，创建一个新的开发者平台
 > 系统会自动为该新平台生成` accessKey `和 `accessSecret`，还有数据加解密用的 `publicKey`
-> 其中`accessKey`和`accessSecret`用于权限认证生成`SDK_ACCESS_TOKEN`
+> 其中`accessKey`和`accessSecret`用于权限认证生成`sdkAccessToken`
 
 ## 2.1 RSA
 
@@ -191,7 +191,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 
 ### 4.2.1 测试接口
 
-* SDK_REQUEST_KEY : `test`
+* sdkRequestKey : `test`
 
 * 请求参数说明：无请求参数
 
@@ -203,9 +203,9 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 
 ## 4.3 鉴权API
 
-### 4.3.1 获取SDK_ACCESS_TOKEN
+### 4.3.1 获取sdkAccessToken
 
-* SDK_REQUEST_KEY : `authToken`
+* sdkRequestKey : `authToken`
 
 * 请求参数说明
 
@@ -227,7 +227,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 
   | 字段名称 | 字段类型 | 说明                                                         |
     | -------- | -------- | ------------------------------------------------------------ |
-  | 无       | String   | 返回的字符串为请求其他接口的凭证，放在request header中SDK_ACCESS_TOKEN项 |
+  | 无       | String   | 返回的字符串为请求其他接口的凭证，放在request header中sdkAccessToken项 |
 
   > **注意：token未进行加密，有效期为1天**
 
@@ -235,7 +235,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 
 ### 4.4.1 考勤明细报表
 
-* SDK_REQUEST_KEY : `atdDetailReport`
+* sdkRequestKey : `atdDetailReport`
 
 * 请求参数说明
 
@@ -280,7 +280,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 
 ### 4.4.2 考勤明细报表
 
-* SDK_REQUEST_KEY : `atdOverWorkReport`
+* sdkRequestKey : `atdOverWorkReport`
 
 * 请求参数说明
 
@@ -310,7 +310,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 
 ### 4.4.3 考勤休息报表
 
-* SDK_REQUEST_KEY : `atdBreakTimeReport`
+* sdkRequestKey : `atdBreakTimeReport`
 
 * 请求参数说明
 
@@ -343,7 +343,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 
 ### 4.4.4 考勤异常打卡报表
 
-* SDK_REQUEST_KEY : `atdExceptionReport`
+* sdkRequestKey : `atdExceptionReport`
 
 * 请求参数说明
 
