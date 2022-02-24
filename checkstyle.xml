@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC
+        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+        "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+    <!--字符集编码-->
+    <property name="charset" value="UTF-8" />
+    <!--违规级别-->
+    <property name="severity" value="error" />
+    <!--可接受的文件扩展名-->
+    <property name="fileExtensions" value="java, properties, xml" />
+    <!--检查文件是否包含制表符-->
+    <!-- <module name="FileTabCharacter">
+        <property name="eachLine" value="true" />
+    </module> -->
+
+    <!--检查Java源文件并定义一些适用于检查此类文件的一些属性-->
+    <module name="TreeWalker">
+        <!-- 检查方法或构造器的Javadoc 不检查set，get方法 -->
+        <!--
+        <module name="JavadocMethod">
+            <property name="excludeScope" value="private"/>
+            <property name="allowMissingPropertyJavadoc" value="true"/>
+            <property name="tokens" value="METHOD_DEF,ANNOTATION_FIELD_DEF"/>
+            <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="info"/>
+        </module> -->
+        <!-- 检查类和接口的javadoc  忽略注解Generated,BLH,Resource,Column,Id-->
+        <module name="JavadocType">
+            <property name="allowUnknownTags" value="true"/>
+            <property name="allowMissingParamTags" value="true"/>
+            <property name="allowedAnnotations" value="Generated,BLH,Resource,Column,Id"/>
+            <property name="tokens" value="INTERFACE_DEF,ENUM_DEF,CLASS_DEF,ANNOTATION_DEF"/>
+        </module>
+        <!-- 检查变量是否具有Javadoc注释。忽略dao，commonService -->
+        <!-- 注释缺少的太多了
+        <module name="JavadocVariable">
+            <property name="ignoreNamePattern" value="dao|Mapper"/>
+            <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+        </module> -->
+        <!-- 验证Javadoc注释，以便于确保它们的格式。-->
+        <module name="JavadocStyle">
+            <property name="checkFirstSentence" value="false"/>
+            <!-- <property name="checkEmptyJavadoc" value="true"/> -->
+            <!-- <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>-->
+        </module>
+        <!-- 这项检查负责TODO注释的检查，完成后要删除TODO -->
+        <!-- <module name="TodoComment"/> -->
+        <!-- 检查局部final变量的名称是否遵守命名规约。-->
+        <module name="LocalFinalVariableName">
+            <property name="format" value="^[a-z][a-zA-Z0-9_]*$"/>
+            <property name="tokens" value="RESOURCE,PARAMETER_DEF,VARIABLE_DEF"/>
+        </module>
+        <!-- 检查局部变量的名称是否遵守命名规约。-->
+        <module name="LocalVariableName">
+            <property name="format" value="^[a-z][a-zA-Z0-9_]*$"/>
+        </module>
+        <!-- 检查包名称是否遵守命名规约。-->
+        <!-- ET299jni 不符合规范 -->
+        <module name="PackageName">
+            <property name="format" value="^[a-z]+(\.[a-z][a-z0-9]*)*$"/>
+            <message key="name.invalidPattern" value="包名 ''{0}'' 要符合 ''{1}''格式."/>
+        </module>
+        <!-- 检查静态变量（用static修饰，但没用final修饰的字段）的名称是否遵守命名规约。-->
+        <module name="StaticVariableName">
+            <property name="format" value="^[a-z][a-zA-Z0-9_]*$"/>
+        </module>
+        <!-- 检查类的名称是否遵守命名规约。-->
+        <module name="TypeName">
+            <property name="severity" value="warning"/>
+            <message key="name.invalidPattern" value="名称 ''{0}'' 要符合 ''{1}''格式."/>
+        </module>
+        <!-- 检查成员变量（非静态字段）的名称是否遵守命名规约 ^[a-z][a-zA-Z0-9]*$ 设备那边有好多不规范的
+        <module name="MemberName"/> -->
+        <!-- 检查方法名称是否遵守命名规约。-->
+        <!-- 部分native 方法无法修改 -->
+        <module name="MethodName">
+            <property name="format" value="^[a-z][a-zA-Z0-9_]*$"/>
+        </module>
+        <!-- 检查参数名称是否遵守命名规约。-->
+        <module name="ParameterName">
+            <property name="format" value="^[a-z][a-zA-Z0-9_]*$"/>
+            <property name="accessModifiers" value="private"/>
+        </module>
+        <!-- 检查常量（用static final修饰的字段）的名称是否遵守命名规约。-->
+        <module name="ConstantName"/>
+        <!-- 数组类型风格 Java风格：public static void main(String[] args)-->
+        <module name="ArrayTypeStyle"/>
+        <!-- 检查long类型的常量在定义时是否由大写的“L”开头 -->
+        <module name="UpperEll"/>
+        <!-- 检查没有import语句使用*符号。从一个包中导入所有的类会导致包之间的紧耦合，当一个新版本的库引入了命名冲突时，这样就有可能导致问题发生-->
+        <module name="AvoidStarImport"/>
+        <!-- 检查是否导入了指定的非法包。默认情况下，这项检查会拒绝所有的sun.*包，因为直接使用sun.*包的程序肯定不是100%的纯Java程序。想要拒绝其他的包，将illegalPkgs属性设置为你指定的非法包列表即可。-->
+        <!-- <module name="IllegalImport"/> -->
+         <!-- 检查是否存在多余的导入语句。如果一条导入语句满足以下条件，那么就是多余的：
+         1. 它是另一条导入语句的重复。也就是，一个类被导入了多次。
+         2. 从java.lang包中导入类，例如，导入java.lang.String。
+         3. 从当前包中导入类。-->
+        <module name="RedundantImport"/>
+        <!-- 检查未使用的导入语句。CheckStyle使用一种简单可靠的算法来报告未使用的导入语句。如果一条导入语句满足以下条件，那么就是未使用的：
+          1. 没有在文件中引用。这种算法不支持通配符导入，例如，java.io.*；。大多数IDE检查带有通配符的导入语句时，使用的算法非常复杂。
+          2. 它是另一条导入语句的重复。也就是，一个类被导入了多次。
+          3. 从java.lang包中导入类，例如，导入java.lang.String。
+          4. 从当前包中导入类。
+          5. 可选：在Javadoc注释中引用它。这项检查默认是关闭的，因为仅仅为了抽出文档而引入了一个编译时依赖是一个很坏的习惯。例如，当Javadoc注释中包含{@link Date}时，就会认为import java.util.Date被引用了。想要避免引入编译时依赖，可把Javadoc注释写成{@link java.util.Date}-->
+        <module name="UnusedImports"/>
+        <!--检查行长度-->
+        <module name="LineLength">
+            <property name="max" value="200" /><!--mine-->
+            <!--可以忽略检查的行-->
+            <property name="ignorePattern"
+                      value="^package.*|^import.*|a href|href|http://|https://|ftp://" />
+        </module>
+        <!-- 检查一个方法或构造器的参数的数量。默认10-->
+        <module name="ParameterNumber">
+            <property name="max" value="20"/>
+            <property name="ignoreOverriddenMethods" value="true"/>
+            <property name="tokens" value="METHOD_DEF"/>
+        </module>
+        <!--检查方法定义、构造器定义、方法调用、构造器调用的标识符和参数列表的左圆括号之间的填充符。也就是，如果标识符和左圆括号位于同一行，那么就检查标识符之后是否需要紧跟一个空格。如果标识符和左圆括号不在同一行，那么就报错，除非将规则配置为允许使用换行符。想要在标识符之后使用换行符，将allowLineBreaks属性设置为true即可。-->
+        <module name="MethodParamPad">
+            <property name="tokens" value="CTOR_DEF,ENUM_CONSTANT_DEF,METHOD_CALL,METHOD_DEF,LITERAL_NEW,SUPER_CTOR_CALL"/>
+        </module>
+        <!-- 检查指定标记之后没有空格。若要禁用指定标记之后的换行符，将allowLineBreaks属性设为false即可。-->
+        <module name="NoWhitespaceAfter">
+            <property name="tokens" value="LNOT,DOT,BNOT,DEC,UNARY_MINUS,AT,UNARY_PLUS,INC"/>
+        </module>
+        <!-- 检查指定标记之前没有空格。若要允许指定标记之前的换行符，将allowLineBreaks属性设为true即可。-->
+        <module name="NoWhitespaceBefore">
+            <property name="allowLineBreaks" value="true"/>
+        </module>
+        <!-- 检查代码自动换行时，运算符所处位置的策略。nl表示运算符必须在新行中，eol表示运算符必须在当前行的行末。默认是nl-->
+        <module name="OperatorWrap">
+            <property name="tokens" value="QUESTION,COLON,EQUAL,NOT_EQUAL,DIV,PLUS,MINUS,STAR,MOD,SR,BSR,GE,GT,SL,LE,LT,BXOR,BOR,LOR,BAND,LAND,LITERAL_INSTANCEOF,TYPE_EXTENSION_AND,ASSIGN,DIV_ASSIGN,PLUS_ASSIGN,MINUS_ASSIGN,STAR_ASSIGN,MOD_ASSIGN,SR_ASSIGN,BSR_ASSIGN,SL_ASSIGN,BXOR_ASSIGN,BOR_ASSIGN,BAND_ASSIGN,METHOD_REF"/>
+        </module>
+        <!-- 检查指定标记之后是否紧跟了空格。只保留了do-->
+        <module name="WhitespaceAfter">
+            <property name="tokens" value="LITERAL_DO"/>
+        </module>
+        <!-- 检查指定标记的周围是否有空格 do,do while return  switch, synchronized-->
+        <module name="WhitespaceAround">
+            <property name="tokens" value="LITERAL_ASSERT,LITERAL_DO,DO_WHILE,LITERAL_RETURN,LITERAL_SWITCH,LITERAL_SYNCHRONIZED"/>
+        </module>
+        <!--检查修饰符是否符合Java建议-->
+        <module name="ModifierOrder"/>
+
+        <!-- 找到嵌套代码块，也就是在代码中无节制使用的代码块。
+            解释：内嵌代码块通常是调试过程的残留物，它们会使读者产生混淆。-->
+        <module name="AvoidNestedBlocks"/>
+        <!-- 检查空代码块-->
+        <module name="EmptyBlock">
+            <property name="option" value="text"/>
+            <property name="tokens" value="LITERAL_CASE,LITERAL_CATCH,LITERAL_DO,LITERAL_ELSE,LITERAL_FINALLY,LITERAL_FOR,LITERAL_IF,INSTANCE_INIT,STATIC_INIT,LITERAL_SWITCH,LITERAL_SYNCHRONIZED,LITERAL_TRY,LITERAL_WHILE"/>
+        </module>
+        <!-- 检查代码块的左花括号的放置位置。当前行-->
+        <module name="LeftCurly">
+            <property name="option" value="eol"/>
+            <property name="tokens" value="ANNOTATION_DEF,LITERAL_CASE,LITERAL_CATCH,CLASS_DEF,CTOR_DEF,LITERAL_DEFAULT,LITERAL_DO,LITERAL_ELSE,ENUM_CONSTANT_DEF,ENUM_DEF,LITERAL_FINALLY,LITERAL_FOR,LITERAL_IF,INTERFACE_DEF,LAMBDA,METHOD_DEF,OBJBLOCK,STATIC_INIT,LITERAL_SWITCH,LITERAL_SYNCHRONIZED,LITERAL_TRY,LITERAL_WHILE"/>
+        </module>
+        <!-- 检查代码块周围是否有大括号，可以检查do、else、if、for、while等关键字所控制的代码块。-->
+        <module name="NeedBraces">
+            <property name="allowSingleLineStatement" value="true"/>
+        </module>
+        <!-- 检查else、try、catch标记的代码块的右花括号的放置位置。
+        <module name="RightCurly">
+            <property name="tokens" value="LITERAL_CATCH,LITERAL_DO,LITERAL_ELSE,LITERAL_FINALLY,LITERAL_IF,STATIC_INIT,LITERAL_TRY"/>
+        </module> -->
+        <!-- 检测代码中是否有空语句（也就是单独的;符号）。-->
+        <module name="EmptyStatement"/>
+        <!-- 检查覆盖了equals()方法的类是否也覆盖了hashCode()方法。
+              解释：equals()方法和hashCode()方法约定，相等的对象必然具有相同的哈希码。因此，只要你覆盖了equals()方法，你就必须同时覆盖hashCode()方法，以确保可以在基于哈希的集合中使用你的类。-->
+        <module name="EqualsHashCode"/>
+        <!-- 检查子表达式中是否有赋值语句，例如String s = Integer.toString(i = 2);。
+              解释：这项检查会忽略for循环代码，其余所有的赋值操作都应当在它们自己的顶层语句中，以便于增强可读性。在上述的内部赋值代码中，很难看到变量是在哪儿赋值的。-->
+        <module name="InnerAssignment"/>
+        <!--
+          检查switch语句是否含有default子句。
+          解释：在每个switch语句中引入一条默认分支通常是一个很好的主意。即使开发者确信所有当前可能的分支都能覆盖到，这也应当在default分支中表达出来，例如，使用一条断言。这种方法使得代码可以应付以后的修改，例如，在一个枚举类型中引入新的类型。-->
+        <module name="MissingSwitchDefault"/>
+        <!-- 检查是否有过于复杂的布尔表达式。现在能够发现诸如if (b == true)、b || true、!false等类型的代码。
+              解释：复杂的布尔逻辑会使得代码难以理解和维护。-->
+        <module name="SimplifyBooleanExpression"/>
+        <!-- 检查定义了共变equals()方法的类中是否同样覆盖了equals(java.lang.Object)方法。这项检查受到FindBugs的启发。
+              解释：错误地定义了一个共变equals()方法，而没有覆盖equals(java.lang.Object)方法，可能会产生不可预料的运行时行为。-->
+        <module name="CovariantEquals"/>
+        <!-- 检查switch语句中的default是否在所有的case分支之后。
+            解释：Java允许default位于switch语句中的任何地方。但是，如果default位于最后一个case分支之后，那么代码的可读性会更强。-->
+        <module name="DefaultComesLast"/>
+        <!-- 检查equals()比较方法中，任意组合的String常量是否位于左边。-->
+        <module name="EqualsAvoidNull"/>
+        <!-- 检查类或对象的成员是否显式地初始化为成员所属类型的默认值（对象引用的默认值为null，数值和字符类型的默认值为0，布尔类型的默认值为false）。
+              解释：每个实例变量都会被初始化两次，并且初始化为相同的值。在执行代码中指定的任何初始化操作之前，Java会初始化每个实例变量为它的默认值（0或null）。因此在这种情况下，x会被初始化为0两次，bar会被初始化为null两次。因此，这样稍微有些效率低下。这种编码风格是C/C++编码风格的延续，它表明开发者并不是真正有把握Java能够初始化实例变量为它的默认值。-->
+        <!-- <module name="ExplicitInitialization"/> -->
+        <!--检查switch语句-->
+        <module name="FallThrough"/>
+        <!--这项检查可以用来确保类型不能声明抛出指定的异常类型。从不允许声明抛出java.lang.Error或java.lang.RuntimeException。-->
+        <!-- <module name="IllegalThrows"/> -->
+        <!--不允许对参数进行赋值。
+            解释：对参数的赋值通常被认为是缺乏编程实践经验。强迫开发者将参数声明为final通常是非常麻烦的。这项检查可以确保参数从不会被赋值，这对于双方都是好事。
+        <module name="ParameterAssignment"/> -->
+        <!-- 检查字符串对象的比较是否使用了==或!=运算符。-->
+        <module name="StringLiteralEquality"/>
+        <!-- 检查一个覆盖的clone()方法是否调用了super.clone()方法。
+            参考：Object.clone()。-->
+        <module name="SuperClone"/>
+        <!-- 文件中使用了System.out.print等 -->
+        <module name="RegexpSinglelineJava">
+            <property name="format" value="System\.out\.print"/>
+        </module>
+        <!-- <module name="RegexpSinglelineJava">-->
+        <!--     <property name="format" value="System\.exit"/>-->
+        <!-- </module>-->
+        <module name="RegexpSinglelineJava">
+            <property name="format" value="printStackTrace"/>
+        </module>
+        <!-- 检查源码中是否有未注释的main()方法（调试的残留物）。-->
+        <!-- <module name="UncommentedMain"/> -->
+    </module>
+    <!-- 检查Properties是否有重复定义。-->
+    <module name="UniqueProperties"/>
+</module>
