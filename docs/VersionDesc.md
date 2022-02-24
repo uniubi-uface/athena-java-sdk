@@ -1,0 +1,1 @@
+The dependency has not been published to Maven central warehouse yet
