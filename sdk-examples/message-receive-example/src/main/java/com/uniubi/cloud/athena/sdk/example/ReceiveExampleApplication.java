@@ -13,4 +13,5 @@ public class ReceiveExampleApplication {
     public static void main(String[] args) {
         SpringApplication.run(ReceiveExampleApplication.class, args);
     }
+
 }

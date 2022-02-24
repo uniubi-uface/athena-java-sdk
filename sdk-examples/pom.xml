@@ -9,9 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>athena-sdk-examples</artifactId>
+    <artifactId>sdk-examples</artifactId>
+    <name>sdk-examples</name>
     <packaging>pom</packaging>
+
     <description>Athena Examples POM</description>
+
     <modules>
         <module>message-receive-example</module>
     </modules>

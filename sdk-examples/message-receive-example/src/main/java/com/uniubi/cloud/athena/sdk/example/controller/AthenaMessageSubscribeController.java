@@ -28,21 +28,22 @@ public class AthenaMessageSubscribeController {
         log.info("Receive UStar cloud message ==> {}", JSON.toJSONString(msgContentBO));
         Byte type = msgContentBO.getType();
         switch (type) {
-            case 1:
-                JSONObject jsonObject = JSON.parseObject(msgContentBO.getContent());
-                Long showTime = jsonObject.getLong("showTime");
-                Date date = new Date(showTime);
-                log.info("Recognition time: [{}], receive message time: [{}]", date, new Date());
-                break;
-            case 2:
-                log.info("收到回调消息消息 2");
-                break;
-            case 3:
-                log.info("收到回调消息消息 3");
-                break;
-            default:
-                log.info("收到不正确的消息");
+        case 1:
+            JSONObject jsonObject = JSON.parseObject(msgContentBO.getContent());
+            Long showTime = jsonObject.getLong("showTime");
+            Date date = new Date(showTime);
+            log.info("Recognition time: [{}], receive message time: [{}]", date, new Date());
+            break;
+        case 2:
+            log.info("收到回调消息消息 2");
+            break;
+        case 3:
+            log.info("收到回调消息消息 3");
+            break;
+        default:
+            log.info("收到不正确的消息");
         }
         return new MsgResult(true);
     }
+
 }
