@@ -204,12 +204,12 @@
             参考：Object.clone()。-->
         <module name="SuperClone"/>
         <!-- 文件中使用了System.out.print等 -->
-        <module name="RegexpSinglelineJava">
-            <property name="format" value="System\.out\.print"/>
-        </module>
-        <!-- <module name="RegexpSinglelineJava">-->
-        <!--     <property name="format" value="System\.exit"/>-->
-        <!-- </module>-->
+        <!-- <module name="RegexpSinglelineJava"> -->
+        <!-- <property name="format" value="System\.out\.print"/> -->
+        <!-- </module> -->
+         <module name="RegexpSinglelineJava">
+             <property name="format" value="System\.exit"/>
+         </module>
         <module name="RegexpSinglelineJava">
             <property name="format" value="printStackTrace"/>
         </module>

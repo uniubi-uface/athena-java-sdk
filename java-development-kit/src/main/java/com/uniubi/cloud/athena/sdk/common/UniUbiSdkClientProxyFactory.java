@@ -139,12 +139,20 @@ public class UniUbiSdkClientProxyFactory {
             String secretContent = AthenaSdkEncrypt.encryptByAes(aesKey, requestContent);
             // 获取该方法的返回值
             Type genericReturnType = method.getGenericReturnType();
+            // @formatter:off
             // 封装rpc方法
-            RpcMethod rpcMethod = new RpcMethod().setArgs(args).setMethod(method).setHeaders(headers)
-                    .setRequestBody(secretContent).setRequestUrl(requestUrl).setReturnType(genericReturnType)
-                    .setTokenLoader(tokenLoader).setUniUbiHttpClient(uniUbiHttpClient);
+            RpcMethod rpcMethod = new RpcMethod()
+                    .setArgs(args)
+                    .setMethod(method)
+                    .setHeaders(headers)
+                    .setRequestBody(secretContent)
+                    .setRequestUrl(requestUrl)
+                    .setReturnType(genericReturnType)
+                    .setTokenLoader(tokenLoader)
+                    .setUniUbiHttpClient(uniUbiHttpClient);
             // 发送请求，并响应结果
             return rpcMethodInterceptor.process(rpcMethod);
+            // @formatter:on
         }
 
         /**
@@ -181,7 +189,7 @@ public class UniUbiSdkClientProxyFactory {
             Map<String, String> headers = new HashMap<>(2);
             String token = tokenLoader.loadToken();
             headers.put(DeveloperConstants.HEADER_REQUEST_KEY_NAME, requestKey);
-            headers.put(DeveloperConstants.HEADER_REQUEST_KEY_VERSION, requestKey);
+            headers.put(DeveloperConstants.HEADER_REQUEST_KEY_VERSION, version);
             headers.put(DeveloperConstants.HEADER_ACCESS_TOKEN_NAME, token);
             headers.put(DeveloperConstants.HEADER_LANG_NAME, sdkLang.getValue());
             headers.put(DeveloperConstants.HEADER_SECRET_KEY_NAME, secretKey);

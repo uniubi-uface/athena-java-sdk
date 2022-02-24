@@ -1,9 +1,9 @@
-package com.uniubi.cloud.athena.sdk.example.controller;
+package com.uniubi.cloud.athena.sdk.message.receive.example.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.uniubi.cloud.athena.sdk.example.benas.MsgContentDTO;
-import com.uniubi.cloud.athena.sdk.example.benas.MsgResult;
+import com.uniubi.cloud.athena.sdk.message.receive.example.benas.MsgContentDTO;
+import com.uniubi.cloud.athena.sdk.message.receive.example.benas.MsgResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

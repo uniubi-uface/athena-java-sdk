@@ -1,4 +1,4 @@
-package com.uniubi.cloud.athena.sdk.example.benas;
+package com.uniubi.cloud.athena.sdk.message.receive.example.benas;
 
 /**
  * @author jingmu

@@ -1,6 +1,5 @@
 package com.uniubi.cloud.athena.sdk.common.utils;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
@@ -24,7 +23,6 @@ import java.security.spec.X509EncodedKeySpec;
 /**
  * @author jingmu
  */
-@Slf4j
 public class AthenaSdkEncrypt {
 
     /**
@@ -135,9 +133,8 @@ public class AthenaSdkEncrypt {
             return byteToHexString(b);
         }
         catch (NoSuchAlgorithmException e) {
-            log.error("无此算法!", e);
+            return null;
         }
-        return null;
     }
 
     public static String byteToHexString(byte[] bytes) {
@@ -181,7 +178,7 @@ public class AthenaSdkEncrypt {
             result = new BASE64Encoder().encode(encrypted);
         }
         catch (Exception e) {
-            log.error("Encrypt By Aes failed!", e);
+            return result;
         }
         return result;
     }
@@ -199,7 +196,6 @@ public class AthenaSdkEncrypt {
             return new String(original, StandardCharsets.UTF_8);
         }
         catch (Exception e) {
-            log.error("Decrypt By Aes failed!", e);
             return null;
         }
     }

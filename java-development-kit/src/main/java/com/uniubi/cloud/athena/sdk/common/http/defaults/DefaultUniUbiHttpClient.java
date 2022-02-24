@@ -11,7 +11,6 @@ import com.uniubi.cloud.athena.sdk.common.http.ClientConfig;
 import com.uniubi.cloud.athena.sdk.common.http.RequestConverter;
 import com.uniubi.cloud.athena.sdk.common.http.ResponseConverter;
 import com.uniubi.cloud.athena.sdk.common.http.UniUbiHttpClient;
-import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Type;
 import java.net.ConnectException;
@@ -30,7 +29,6 @@ import java.util.concurrent.TimeUnit;
  * @see ResponseConverter 响应体转换器，用于将服务端返回的字符串转为响应对象
  * @see ClientConfig 请求配置，用于设置请求的一些超时参数
  */
-@Slf4j
 public class DefaultUniUbiHttpClient implements UniUbiHttpClient {
 
     /**
@@ -74,11 +72,11 @@ public class DefaultUniUbiHttpClient implements UniUbiHttpClient {
             response = client.newCall(request).execute();
         }
         catch (ConnectException ce) {
-            log.error("请求失败,失败原因: 404" + ce.getMessage());
+            // 请求失败,失败原因: 404
             throw new AthenaHttpException(HttpErrorCodeEnum.CODE_404.getDesc());
         }
         catch (SocketTimeoutException se) {
-            log.error("请求失败,失败原因: 408" + se.getMessage());
+            // 请求失败,失败原因: 408
             throw new AthenaHttpException(HttpErrorCodeEnum.CODE_408.getDesc());
         }
         // 3.获取响应结果
@@ -88,7 +86,6 @@ public class DefaultUniUbiHttpClient implements UniUbiHttpClient {
             return responseConverter.converter(responseContent, responseType);
         }
         else {
-            log.error("请求失败,失败原因:{}\r\nurl:{},responseContent:{}", url, response.code(), responseContent);
             HttpErrorCodeEnum httpErrorCodeEnum = HttpErrorCodeEnum.getByCode(response.code());
             throw new AthenaHttpException(httpErrorCodeEnum.getDesc());
         }

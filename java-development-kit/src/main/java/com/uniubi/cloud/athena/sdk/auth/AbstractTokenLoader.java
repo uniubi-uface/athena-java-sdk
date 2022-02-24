@@ -49,7 +49,8 @@ public abstract class AbstractTokenLoader implements TokenLoader {
         AuthResponseModel authResponseModel;
         try {
             // 鉴权请求不经过加密处理
-            authResponseModel = uniUbiHttpClient.sendPostRequest(requestUrl, authRequest, getAuthHeader(),
+            Map<String, String> authHeader = getAuthHeader();
+            authResponseModel = uniUbiHttpClient.sendPostRequest(requestUrl, authRequest, authHeader,
                     AuthResponseModel.class);
         }
         catch (Exception e) {
@@ -67,6 +68,7 @@ public abstract class AbstractTokenLoader implements TokenLoader {
     protected Map<String, String> getAuthHeader() {
         Map<String, String> header = new HashMap<>(2);
         header.put(DeveloperConstants.HEADER_REQUEST_KEY_NAME, DeveloperConstants.AUTH_REQUEST_KEY);
+        header.put(DeveloperConstants.HEADER_REQUEST_KEY_VERSION, DeveloperConstants.DEFAULT_REQUEST_KEY_VERSION);
         header.put(DeveloperConstants.HEADER_LANG_NAME, sdkLang.getValue());
         return header;
     }
