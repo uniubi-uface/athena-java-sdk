@@ -11,7 +11,7 @@ import java.util.Map;
  * 枚举初始化工具
  *
  * @author Niancheng
- * @date 2019/6/29
+ * @since 2019/6/29
  */
 public class UniUbiEnumUtils {
 

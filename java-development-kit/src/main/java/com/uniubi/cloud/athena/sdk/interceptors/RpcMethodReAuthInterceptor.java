@@ -10,7 +10,7 @@ import com.uniubi.cloud.athena.sdk.common.models.SdkResult;
  * 该拦截器设计是与SimpleTokenLoader搭配，防止服务端token丢失导致sdk调用失败
  *
  * @author jingmu
- * @date 2020/5/7
+ * @since 2020/5/7
  */
 public class RpcMethodReAuthInterceptor implements RpcMethodInterceptor {
 

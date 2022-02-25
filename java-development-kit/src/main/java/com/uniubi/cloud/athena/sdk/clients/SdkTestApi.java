@@ -7,7 +7,7 @@ import com.uniubi.cloud.athena.sdk.common.models.SdkResult;
  * 测试api接口
  *
  * @author jingmu
- * @date 2020/5/8
+ * @since 2020/5/8
  */
 public interface SdkTestApi {
 

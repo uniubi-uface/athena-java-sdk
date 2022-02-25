@@ -6,7 +6,7 @@ import lombok.Data;
  * com.uniubi.medusa.ares.develop.common.models.SdkSecretResult
  *
  * @author jingmu
- * @date 2020/6/17
+ * @since 2020/6/17
  */
 @Data
 public class SdkSecretResult {

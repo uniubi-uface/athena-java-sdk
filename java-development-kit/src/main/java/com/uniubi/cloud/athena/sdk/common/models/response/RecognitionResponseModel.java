@@ -11,7 +11,7 @@ import java.util.List;
  * com.uniubi.medusa.ares.develop.models.response.RecognitionResponseModel
  *
  * @author jingmu
- * @date 2020/5/18
+ * @since 2020/5/18
  */
 @AllArgsConstructor
 @NoArgsConstructor

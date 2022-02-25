@@ -10,7 +10,7 @@ import java.util.Map;
  * 默认请求转换器 使用fastJson直接将对象转为字符串
  *
  * @author jingmu
- * @date 2020/3/26
+ * @since 2020/3/26
  */
 public class DefaultRequestConverter implements RequestConverter {
 

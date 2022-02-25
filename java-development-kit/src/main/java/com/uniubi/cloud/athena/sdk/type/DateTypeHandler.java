@@ -6,7 +6,7 @@ import java.util.Date;
  * com.uniubi.cloud.funx.type.DateTypeHandler
  *
  * @author jingmu
- * @date 2020/3/20
+ * @since 2020/3/20
  */
 public class DateTypeHandler implements TypeHandler<Date> {
 

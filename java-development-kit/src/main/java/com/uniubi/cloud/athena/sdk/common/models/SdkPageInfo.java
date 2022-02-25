@@ -9,7 +9,7 @@ import java.util.List;
  * com.uniubi.medusa.ares.develop.models.SdkPageInfo
  *
  * @author jingmu
- * @date 2020/5/7
+ * @since 2020/5/7
  */
 @Data
 @Accessors(chain = true)

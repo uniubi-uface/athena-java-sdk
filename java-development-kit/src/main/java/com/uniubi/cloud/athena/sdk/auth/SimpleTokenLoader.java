@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  * token加载器默认实现 请求服务器获取token之后每12小时刷新一次
  *
  * @author jingmu
- * @date 2020/3/26
+ * @since 2020/3/26
  */
 public class SimpleTokenLoader extends AbstractTokenLoader implements TokenLoader {
 

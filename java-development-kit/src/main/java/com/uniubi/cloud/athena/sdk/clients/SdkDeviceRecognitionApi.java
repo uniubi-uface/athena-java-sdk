@@ -10,7 +10,7 @@ import com.uniubi.cloud.athena.sdk.common.models.response.RecognitionResponseMod
  * com.uniubi.medusa.ares.develop.api.clients.SdkDeviceRecognitionApi
  *
  * @author jingmu
- * @date 2020/5/18
+ * @since 2020/5/18
  */
 public interface SdkDeviceRecognitionApi {
 

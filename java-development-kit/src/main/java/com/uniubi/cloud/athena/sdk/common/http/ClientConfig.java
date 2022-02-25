@@ -6,7 +6,7 @@ import lombok.Data;
  * 请求配置
  *
  * @author jingmu
- * @date 2020/3/31
+ * @since 2020/3/31
  */
 @Data
 public class ClientConfig {

@@ -4,7 +4,7 @@ package com.uniubi.cloud.athena.sdk.common.exception;
  * com.uniubi.medusa.ares.develop.common.http.AthenaHttpException
  *
  * @author jingmu
- * @date 2020/6/17
+ * @since 2020/6/17
  */
 public class AthenaHttpException extends RuntimeException {
 

@@ -6,7 +6,7 @@ import lombok.Data;
  * sdk统一返回结果对象
  *
  * @author jingmu
- * @date 2020/5/6
+ * @since 2020/5/6
  */
 @Data
 public class SdkResult<T> {

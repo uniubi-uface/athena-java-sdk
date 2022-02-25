@@ -8,7 +8,7 @@ import com.uniubi.cloud.athena.sdk.common.utils.UniUbiEnumUtils;
  *
  * @author huanghuizhou ClassName Http error code enum.
  * @version V1.0.
- * @date 2020.07.10 09:51:53
+ * @since 2020.07.10 09:51:53
  */
 public enum HttpErrorCodeEnum implements CommonEnum<Integer> {
 

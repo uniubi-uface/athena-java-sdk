@@ -40,3 +40,6 @@ alg_async_log.txt
 *.log
 *.out
 /.gradle/
+
+#POM
+*.versionsBackup

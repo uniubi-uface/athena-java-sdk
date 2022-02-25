@@ -27,7 +27,7 @@
         </module> -->
         <!-- 检查类和接口的javadoc  忽略注解Generated,BLH,Resource,Column,Id-->
         <module name="JavadocType">
-            <property name="allowUnknownTags" value="true"/>
+            <property name="allowUnknownTags" value="false"/>
             <property name="allowMissingParamTags" value="true"/>
             <property name="allowedAnnotations" value="Generated,BLH,Resource,Column,Id"/>
             <property name="tokens" value="INTERFACE_DEF,ENUM_DEF,CLASS_DEF,ANNOTATION_DEF"/>

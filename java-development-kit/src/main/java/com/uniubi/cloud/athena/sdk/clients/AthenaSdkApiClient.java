@@ -7,7 +7,7 @@ import com.uniubi.cloud.athena.sdk.common.UniUbiSdkClientProxyFactory;
  * com.uniubi.medusa.ares.develop.api.clients.AthenaSdkApiClient
  *
  * @author jingmu
- * @date 2020/5/7
+ * @since 2020/5/7
  */
 public class AthenaSdkApiClient {
 

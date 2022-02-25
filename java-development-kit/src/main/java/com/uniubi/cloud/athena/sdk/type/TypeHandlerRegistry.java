@@ -11,7 +11,7 @@ import java.util.Map;
  * com.uniubi.cloud.funx.type.TypeHandlerRegistry
  *
  * @author jingmu
- * @date 2020/3/20
+ * @since 2020/3/20
  */
 public class TypeHandlerRegistry {
 
