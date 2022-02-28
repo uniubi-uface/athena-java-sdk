@@ -6,7 +6,7 @@
 
     <groupId>com.uniubi.cloud.athena</groupId>
     <artifactId>sdk-examples</artifactId>
-    <version>1.0.1.RELEASE</version>
+    <version>1.0.2.RELEASE</version>
     <name>sdk-examples</name>
 
     <description>UStar cloud open api SDK example pom</description>

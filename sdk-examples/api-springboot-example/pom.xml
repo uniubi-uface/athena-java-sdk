@@ -5,12 +5,12 @@
     <parent>
         <groupId>com.uniubi.cloud.athena</groupId>
         <artifactId>sdk-examples</artifactId>
-        <version>1.0.1.RELEASE</version>
+        <version>1.0.2.RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>api-springboot-example</artifactId>
-    <name>${artifactId}</name>
+    <name>${project.artifactId}</name>
     <url>https://github.com/uniubi-uface/athena-java-sdk</url>
     <description>UStarCloud Open API springboot demo</description>
 

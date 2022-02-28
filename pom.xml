@@ -5,7 +5,7 @@
 
     <groupId>com.uniubi.cloud.athena</groupId>
     <artifactId>java-sdk-parent</artifactId>
-    <version>1.0.1.RELEASE</version>
+    <version>1.0.2.RELEASE</version>
 
     <name>java-sdk-parent</name>
     <packaging>pom</packaging>
