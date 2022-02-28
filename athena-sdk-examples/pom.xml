@@ -4,14 +4,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.uniubi.cloud.athena</groupId>
-    <artifactId>java-development-kit</artifactId>
-    <version>1.0.2.RELEASE</version>
+    <groupId>com.uniubi.cloud</groupId>
+    <artifactId>athena-sdk-examples</artifactId>
+    <version>1.0.3.RELEASE</version>
+    <name>athena-sdk-examples</name>
 
-    <name>java-development-kit</name>
-
-    <description>UStar cloud open api SDK</description>
+    <description>UStar cloud open api SDK example pom</description>
     <url>https://github.com/uniubi-uface/athena-java-sdk</url>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>message-receive-example</module>
+        <module>api-simple-example</module>
+        <module>api-springboot-example</module>
+    </modules>
 
     <licenses>
         <license>
@@ -36,9 +43,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://uniubi-uface/athena-java-sdk.git</connection>
-        <developerConnection>scm:git:ssh://uniubi-uface/athena-java-sdk.git</developerConnection>
         <url>https://github.com/uniubi-uface/athena-java-sdk</url>
+        <connection>scm:git:git://github.com/uniubi-uface/athena-java-sdk.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/uniubi-uface/athena-java-sdk.git</developerConnection>
     </scm>
 
     <distributionManagement>
@@ -53,45 +60,19 @@
     </distributionManagement>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <okhttp.version>2.7.5</okhttp.version>
-        <fastjson.version>1.2.72</fastjson.version>
-        <lombok.version>1.18.10</lombok.version>
-        <slf4j.version>1.7.28</slf4j.version>
-        <codec.version>1.13</codec.version>
-        <lang3.version>3.9</lang3.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.squareup.okhttp</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>${okhttp.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>${codec.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${lang3.version}</version>
-        </dependency>
-    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.uniubi.cloud</groupId>
+                <artifactId>athena-java-development-kit</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
@@ -134,65 +115,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.7.1</version>
-            </plugin>
-            <!-- 要将源码放上去，需要加入这个插件 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.1</version>
-                <configuration>
-                    <attach>true</attach>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <!-- Javadoc -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <configuration>
-                            <additionalparam>-Xdoclint:none</additionalparam>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <id>sign-artifacts</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>sign</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.7</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>io.spring.javaformat</groupId>

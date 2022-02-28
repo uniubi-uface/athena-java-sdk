@@ -3,34 +3,70 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.uniubi.cloud.athena</groupId>
-        <artifactId>sdk-examples</artifactId>
-        <version>1.0.2.RELEASE</version>
+        <groupId>com.uniubi.cloud</groupId>
+        <artifactId>athena-sdk-examples</artifactId>
+        <version>1.0.3.RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>api-simple-example</artifactId>
+    <artifactId>api-springboot-example</artifactId>
     <name>${project.artifactId}</name>
     <url>https://github.com/uniubi-uface/athena-java-sdk</url>
-    <description>UStarCloud Open API simple demo</description>
+    <description>UStarCloud Open API springboot demo</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <fastjson.version>1.2.72</fastjson.version>
     </properties>
-
     <dependencies>
         <dependency>
-            <groupId>com.uniubi.cloud.athena</groupId>
-            <artifactId>java-development-kit</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.spring.javaformat</groupId>
-            <artifactId>spring-javaformat-checkstyle</artifactId>
-            <version>0.0.31</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.uniubi.cloud</groupId>
+            <artifactId>athena-java-development-kit</artifactId>
+        </dependency>
+        <dependency>
+            <!-- generate spring-configuration-metadata.json file of @ConfigurationProperties -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot 2.2.0.RELEASE -->
+            <dependency>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.2.0.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
