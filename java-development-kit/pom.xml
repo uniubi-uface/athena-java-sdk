@@ -6,7 +6,10 @@
 
     <groupId>com.uniubi.cloud.athena</groupId>
     <artifactId>java-development-kit</artifactId>
+    <version>1.0.0.RELEASE</version>
+
     <description>UStar cloud java SDK POM</description>
+
     <url>https://github.com/uniubi-uface/athena-java-sdk</url>
 
     <properties>
