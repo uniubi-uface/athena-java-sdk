@@ -10,6 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>message-receive-example</artifactId>
+    <name>${artifactId}</name>
+    <url>https://github.com/uniubi-uface/athena-java-sdk</url>
     <description>UStarCloud message receive demo</description>
 
     <properties>

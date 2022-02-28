@@ -8,6 +8,8 @@
     <artifactId>java-development-kit</artifactId>
     <version>1.0.1.RELEASE</version>
 
+    <name>java-development-kit</name>
+
     <description>UStar cloud open api SDK</description>
     <url>https://github.com/uniubi-uface/athena-java-sdk</url>
 
