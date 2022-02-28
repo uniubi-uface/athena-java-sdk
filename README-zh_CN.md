@@ -12,9 +12,9 @@
 
 ### Athena Java SDK 示例
 
-* [简单示例](./sdk-examples/api-simple-example)
-* [Spring Boot 示例](./sdk-examples/api-springbot-example)
-* [消息接收示例](./sdk-examples/message-receive-example)
+* [简单示例](./athena-sdk-examples/api-simple-example)
+* [Spring Boot 示例](./athena-sdk-examples/api-springboot-example)
+* [消息接收示例](./athena-sdk-examples/message-receive-example)
 
 ### Maven 依赖
 

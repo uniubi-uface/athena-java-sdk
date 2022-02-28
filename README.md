@@ -1,22 +1,20 @@
 ## athena-java-sdk
 
-[中文文档](./README.md)
+[中文文档](./README-zh_CN.md)
 
 ### Version Description
 
 * [Version Description](./docs/VersionDesc.md)
-* [版本说明](./docs/VersionDesc-zh_CN.md)
 
 ### Open API Document
 
 * [UStarCloud Open API Document](./docs/UStar%20cloud%20open%20API.md)
-* [UStarCloud Open API 中文文档](./docs/UStar%20Cloud%20open%20API-zh_CN.md)
 
 ### Athena Java SDK Example
 
-* [API simple example](./sdk-examples/api-simple-example)
-* [API springboot example](./sdk-examples/api-springbot-example)
-* [message receive example](./sdk-examples/message-receive-example)
+* [API simple example](./athena-sdk-examples/api-simple-example)
+* [API springboot example](./athena-sdk-examples/api-springboot-example)
+* [message receive example](./athena-sdk-examples/message-receive-example)
 
 ### Maven dependency
 Maven dependency configuration:
