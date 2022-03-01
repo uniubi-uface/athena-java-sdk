@@ -4,7 +4,7 @@
 
 ### Version Description
 
-* [Version Release Notes](./docs/VersionReleaseNotes.md)
+* [Version Release Notes](docs/ReleaseNotes.md)
 
 ### Open API Document
 

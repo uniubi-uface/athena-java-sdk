@@ -4,7 +4,7 @@
 
 ### 版本发布日志
 
-* [版本发布日志中文文档](/docs/VersionReleaseNotes-zh_CN.md)
+* [版本发布日志中文文档](/docs/ReleaseNotes-zh_CN.md)
 
 ### 开放API文档
 
