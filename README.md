@@ -4,7 +4,7 @@
 
 ### Version Description
 
-* [Version Description](./docs/VersionDesc.md)
+* [Version Release Notes](./docs/VersionReleaseNotes.md)
 
 ### Open API Document
 
@@ -21,8 +21,8 @@ Maven dependency configuration:
 ```xml
 
 <dependency>
-    <groupId>com.uniubi.cloud.athena</groupId>
-    <artifactId>java-sdk-parent</artifactId>
+    <groupId>com.uniubi.cloud</groupId>
+    <artifactId>athena-java-development-kit</artifactId>
     <version>${latestTagName}</version>
 </dependency>
 ```

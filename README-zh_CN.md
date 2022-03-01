@@ -2,9 +2,9 @@
 
 [English Document](./README.md)
 
-### 版本说明
+### 版本发布日志
 
-* [版本说明中文文档](./docs/VersionDesc-zh_CN.md)
+* [版本发布日志中文文档](/docs/VersionReleaseNotes-zh_CN.md)
 
 ### 开放API文档
 
@@ -23,8 +23,8 @@ Maven依赖GAV:
 ```xml
 
 <dependency>
-    <groupId>com.uniubi.cloud.athena</groupId>
-    <artifactId>java-sdk-parent</artifactId>
+    <groupId>com.uniubi.cloud</groupId>
+    <artifactId>athena-java-development-kit</artifactId>
     <version>${latestTagName}</version>
 </dependency>
 ```
