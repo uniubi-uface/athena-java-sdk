@@ -14,6 +14,7 @@ import com.uniubi.cloud.athena.sdk.common.models.SdkResult;
  */
 public class RpcMethodReAuthInterceptor implements RpcMethodInterceptor {
 
+    @SuppressWarnings("rawtypes")
     @Override
     public Object process(RpcMethod rpcMethod) {
         // 直接尝试调用
