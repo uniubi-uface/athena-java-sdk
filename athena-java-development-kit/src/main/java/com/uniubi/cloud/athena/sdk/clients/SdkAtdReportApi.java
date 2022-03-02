@@ -10,6 +10,10 @@ import com.uniubi.cloud.athena.sdk.common.models.response.AtdExceptionReportResp
 import com.uniubi.cloud.athena.sdk.common.models.response.AtdOverWorkReportResponseModel;
 
 /**
+ * 考勤相关 API， 提供考勤报表查询方法
+ * <p>
+ * The attendance related API provides the query method of attendance report
+ *
  * @author 井木
  * @since 2021/10/20
  */
