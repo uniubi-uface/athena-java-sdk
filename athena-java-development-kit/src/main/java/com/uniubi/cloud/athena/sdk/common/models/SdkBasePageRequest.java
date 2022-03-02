@@ -13,11 +13,15 @@ public class SdkBasePageRequest {
 
     /**
      * 页码
+     * <p>
+     * page NO.
      */
     private Integer pageNum = 1;
 
     /**
      * 每页限制条数
+     * <p>
+     * page size.
      */
     private Integer pageSize = 10;
 

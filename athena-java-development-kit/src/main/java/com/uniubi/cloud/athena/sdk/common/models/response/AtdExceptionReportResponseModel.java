@@ -25,36 +25,66 @@ import java.util.List;
 @NoArgsConstructor
 public class AtdExceptionReportResponseModel {
 
-    /*** 人员id */
+    /**
+     * 人员id
+     */
     private String personId;
 
-    /*** 员工编号 */
+    /**
+     * 员工编号
+     */
     private String personNo;
 
-    /*** 人员姓名 */
+    /**
+     * 人员姓名
+     */
     private String name;
 
-    /*** 部门 */
+    /**
+     * 部门
+     * <p>
+     * department  names
+     */
     private List<String> depNames;
 
-    /*** 职位 */
+    /**
+     * 职位
+     */
     private List<String> roleNames;
 
-    /*** 考勤日期 */
+    /**
+     * 考勤日期
+     * <p>
+     * attendance date
+     */
     @JSONField(format = "yyyy-MM-dd")
     private LocalDate atDate;
 
-    /*** 打卡时间 */
+    /**
+     * 打卡时间
+     * <p>
+     * clock time
+     */
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime recognitionTime;
 
-    /*** 打卡图片Id */
+    /**
+     * 打卡图片Id
+     * <p>
+     * clock scene photo ID
+     */
     private String clockPhotoId;
 
-    /*** 设备key */
+    /**
+     * 设备key
+     * <p>
+     * device SN.
+     */
     private String deviceKey;
 
-    /*** 设备名称 */
+    /**
+     * 设备名称
+     */
     private String deviceName;
 
 }

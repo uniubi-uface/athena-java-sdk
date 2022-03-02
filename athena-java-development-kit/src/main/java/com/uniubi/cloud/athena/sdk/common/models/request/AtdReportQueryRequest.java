@@ -23,17 +23,33 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class AtdReportQueryRequest extends SdkBasePageRequest {
 
-    /*** 部门id */
+    /**
+     * 部门id
+     * <p>
+     * department ID.
+     */
     private String deptId;
 
-    /*** 员工名称/编号 */
+    /**
+     * 员工名称/编号
+     * <p>
+     * search key ,employee name or employee NO.
+     */
     private String empName;
 
-    /*** 开始日期 yyyy-MM-dd */
+    /**
+     * 开始日期 格式：yyyy-MM-dd
+     * <p>
+     * start date,format:yyyy-MM-dd
+     */
     @JSONField(format = "yyyy-MM-dd")
     private LocalDate startDate;
 
-    /*** 结束日期 yyyy-MM-dd */
+    /**
+     * 结束日期 yyyy-MM-dd
+     * <p>
+     * end date,format:yyyy-MM-dd
+     */
     @JSONField(format = "yyyy-MM-dd")
     private LocalDate endDate;
 
