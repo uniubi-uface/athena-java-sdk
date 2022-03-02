@@ -20,7 +20,7 @@
 
 Through the open API, developers can use various languages to connect with UStarCloud to obtain corresponding data,
 
-such as Java, C, C + +. In order to facilitate docking, we provide Java SDK to realize the docking of open API.
+such as Java, C, C++. In order to facilitate docking, we provide Java SDK to realize the docking of open API.
 
 The following SDK usage examples are provided:
 
