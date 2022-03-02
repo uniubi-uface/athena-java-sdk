@@ -9,7 +9,8 @@ import com.uniubi.cloud.athena.sdk.common.models.response.RecognitionResponseMod
 /**
  * 设备识别记录查询API，提供查询设备识别记录的方法
  * <p>
- * The equipment identification record query API provides a method for querying equipment identification records
+ * The equipment identification record query API provides a method for querying equipment
+ * identification records
  *
  * @author jingmu
  * @since 2020/5/18
