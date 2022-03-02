@@ -39,14 +39,12 @@ public class AtdOverWorkReportResponseModel {
     private String name;
 
     /**
-     * 部门
-     * department names
+     * 部门 department names
      */
     private List<String> depNames;
 
     /**
-     * 职位
-     * role,position
+     * 职位 role,position
      */
     private List<String> roleNames;
 
@@ -83,21 +81,21 @@ public class AtdOverWorkReportResponseModel {
      * 日期类型
      *
      * <ul>
-     *     <li>1-工作日(普通时间段)</li>
-     *     <li>2-工作日(弹性时间段)</li>
-     *     <li>3-休息日</li>
-     *     <li>4-节假日</li>
-     *     <li>5-未排班</li>
+     * <li>1-工作日(普通时间段)</li>
+     * <li>2-工作日(弹性时间段)</li>
+     * <li>3-休息日</li>
+     * <li>4-节假日</li>
+     * <li>5-未排班</li>
      * </ul>
      * <p>
      * <p>
      * Date type
      * <ul>
-     *     <li>1-working days (normal time period)</li>
-     *     <li>2-working days (flexible time period)</li>
-     *     <li>3-rest days</li>
-     *     <li>4-holidays</li>
-     *     <li>5-unscheduled shifts</li>
+     * <li>1-working days (normal time period)</li>
+     * <li>2-working days (flexible time period)</li>
+     * <li>3-rest days</li>
+     * <li>4-holidays</li>
+     * <li>5-unscheduled shifts</li>
      * </ul>
      */
     private Byte dateType;

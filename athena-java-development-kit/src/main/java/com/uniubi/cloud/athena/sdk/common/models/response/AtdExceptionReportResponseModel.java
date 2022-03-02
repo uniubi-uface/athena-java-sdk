@@ -43,7 +43,7 @@ public class AtdExceptionReportResponseModel {
     /**
      * 部门
      * <p>
-     * department  names
+     * department names
      */
     private List<String> depNames;
 

@@ -101,9 +101,9 @@ public class AtdBreakTimeReportResponseModel {
      * <p>
      * break status
      * <ul>
-     *     <li>0 unsettled</li>
-     *     <li>1 normal</li>
-     *     <li>2 unsettled</li>
+     * <li>0 unsettled</li>
+     * <li>1 normal</li>
+     * <li>2 unsettled</li>
      * </ul>
      */
     private Byte breakStatus;

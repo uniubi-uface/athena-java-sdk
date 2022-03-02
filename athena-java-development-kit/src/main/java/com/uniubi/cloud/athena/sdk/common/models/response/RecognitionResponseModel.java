@@ -28,9 +28,9 @@ public class RecognitionResponseModel {
      * 识别记录类型 1.员工 2访客 3陌生人
      *
      * <ul>
-     *     <li>1 employee</li>
-     *     <li>2 visitor</li>
-     *     <li>3 stranger</li>
+     * <li>1 employee</li>
+     * <li>2 visitor</li>
+     * <li>3 stranger</li>
      * </ul>
      */
     private Byte personType;
@@ -75,9 +75,9 @@ public class RecognitionResponseModel {
      * <p>
      * alive body type
      * <ul>
-     *     <li>1 alive body</li>
-     *     <li>2 not alive body</li>
-     *     <li>3 No living judgment was performed</li>
+     * <li>1 alive body</li>
+     * <li>2 not alive body</li>
+     * <li>3 No living judgment was performed</li>
      * </ul>
      */
     private Byte aliveType;
@@ -88,10 +88,10 @@ public class RecognitionResponseModel {
      * Recognition mode
      *
      * <ul>
-     *     <li>1 face</li>
-     *     <li>2 card</li>
-     *     <li>3 face & card</li>
-     *     <li>4 face & ID card</li>
+     * <li>1 face</li>
+     * <li>2 card</li>
+     * <li>3 face & card</li>
+     * <li>4 face & ID card</li>
      * </ul>
      */
     private Byte recMode;
@@ -102,8 +102,8 @@ public class RecognitionResponseModel {
      * Recognition pattern comparison results
      *
      * <ul>
-     *     <li>1 success</li>
-     *     <li>2 failed</li>
+     * <li>1 success</li>
+     * <li>2 failed</li>
      * </ul>
      */
     private Byte recStatus;
@@ -113,18 +113,17 @@ public class RecognitionResponseModel {
      * <p>
      * recognition side
      * <ul>
-     *     <li>1 local</li>
-     *     <li>2 cloud</li>
+     * <li>1 local</li>
+     * <li>2 cloud</li>
      * </ul>
      */
     private Byte recType;
 
     /**
-     * 识别结果 1成功2失败
-     * recognition result
+     * 识别结果 1成功2失败 recognition result
      * <ul>
-     *     <li>1 success</li>
-     *     <li>2 failed</li>
+     * <li>1 success</li>
+     * <li>2 failed</li>
      * </ul>
      */
     private Byte type;
@@ -142,9 +141,9 @@ public class RecognitionResponseModel {
      * permissionTime Type
      *
      * <ul>
-     *     <li>1: Within the validity period</li>
-     *     <li>2: outside the validity period</li>
-     *     <li>3: the validity period is not judged</li>
+     * <li>1: Within the validity period</li>
+     * <li>2: outside the validity period</li>
+     * <li>3: the validity period is not judged</li>
      * </ul>
      */
     private Byte permissionTimeType;
@@ -155,9 +154,9 @@ public class RecognitionResponseModel {
      * <p>
      * passTimeType
      * <ul>
-     *     <li>1: In time period</li>
-     *     <li>2: out of time period</li>
-     *     <li>3: no time period judgment</li>
+     * <li>1: In time period</li>
+     * <li>2: out of time period</li>
+     * <li>3: no time period judgment</li>
      * </ul>
      */
     private Byte passTimeType;
@@ -172,18 +171,17 @@ public class RecognitionResponseModel {
      * <p>
      * temperature State
      * <ul>
-     *     <li>1 normal</li>
-     *     <li>2 abnormal</li>
+     * <li>1 normal</li>
+     * <li>2 abnormal</li>
      * </ul>
      */
     private Byte temperatureState;
 
     /**
-     * 温度单位(仅口罩测温设备支持)1. 摄氏度2. 华氏度
-     * temperature Unit
+     * 温度单位(仅口罩测温设备支持)1. 摄氏度2. 华氏度 temperature Unit
      * <ul>
-     *     <li>1 centigrade ℃</li>
-     *     <li>2 Fahrenheit degree ℉</li>
+     * <li>1 centigrade ℃</li>
+     * <li>2 Fahrenheit degree ℉</li>
      * </ul>
      */
     private Byte temperatureUnit;

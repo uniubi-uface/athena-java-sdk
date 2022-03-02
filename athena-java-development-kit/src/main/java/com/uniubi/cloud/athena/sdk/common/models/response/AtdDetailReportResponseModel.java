@@ -109,22 +109,22 @@ public class AtdDetailReportResponseModel {
      * 签到状态
      *
      * <ul>
-     *    <li>1 正常</li>
-     *    <li>2 缺卡</li>
-     *    <li>3 迟到</li>
-     *    <li>4 早退</li>
-     *    <li>5 未打卡(缺卡)</li>
-     *    <li>6 加班</li>
+     * <li>1 正常</li>
+     * <li>2 缺卡</li>
+     * <li>3 迟到</li>
+     * <li>4 早退</li>
+     * <li>5 未打卡(缺卡)</li>
+     * <li>6 加班</li>
      * </ul>
      * <p>
      * sign in status
      * <ul>
-     *    <li>1 normal</li>
-     *    <li>2 missing</li>
-     *    <li>3 late</li>
-     *    <li>4 leave early</li>
-     *    <li>5 Not clocked in (missing)</li>
-     *    <li>6 work overtime</li>
+     * <li>1 normal</li>
+     * <li>2 missing</li>
+     * <li>3 late</li>
+     * <li>4 leave early</li>
+     * <li>5 Not clocked in (missing)</li>
+     * <li>6 work overtime</li>
      * </ul>
      */
     private Byte signInStatus;
@@ -139,22 +139,22 @@ public class AtdDetailReportResponseModel {
      * 签退状态
      *
      * <ul>
-     *    <li>1 正常</li>
-     *    <li>2 缺卡</li>
-     *    <li>3 迟到</li>
-     *    <li>4 早退</li>
-     *    <li>5 未打卡(缺卡)</li>
-     *    <li>6 加班</li>
+     * <li>1 正常</li>
+     * <li>2 缺卡</li>
+     * <li>3 迟到</li>
+     * <li>4 早退</li>
+     * <li>5 未打卡(缺卡)</li>
+     * <li>6 加班</li>
      * </ul>
      * <p>
      * sign out status
      * <ul>
-     *    <li>1 normal</li>
-     *    <li>2 missing</li>
-     *    <li>3 late</li>
-     *    <li>4 leave early</li>
-     *    <li>5 Not clocked in (missing)</li>
-     *    <li>6 work overtime</li>
+     * <li>1 normal</li>
+     * <li>2 missing</li>
+     * <li>3 late</li>
+     * <li>4 leave early</li>
+     * <li>5 Not clocked in (missing)</li>
+     * <li>6 work overtime</li>
      * </ul>
      */
     private Byte signOutStatus;
@@ -219,21 +219,21 @@ public class AtdDetailReportResponseModel {
      * 日期类型
      *
      * <ul>
-     *     <li>1-工作日(普通时间段)</li>
-     *     <li>2-工作日(弹性时间段)</li>
-     *     <li>3-休息日</li>
-     *     <li>4-节假日</li>
-     *     <li>5-未排班</li>
+     * <li>1-工作日(普通时间段)</li>
+     * <li>2-工作日(弹性时间段)</li>
+     * <li>3-休息日</li>
+     * <li>4-节假日</li>
+     * <li>5-未排班</li>
      * </ul>
      * <p>
      * <p>
      * Date type
      * <ul>
-     *     <li>1-working days (normal time period)</li>
-     *     <li>2-working days (flexible time period)</li>
-     *     <li>3-rest days</li>
-     *     <li>4-holidays</li>
-     *     <li>5-unscheduled shifts</li>
+     * <li>1-working days (normal time period)</li>
+     * <li>2-working days (flexible time period)</li>
+     * <li>3-rest days</li>
+     * <li>4-holidays</li>
+     * <li>5-unscheduled shifts</li>
      * </ul>
      */
     private Byte dateType;
