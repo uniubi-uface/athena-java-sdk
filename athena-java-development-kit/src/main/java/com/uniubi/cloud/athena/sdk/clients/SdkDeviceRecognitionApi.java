@@ -14,6 +14,13 @@ import com.uniubi.cloud.athena.sdk.common.models.response.RecognitionResponseMod
  */
 public interface SdkDeviceRecognitionApi {
 
+    /**
+     * 分页查询设备识别记录
+     * <p>
+     * Paging query device identification record
+     * @param queryRecognitionPageRequest query params
+     * @return <code>SdkResult<SdkPageInfo<RecognitionResponseModel>></code>
+     */
     @RequestMark(name = "queryRecognitionPage", version = "v1", desc = "分页查询识别记录")
     SdkResult<SdkPageInfo<RecognitionResponseModel>> queryRecognitionPage(
             RecognitionPageQueryRequest queryRecognitionPageRequest);
