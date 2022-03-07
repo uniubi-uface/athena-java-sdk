@@ -1,10 +1,5 @@
 package com.uniubi.cloud.athena.sdk.common.models.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
-
 import java.util.List;
 
 /**
@@ -13,10 +8,6 @@ import java.util.List;
  * @author jingmu
  * @since 2020/5/18
  */
-@AllArgsConstructor
-@NoArgsConstructor
-@Accessors(chain = true)
-@Data
 public class RecognitionResponseModel {
 
     /**
@@ -185,5 +176,176 @@ public class RecognitionResponseModel {
      * </ul>
      */
     private Byte temperatureUnit;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Byte getPersonType() {
+        return personType;
+    }
+
+    public void setPersonType(Byte personType) {
+        this.personType = personType;
+    }
+
+    public String getDeviceKey() {
+        return deviceKey;
+    }
+
+    public void setDeviceKey(String deviceKey) {
+        this.deviceKey = deviceKey;
+    }
+
+    public String getDeviceName() {
+        return deviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
+    }
+
+    public Long getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(Long personId) {
+        this.personId = personId;
+    }
+
+    public String getEmpNo() {
+        return empNo;
+    }
+
+    public void setEmpNo(String empNo) {
+        this.empNo = empNo;
+    }
+
+    public List<String> getDepartmentNames() {
+        return departmentNames;
+    }
+
+    public void setDepartmentNames(List<String> departmentNames) {
+        this.departmentNames = departmentNames;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getRecTimeMillis() {
+        return recTimeMillis;
+    }
+
+    public void setRecTimeMillis(Long recTimeMillis) {
+        this.recTimeMillis = recTimeMillis;
+    }
+
+    public Byte getAliveType() {
+        return aliveType;
+    }
+
+    public void setAliveType(Byte aliveType) {
+        this.aliveType = aliveType;
+    }
+
+    public Byte getRecMode() {
+        return recMode;
+    }
+
+    public void setRecMode(Byte recMode) {
+        this.recMode = recMode;
+    }
+
+    public Byte getRecStatus() {
+        return recStatus;
+    }
+
+    public void setRecStatus(Byte recStatus) {
+        this.recStatus = recStatus;
+    }
+
+    public Byte getRecType() {
+        return recType;
+    }
+
+    public void setRecType(Byte recType) {
+        this.recType = recType;
+    }
+
+    public Byte getType() {
+        return type;
+    }
+
+    public void setType(Byte type) {
+        this.type = type;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    public Byte getPermissionTimeType() {
+        return permissionTimeType;
+    }
+
+    public void setPermissionTimeType(Byte permissionTimeType) {
+        this.permissionTimeType = permissionTimeType;
+    }
+
+    public Byte getPassTimeType() {
+        return passTimeType;
+    }
+
+    public void setPassTimeType(Byte passTimeType) {
+        this.passTimeType = passTimeType;
+    }
+
+    public Double getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(Double temperature) {
+        this.temperature = temperature;
+    }
+
+    public Byte getTemperatureState() {
+        return temperatureState;
+    }
+
+    public void setTemperatureState(Byte temperatureState) {
+        this.temperatureState = temperatureState;
+    }
+
+    public Byte getTemperatureUnit() {
+        return temperatureUnit;
+    }
+
+    public void setTemperatureUnit(Byte temperatureUnit) {
+        this.temperatureUnit = temperatureUnit;
+    }
+
+    @Override
+    public String toString() {
+        return "RecognitionResponseModel{" + "id=" + id + ", personType=" + personType + ", deviceKey='" + deviceKey
+                + '\'' + ", deviceName='" + deviceName + '\'' + ", personId=" + personId + ", empNo='" + empNo + '\''
+                + ", departmentNames=" + departmentNames + ", name='" + name + '\'' + ", recTimeMillis=" + recTimeMillis
+                + ", aliveType=" + aliveType + ", recMode=" + recMode + ", recStatus=" + recStatus + ", recType="
+                + recType + ", type=" + type + ", photoUrl='" + photoUrl + '\'' + ", permissionTimeType="
+                + permissionTimeType + ", passTimeType=" + passTimeType + ", temperature=" + temperature
+                + ", temperatureState=" + temperatureState + ", temperatureUnit=" + temperatureUnit + '}';
+    }
 
 }

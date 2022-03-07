@@ -141,15 +141,15 @@ public class UniUbiSdkClientProxyFactory {
             Type genericReturnType = method.getGenericReturnType();
             // @formatter:off
             // 封装rpc方法
-            RpcMethod rpcMethod = new RpcMethod()
-                    .setArgs(args)
-                    .setMethod(method)
-                    .setHeaders(headers)
-                    .setRequestBody(secretContent)
-                    .setRequestUrl(requestUrl)
-                    .setReturnType(genericReturnType)
-                    .setTokenLoader(tokenLoader)
-                    .setUniUbiHttpClient(uniUbiHttpClient);
+            RpcMethod rpcMethod = new RpcMethod();
+            rpcMethod.setArgs(args);
+            rpcMethod.setMethod(method);
+            rpcMethod.setHeaders(headers);
+            rpcMethod.setRequestBody(secretContent);
+            rpcMethod.setRequestUrl(requestUrl);
+            rpcMethod.setReturnType(genericReturnType);
+            rpcMethod.setTokenLoader(tokenLoader);
+            rpcMethod.setUniUbiHttpClient(uniUbiHttpClient);
             // 发送请求，并响应结果
             return rpcMethodInterceptor.process(rpcMethod);
             // @formatter:on

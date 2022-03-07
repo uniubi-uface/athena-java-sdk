@@ -1,12 +1,6 @@
 package com.uniubi.cloud.athena.sdk.common.models.response;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -16,12 +10,6 @@ import java.util.List;
  * @author 井木
  * @since 2021/04/14 16:33
  */
-@Setter
-@Getter
-@Builder
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
 public class AtdDetailReportResponseModel {
 
     /**
@@ -253,5 +241,220 @@ public class AtdDetailReportResponseModel {
      */
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime signInEnd;
+
+    public String getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(String personId) {
+        this.personId = personId;
+    }
+
+    public String getPersonNo() {
+        return personNo;
+    }
+
+    public void setPersonNo(String personNo) {
+        this.personNo = personNo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<String> getDepNames() {
+        return depNames;
+    }
+
+    public void setDepNames(List<String> depNames) {
+        this.depNames = depNames;
+    }
+
+    public List<String> getRoleNames() {
+        return roleNames;
+    }
+
+    public void setRoleNames(List<String> roleNames) {
+        this.roleNames = roleNames;
+    }
+
+    public LocalDate getAtDate() {
+        return atDate;
+    }
+
+    public void setAtDate(LocalDate atDate) {
+        this.atDate = atDate;
+    }
+
+    public String getTimeIntervalName() {
+        return timeIntervalName;
+    }
+
+    public void setTimeIntervalName(String timeIntervalName) {
+        this.timeIntervalName = timeIntervalName;
+    }
+
+    public LocalDateTime getPlanSignInDatetime() {
+        return planSignInDatetime;
+    }
+
+    public void setPlanSignInDatetime(LocalDateTime planSignInDatetime) {
+        this.planSignInDatetime = planSignInDatetime;
+    }
+
+    public LocalDateTime getPlanSignOutDatetime() {
+        return planSignOutDatetime;
+    }
+
+    public void setPlanSignOutDatetime(LocalDateTime planSignOutDatetime) {
+        this.planSignOutDatetime = planSignOutDatetime;
+    }
+
+    public Long getPlanTimeIntervalSecond() {
+        return planTimeIntervalSecond;
+    }
+
+    public void setPlanTimeIntervalSecond(Long planTimeIntervalSecond) {
+        this.planTimeIntervalSecond = planTimeIntervalSecond;
+    }
+
+    public LocalDateTime getRealSignInTime() {
+        return realSignInTime;
+    }
+
+    public void setRealSignInTime(LocalDateTime realSignInTime) {
+        this.realSignInTime = realSignInTime;
+    }
+
+    public Byte getSignInStatus() {
+        return signInStatus;
+    }
+
+    public void setSignInStatus(Byte signInStatus) {
+        this.signInStatus = signInStatus;
+    }
+
+    public LocalDateTime getRealSignOutTime() {
+        return realSignOutTime;
+    }
+
+    public void setRealSignOutTime(LocalDateTime realSignOutTime) {
+        this.realSignOutTime = realSignOutTime;
+    }
+
+    public Byte getSignOutStatus() {
+        return signOutStatus;
+    }
+
+    public void setSignOutStatus(Byte signOutStatus) {
+        this.signOutStatus = signOutStatus;
+    }
+
+    public Long getRealWorkTimeSecond() {
+        return realWorkTimeSecond;
+    }
+
+    public void setRealWorkTimeSecond(Long realWorkTimeSecond) {
+        this.realWorkTimeSecond = realWorkTimeSecond;
+    }
+
+    public Long getNormalWorkSecond() {
+        return normalWorkSecond;
+    }
+
+    public void setNormalWorkSecond(Long normalWorkSecond) {
+        this.normalWorkSecond = normalWorkSecond;
+    }
+
+    public Long getRealLateSecond() {
+        return realLateSecond;
+    }
+
+    public void setRealLateSecond(Long realLateSecond) {
+        this.realLateSecond = realLateSecond;
+    }
+
+    public Long getRealLeaveEarlySecond() {
+        return realLeaveEarlySecond;
+    }
+
+    public void setRealLeaveEarlySecond(Long realLeaveEarlySecond) {
+        this.realLeaveEarlySecond = realLeaveEarlySecond;
+    }
+
+    public Long getRealAbsenteeismSecond() {
+        return realAbsenteeismSecond;
+    }
+
+    public void setRealAbsenteeismSecond(Long realAbsenteeismSecond) {
+        this.realAbsenteeismSecond = realAbsenteeismSecond;
+    }
+
+    public Long getWorkDayOverWorkSecond() {
+        return workDayOverWorkSecond;
+    }
+
+    public void setWorkDayOverWorkSecond(Long workDayOverWorkSecond) {
+        this.workDayOverWorkSecond = workDayOverWorkSecond;
+    }
+
+    public Long getRestDayOverWorkSecond() {
+        return restDayOverWorkSecond;
+    }
+
+    public void setRestDayOverWorkSecond(Long restDayOverWorkSecond) {
+        this.restDayOverWorkSecond = restDayOverWorkSecond;
+    }
+
+    public Long getHolidayOverWorkSecond() {
+        return holidayOverWorkSecond;
+    }
+
+    public void setHolidayOverWorkSecond(Long holidayOverWorkSecond) {
+        this.holidayOverWorkSecond = holidayOverWorkSecond;
+    }
+
+    public Byte getDateType() {
+        return dateType;
+    }
+
+    public void setDateType(Byte dateType) {
+        this.dateType = dateType;
+    }
+
+    public LocalDateTime getSignInStart() {
+        return signInStart;
+    }
+
+    public void setSignInStart(LocalDateTime signInStart) {
+        this.signInStart = signInStart;
+    }
+
+    public LocalDateTime getSignInEnd() {
+        return signInEnd;
+    }
+
+    public void setSignInEnd(LocalDateTime signInEnd) {
+        this.signInEnd = signInEnd;
+    }
+
+    @Override
+    public String toString() {
+        return "AtdDetailReportResponseModel{" + "personId='" + personId + '\'' + ", personNo='" + personNo + '\''
+                + ", name='" + name + '\'' + ", depNames=" + depNames + ", roleNames=" + roleNames + ", atDate="
+                + atDate + ", timeIntervalName='" + timeIntervalName + '\'' + ", planSignInDatetime="
+                + planSignInDatetime + ", planSignOutDatetime=" + planSignOutDatetime + ", planTimeIntervalSecond="
+                + planTimeIntervalSecond + ", realSignInTime=" + realSignInTime + ", signInStatus=" + signInStatus
+                + ", realSignOutTime=" + realSignOutTime + ", signOutStatus=" + signOutStatus + ", realWorkTimeSecond="
+                + realWorkTimeSecond + ", normalWorkSecond=" + normalWorkSecond + ", realLateSecond=" + realLateSecond
+                + ", realLeaveEarlySecond=" + realLeaveEarlySecond + ", realAbsenteeismSecond=" + realAbsenteeismSecond
+                + ", workDayOverWorkSecond=" + workDayOverWorkSecond + ", restDayOverWorkSecond="
+                + restDayOverWorkSecond + ", holidayOverWorkSecond=" + holidayOverWorkSecond + ", dateType=" + dateType
+                + ", signInStart=" + signInStart + ", signInEnd=" + signInEnd + '}';
+    }
 
 }

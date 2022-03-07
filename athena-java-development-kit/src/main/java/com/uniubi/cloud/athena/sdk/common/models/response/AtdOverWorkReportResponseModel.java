@@ -1,10 +1,6 @@
 package com.uniubi.cloud.athena.sdk.common.models.response;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -13,10 +9,6 @@ import java.util.List;
  * @author 井木
  * @since 2021/04/14 19:22
  */
-@Setter
-@Getter
-@ToString(callSuper = true)
-@NoArgsConstructor
 public class AtdOverWorkReportResponseModel {
 
     /**
@@ -99,5 +91,94 @@ public class AtdOverWorkReportResponseModel {
      * </ul>
      */
     private Byte dateType;
+
+    public String getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(String personId) {
+        this.personId = personId;
+    }
+
+    public String getPersonNo() {
+        return personNo;
+    }
+
+    public void setPersonNo(String personNo) {
+        this.personNo = personNo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<String> getDepNames() {
+        return depNames;
+    }
+
+    public void setDepNames(List<String> depNames) {
+        this.depNames = depNames;
+    }
+
+    public List<String> getRoleNames() {
+        return roleNames;
+    }
+
+    public void setRoleNames(List<String> roleNames) {
+        this.roleNames = roleNames;
+    }
+
+    public LocalDate getAtDate() {
+        return atDate;
+    }
+
+    public void setAtDate(LocalDate atDate) {
+        this.atDate = atDate;
+    }
+
+    public Long getWorkDayOverWorkSecond() {
+        return workDayOverWorkSecond;
+    }
+
+    public void setWorkDayOverWorkSecond(Long workDayOverWorkSecond) {
+        this.workDayOverWorkSecond = workDayOverWorkSecond;
+    }
+
+    public Long getRestDayOverWorkSecond() {
+        return restDayOverWorkSecond;
+    }
+
+    public void setRestDayOverWorkSecond(Long restDayOverWorkSecond) {
+        this.restDayOverWorkSecond = restDayOverWorkSecond;
+    }
+
+    public Long getHolidayOverWorkSecond() {
+        return holidayOverWorkSecond;
+    }
+
+    public void setHolidayOverWorkSecond(Long holidayOverWorkSecond) {
+        this.holidayOverWorkSecond = holidayOverWorkSecond;
+    }
+
+    public Byte getDateType() {
+        return dateType;
+    }
+
+    public void setDateType(Byte dateType) {
+        this.dateType = dateType;
+    }
+
+    @Override
+    public String toString() {
+        return "AtdOverWorkReportResponseModel{" + "personId='" + personId + '\'' + ", personNo='" + personNo + '\''
+                + ", name='" + name + '\'' + ", depNames=" + depNames + ", roleNames=" + roleNames + ", atDate="
+                + atDate + ", workDayOverWorkSecond=" + workDayOverWorkSecond + ", restDayOverWorkSecond="
+                + restDayOverWorkSecond + ", holidayOverWorkSecond=" + holidayOverWorkSecond + ", dateType=" + dateType
+                + '}';
+    }
 
 }

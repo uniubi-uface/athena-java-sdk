@@ -1,8 +1,5 @@
 package com.uniubi.cloud.athena.sdk.common.models;
 
-import lombok.Data;
-import lombok.experimental.Accessors;
-
 import java.util.List;
 
 /**
@@ -11,8 +8,6 @@ import java.util.List;
  * @author jingmu
  * @since 2020/5/7
  */
-@Data
-@Accessors(chain = true)
 public class SdkPageInfo<T> {
 
     /**
@@ -39,5 +34,51 @@ public class SdkPageInfo<T> {
      * 数据集合
      */
     private List<T> list;
+
+    public Integer getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(Integer pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public Integer getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public Integer getPages() {
+        return pages;
+    }
+
+    public void setPages(Integer pages) {
+        this.pages = pages;
+    }
+
+    public Long getTotal() {
+        return total;
+    }
+
+    public void setTotal(Long total) {
+        this.total = total;
+    }
+
+    public List<T> getList() {
+        return list;
+    }
+
+    public void setList(List<T> list) {
+        this.list = list;
+    }
+
+    @Override
+    public String toString() {
+        return "SdkPageInfo{" + "pageNum=" + pageNum + ", pageSize=" + pageSize + ", pages=" + pages + ", total="
+                + total + ", list=" + list + '}';
+    }
 
 }

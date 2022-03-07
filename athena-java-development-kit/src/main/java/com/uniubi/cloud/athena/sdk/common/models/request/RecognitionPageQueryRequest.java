@@ -1,12 +1,6 @@
 package com.uniubi.cloud.athena.sdk.common.models.request;
 
 import com.uniubi.cloud.athena.sdk.common.models.SdkBasePageRequest;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import lombok.experimental.Accessors;
 
 import java.util.List;
 
@@ -15,12 +9,6 @@ import java.util.List;
  *
  * @author jingmu
  */
-@EqualsAndHashCode(callSuper = true)
-@ToString
-@Data
-@Accessors(chain = true)
-@NoArgsConstructor
-@AllArgsConstructor
 public class RecognitionPageQueryRequest extends SdkBasePageRequest {
 
     /**
@@ -54,5 +42,68 @@ public class RecognitionPageQueryRequest extends SdkBasePageRequest {
     private List<Long> personIdList;
 
     private List<Long> depIds;
+
+    public Byte getPersonType() {
+        return personType;
+    }
+
+    public void setPersonType(Byte personType) {
+        this.personType = personType;
+    }
+
+    public Long getStartTimeMillis() {
+        return startTimeMillis;
+    }
+
+    public void setStartTimeMillis(Long startTimeMillis) {
+        this.startTimeMillis = startTimeMillis;
+    }
+
+    public Long getEndTimeMillis() {
+        return endTimeMillis;
+    }
+
+    public void setEndTimeMillis(Long endTimeMillis) {
+        this.endTimeMillis = endTimeMillis;
+    }
+
+    public String getDeviceSearch() {
+        return deviceSearch;
+    }
+
+    public void setDeviceSearch(String deviceSearch) {
+        this.deviceSearch = deviceSearch;
+    }
+
+    public String getPersonSearch() {
+        return personSearch;
+    }
+
+    public void setPersonSearch(String personSearch) {
+        this.personSearch = personSearch;
+    }
+
+    public List<Long> getPersonIdList() {
+        return personIdList;
+    }
+
+    public void setPersonIdList(List<Long> personIdList) {
+        this.personIdList = personIdList;
+    }
+
+    public List<Long> getDepIds() {
+        return depIds;
+    }
+
+    public void setDepIds(List<Long> depIds) {
+        this.depIds = depIds;
+    }
+
+    @Override
+    public String toString() {
+        return "RecognitionPageQueryRequest{" + "personType=" + personType + ", startTimeMillis=" + startTimeMillis
+                + ", endTimeMillis=" + endTimeMillis + ", deviceSearch='" + deviceSearch + '\'' + ", personSearch='"
+                + personSearch + '\'' + ", personIdList=" + personIdList + ", depIds=" + depIds + '}';
+    }
 
 }

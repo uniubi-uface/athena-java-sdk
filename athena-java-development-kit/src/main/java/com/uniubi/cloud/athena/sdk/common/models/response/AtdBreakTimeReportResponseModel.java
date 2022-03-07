@@ -1,12 +1,6 @@
 package com.uniubi.cloud.athena.sdk.common.models.response;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -16,12 +10,6 @@ import java.util.List;
  * @author 井木
  * @since 2021/04/14 19:34
  */
-@Setter
-@Getter
-@Builder
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
 public class AtdBreakTimeReportResponseModel {
 
     /**
@@ -107,5 +95,119 @@ public class AtdBreakTimeReportResponseModel {
      * </ul>
      */
     private Byte breakStatus;
+
+    public String getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(String personId) {
+        this.personId = personId;
+    }
+
+    public String getPersonNo() {
+        return personNo;
+    }
+
+    public void setPersonNo(String personNo) {
+        this.personNo = personNo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<String> getDepNames() {
+        return depNames;
+    }
+
+    public void setDepNames(List<String> depNames) {
+        this.depNames = depNames;
+    }
+
+    public List<String> getRoleNames() {
+        return roleNames;
+    }
+
+    public void setRoleNames(List<String> roleNames) {
+        this.roleNames = roleNames;
+    }
+
+    public LocalDate getAtDate() {
+        return atDate;
+    }
+
+    public void setAtDate(LocalDate atDate) {
+        this.atDate = atDate;
+    }
+
+    public String getTimeIntervalName() {
+        return timeIntervalName;
+    }
+
+    public void setTimeIntervalName(String timeIntervalName) {
+        this.timeIntervalName = timeIntervalName;
+    }
+
+    public String getBreaktimeName() {
+        return breaktimeName;
+    }
+
+    public void setBreaktimeName(String breaktimeName) {
+        this.breaktimeName = breaktimeName;
+    }
+
+    public Long getPlanBreakTimeDuration() {
+        return planBreakTimeDuration;
+    }
+
+    public void setPlanBreakTimeDuration(Long planBreakTimeDuration) {
+        this.planBreakTimeDuration = planBreakTimeDuration;
+    }
+
+    public LocalDateTime getRealBreakTimeStart() {
+        return realBreakTimeStart;
+    }
+
+    public void setRealBreakTimeStart(LocalDateTime realBreakTimeStart) {
+        this.realBreakTimeStart = realBreakTimeStart;
+    }
+
+    public LocalDateTime getRealBreakTimeEnd() {
+        return realBreakTimeEnd;
+    }
+
+    public void setRealBreakTimeEnd(LocalDateTime realBreakTimeEnd) {
+        this.realBreakTimeEnd = realBreakTimeEnd;
+    }
+
+    public Long getRealBreakTimeDuration() {
+        return realBreakTimeDuration;
+    }
+
+    public void setRealBreakTimeDuration(Long realBreakTimeDuration) {
+        this.realBreakTimeDuration = realBreakTimeDuration;
+    }
+
+    public Byte getBreakStatus() {
+        return breakStatus;
+    }
+
+    public void setBreakStatus(Byte breakStatus) {
+        this.breakStatus = breakStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "AtdBreakTimeReportResponseModel{" + "personId='" + personId + '\'' + ", personNo='" + personNo + '\''
+                + ", name='" + name + '\'' + ", depNames=" + depNames + ", roleNames=" + roleNames + ", atDate="
+                + atDate + ", timeIntervalName='" + timeIntervalName + '\'' + ", breaktimeName='" + breaktimeName + '\''
+                + ", planBreakTimeDuration=" + planBreakTimeDuration + ", realBreakTimeStart=" + realBreakTimeStart
+                + ", realBreakTimeEnd=" + realBreakTimeEnd + ", realBreakTimeDuration=" + realBreakTimeDuration
+                + ", breakStatus=" + breakStatus + '}';
+    }
 
 }

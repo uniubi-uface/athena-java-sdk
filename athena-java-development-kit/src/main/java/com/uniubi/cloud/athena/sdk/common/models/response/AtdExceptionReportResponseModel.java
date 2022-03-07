@@ -1,12 +1,6 @@
 package com.uniubi.cloud.athena.sdk.common.models.response;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -17,12 +11,6 @@ import java.util.List;
  *
  * @author jingmu
  */
-@Setter
-@Getter
-@ToString
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class AtdExceptionReportResponseModel {
 
     /**
@@ -86,5 +74,93 @@ public class AtdExceptionReportResponseModel {
      * 设备名称
      */
     private String deviceName;
+
+    public String getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(String personId) {
+        this.personId = personId;
+    }
+
+    public String getPersonNo() {
+        return personNo;
+    }
+
+    public void setPersonNo(String personNo) {
+        this.personNo = personNo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<String> getDepNames() {
+        return depNames;
+    }
+
+    public void setDepNames(List<String> depNames) {
+        this.depNames = depNames;
+    }
+
+    public List<String> getRoleNames() {
+        return roleNames;
+    }
+
+    public void setRoleNames(List<String> roleNames) {
+        this.roleNames = roleNames;
+    }
+
+    public LocalDate getAtDate() {
+        return atDate;
+    }
+
+    public void setAtDate(LocalDate atDate) {
+        this.atDate = atDate;
+    }
+
+    public LocalDateTime getRecognitionTime() {
+        return recognitionTime;
+    }
+
+    public void setRecognitionTime(LocalDateTime recognitionTime) {
+        this.recognitionTime = recognitionTime;
+    }
+
+    public String getClockPhotoId() {
+        return clockPhotoId;
+    }
+
+    public void setClockPhotoId(String clockPhotoId) {
+        this.clockPhotoId = clockPhotoId;
+    }
+
+    public String getDeviceKey() {
+        return deviceKey;
+    }
+
+    public void setDeviceKey(String deviceKey) {
+        this.deviceKey = deviceKey;
+    }
+
+    public String getDeviceName() {
+        return deviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
+    }
+
+    @Override
+    public String toString() {
+        return "AtdExceptionReportResponseModel{" + "personId='" + personId + '\'' + ", personNo='" + personNo + '\''
+                + ", name='" + name + '\'' + ", depNames=" + depNames + ", roleNames=" + roleNames + ", atDate="
+                + atDate + ", recognitionTime=" + recognitionTime + ", clockPhotoId='" + clockPhotoId + '\''
+                + ", deviceKey='" + deviceKey + '\'' + ", deviceName='" + deviceName + '\'' + '}';
+    }
 
 }
