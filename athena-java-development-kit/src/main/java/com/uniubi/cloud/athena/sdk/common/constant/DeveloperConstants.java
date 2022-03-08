@@ -1,6 +1,5 @@
 package com.uniubi.cloud.athena.sdk.common.constant;
 
-
 import okhttp3.MediaType;
 
 import java.util.HashMap;

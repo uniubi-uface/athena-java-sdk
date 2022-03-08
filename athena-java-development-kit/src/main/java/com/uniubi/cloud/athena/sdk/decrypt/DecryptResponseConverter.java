@@ -70,14 +70,10 @@ public class DecryptResponseConverter extends DefaultResponseConverter {
 
         @Override
         public String toString() {
-            return "ContentResult{" +
-                    "success=" + success +
-                    ", code='" + code + '\'' +
-                    ", msg='" + msg + '\'' +
-                    ", data=" + data +
-                    ", secret='" + secret + '\'' +
-                    '}';
+            return "ContentResult{" + "success=" + success + ", code='" + code + '\'' + ", msg='" + msg + '\''
+                    + ", data=" + data + ", secret='" + secret + '\'' + '}';
         }
+
     }
 
 }

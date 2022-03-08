@@ -1,7 +1,5 @@
 package com.uniubi.cloud.athena.sdk.common.utils;
 
-import com.sun.istack.internal.Nullable;
-
 /**
  * StringUtils
  *
@@ -22,7 +20,7 @@ public final class StringUtils {
         return (str != null && !str.isEmpty());
     }
 
-    public static boolean hasText(@Nullable CharSequence str) {
+    public static boolean hasText(CharSequence str) {
         return (str != null && str.length() > 0 && containsText(str));
     }
 

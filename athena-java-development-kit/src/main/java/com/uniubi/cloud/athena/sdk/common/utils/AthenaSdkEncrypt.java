@@ -29,7 +29,7 @@ public class AthenaSdkEncrypt {
      * 随机生成密钥对
      * @throws NoSuchAlgorithmException 如果没有提供者支持指定算法的 KeyPairGeneratorSpi 实现
      */
-    public static RSAKeyPair genKeyPair() throws NoSuchAlgorithmException {
+    public static RsaKeyPair genKeyPair() throws NoSuchAlgorithmException {
         // KeyPairGenerator类用于生成公钥和私钥对，基于RSA算法生成对象
         KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("RSA");
         // 初始化密钥对生成器，密钥大小为96-1024位
@@ -44,7 +44,7 @@ public class AthenaSdkEncrypt {
         // 得到私钥字符串
         String privateKeyString = new String(Base64.getEncoder().encode(privateKey.getEncoded()));
         // 将公钥和私钥保存到Map
-        return new RSAKeyPair(publicKeyString, privateKeyString);
+        return new RsaKeyPair(publicKeyString, privateKeyString);
     }
 
     /**
@@ -203,8 +203,7 @@ public class AthenaSdkEncrypt {
     /**
      * rsa 密钥对
      */
-    @SuppressWarnings("all")
-    public static class RSAKeyPair {
+    public static class RsaKeyPair {
 
         /**
          * 公钥
@@ -216,7 +215,7 @@ public class AthenaSdkEncrypt {
          */
         private final String privateKey;
 
-        public RSAKeyPair(String publicKey, String privateKey) {
+        public RsaKeyPair(String publicKey, String privateKey) {
             this.publicKey = publicKey;
             this.privateKey = privateKey;
         }
