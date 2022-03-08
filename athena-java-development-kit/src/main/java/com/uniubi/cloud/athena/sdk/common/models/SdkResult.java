@@ -11,22 +11,22 @@ public class SdkResult<T> {
     /**
      * 是否成功
      */
-    private boolean success;
+    protected boolean success;
 
     /**
      * 返回code码
      */
-    private String code;
+    protected String code;
 
     /**
      * 错误信息
      */
-    private String msg;
+    protected String msg;
 
     /**
      * 返回结果数据
      */
-    private T data;
+    protected T data;
 
     public boolean isSuccess() {
         return success;

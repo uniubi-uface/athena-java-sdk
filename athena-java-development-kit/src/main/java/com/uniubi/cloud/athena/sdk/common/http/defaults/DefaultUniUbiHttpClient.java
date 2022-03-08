@@ -1,22 +1,24 @@
 package com.uniubi.cloud.athena.sdk.common.http.defaults;
 
-import com.squareup.okhttp.Headers;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
 import com.uniubi.cloud.athena.sdk.common.exception.AthenaHttpException;
 import com.uniubi.cloud.athena.sdk.common.http.ClientConfig;
 import com.uniubi.cloud.athena.sdk.common.http.RequestConverter;
 import com.uniubi.cloud.athena.sdk.common.http.ResponseConverter;
 import com.uniubi.cloud.athena.sdk.common.http.UniUbiHttpClient;
+import okhttp3.Headers;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 import java.lang.reflect.Type;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
+
+import static com.uniubi.cloud.athena.sdk.common.constant.DeveloperConstants.HTTP_OK_CODE;
+import static com.uniubi.cloud.athena.sdk.common.constant.DeveloperConstants.SDK_UNIFY_CONTENT_TYPE;
 
 /**
  * 宇泛httpClient的默认实现 用来发送http请求 约定： 1.sdk请求统一使用 POST 方法 2.请求ContentType统一使用
@@ -30,13 +32,6 @@ import java.util.concurrent.TimeUnit;
  * @see ClientConfig 请求配置，用于设置请求的一些超时参数
  */
 public class DefaultUniUbiHttpClient implements UniUbiHttpClient {
-
-    /**
-     * sdk统一contentType
-     */
-    private static final MediaType SDK_UNIFY_CONTENT_TYPE = MediaType.parse("application/json");
-
-    private static final int HTTP_OK_CODE = 200;
 
     private final RequestConverter requestConverter;
 
@@ -55,10 +50,7 @@ public class DefaultUniUbiHttpClient implements UniUbiHttpClient {
     }
 
     private void initClient() {
-        client = new OkHttpClient();
-        client.setConnectTimeout(clientConfig.getConnectionTimeoutMills(), TimeUnit.MILLISECONDS);
-        client.setWriteTimeout(clientConfig.getWriteTimeoutMills(), TimeUnit.MILLISECONDS);
-        client.setReadTimeout(clientConfig.getReadTimeoutMills(), TimeUnit.MILLISECONDS);
+        this.client = OkHttpClientHolder.getInstance(clientConfig);
     }
 
     @Override
@@ -79,10 +71,14 @@ public class DefaultUniUbiHttpClient implements UniUbiHttpClient {
             // 请求失败,失败原因: 408
             throw new AthenaHttpException(HttpErrorCodeEnum.CODE_408.getDesc());
         }
-        // 3.获取响应结果
-        String responseContent = response.body().string();
-        // 4.响应处理
+        // 3. 响应处理
         if (response.code() == HTTP_OK_CODE) {
+            // 4. 获取响应结果
+            ResponseBody body = response.body();
+            if (body == null) {
+                return null;
+            }
+            String responseContent = body.string();
             return responseConverter.converter(responseContent, responseType);
         }
         else {
@@ -100,9 +96,9 @@ public class DefaultUniUbiHttpClient implements UniUbiHttpClient {
         Headers header = headerBuilder.build();
         // 创建请求参数内容
         String bodyContent = requestConverter.converter(requestBody);
+        RequestBody body = RequestBody.create(SDK_UNIFY_CONTENT_TYPE, bodyContent);
         // 创建请求对象
-        return new Request.Builder().url(url).post(RequestBody.create(SDK_UNIFY_CONTENT_TYPE, bodyContent))
-                .headers(header).build();
+        return new Request.Builder().url(url).post(body).headers(header).build();
     }
 
 }

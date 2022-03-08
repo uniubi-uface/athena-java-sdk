@@ -1,6 +1,7 @@
 package com.uniubi.cloud.athena.sdk.common.constant;
 
-import com.squareup.okhttp.MediaType;
+
+import okhttp3.MediaType;
 
 import java.util.HashMap;
 import java.util.Map;

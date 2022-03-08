@@ -5,8 +5,8 @@ import com.uniubi.cloud.athena.sdk.common.exception.UniUbiAresSDKException;
 import com.uniubi.cloud.athena.sdk.common.http.defaults.DefaultResponseConverter;
 import com.uniubi.cloud.athena.sdk.common.models.SdkResult;
 import com.uniubi.cloud.athena.sdk.common.utils.AthenaSdkEncrypt;
+import com.uniubi.cloud.athena.sdk.common.utils.StringUtils;
 import com.uniubi.cloud.athena.sdk.type.TypeHandlerRegistry;
-import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -56,7 +56,7 @@ public class DecryptResponseConverter extends DefaultResponseConverter {
     /**
      * @author admin
      */
-    public static class ContentResult extends SdkResult {
+    public static class ContentResult extends SdkResult<Object> {
 
         private String secret;
 
@@ -70,9 +70,14 @@ public class DecryptResponseConverter extends DefaultResponseConverter {
 
         @Override
         public String toString() {
-            return "ContentResult{" + "secret='" + secret + '\'' + '}';
+            return "ContentResult{" +
+                    "success=" + success +
+                    ", code='" + code + '\'' +
+                    ", msg='" + msg + '\'' +
+                    ", data=" + data +
+                    ", secret='" + secret + '\'' +
+                    '}';
         }
-
     }
 
 }
