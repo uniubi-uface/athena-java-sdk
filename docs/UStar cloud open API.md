@@ -58,7 +58,7 @@ The above json string is then encrypted with AES as the request body
  ```
 
 Example of request body in Postman
-![Postman body img1](https://github.com/uniubi-uface/athena-java-sdk/blob/main/docs/img/image1.png)
+![Postman body img1](./img/image1.png)
 
 ### 1.2.2 Unencrypted Interface
 
@@ -76,7 +76,7 @@ The above json string serves as a request body
 
 Example of request body in Postman
 
-![Postman body img2](https://github.com/uniubi-uface/athena-java-sdk/blob/main/docs/img/image2.png)
+![Postman body img2](./img/image2.png)
 
 # 2 Secret Key<a id="2"></a>
 
