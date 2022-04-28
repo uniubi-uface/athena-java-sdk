@@ -16,7 +16,7 @@
 
 ## 1.1 请求地址
 
-**统一路径: `https://www.ustar-cloud.com/api/develop/sdk/v1`**
+**统一路径: `https://www.ustar-cloud.com/api/develop/sdk`**
 
 * 请求方法为`POST`
 * 请求头：`Content-Type: application/json;charset=UTF-8`
@@ -24,7 +24,7 @@
 | 字段名称            | 位置   | 类型   | 是否必须 | 说明                                                         |
 | ------------------- | ------ | ------ | -------- | ------------------------------------------------------------ |
 | sdkRequestKey     | header | String | Y        | 请求KEY                                                      |
-| requestKeyVersion | header | String | Y        | 请求接口的版本                                               |
+| requestKeyVersion | header | String | Y        | 请求接口的版本，默认为`v1`                                               |
 | sdkAccessToken    | header | String | Y        | 从服务端获取的token                                          |
 | sdkSecretKey      | header | String | Y        | AES KEY经过[RSA publicKey](#2)加密后的密文                   |
 | lang                | header | String | Y        | 语言种类，具体请看[字典3.1](#3.1)                            |

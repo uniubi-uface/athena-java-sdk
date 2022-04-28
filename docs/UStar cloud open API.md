@@ -24,7 +24,7 @@
 | Field Name            | Location   | Type   | Required | Description                                                         |
 | ------------------- | ------ | ------ | -------- | ------------------------------------------------------------ |
 | sdkRequestKey     | header | String | Y        | Request KEY                                                  |
-| requestKeyVersion | header | String | Y        | the version of Request KEY                                   |
+| requestKeyVersion | header | String | Y        | the version of Request KEY,default `v1`                                  |
 | sdkAccessToken    | header | String | Y        | Token obtained from the Server                               |
 | sdkSecretKey      | header | String | Y        | AES KEY ciphertext encrypted by [RSA publicKe](#2)           |
 | lang                | header | String | Y        | Language types, please refer to [Dictionary 3.1](#3.1) for details |
