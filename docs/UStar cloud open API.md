@@ -16,7 +16,7 @@
 
 ## 1.1 Request Address
 
-**Unified path: `https://www.ustar-cloud.com/api/develop/sdk/v1`**
+**Unified path: `https://www.ustar-cloud.com/api/develop/sdk/unify`**
 
 * Request method：`POST`
 * Request header：`Content-Type: application/json;charset=UTF-8`

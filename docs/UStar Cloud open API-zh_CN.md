@@ -16,7 +16,7 @@
 
 ## 1.1 请求地址
 
-**统一路径: `https://www.ustar-cloud.com/api/develop/sdk`**
+**统一路径: `https://www.ustar-cloud.com/api/develop/sdk/unify`**
 
 * 请求方法为`POST`
 * 请求头：`Content-Type: application/json;charset=UTF-8`
