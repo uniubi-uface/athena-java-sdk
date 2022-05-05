@@ -92,6 +92,46 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 
 * AES key 由开发者自己生成，使用`128 bit` 即`16 byte`
 * 偏移量`iv` 从`AES key`中获取，规则为：第一步将`AES key`反转（倒序）后取前`16`位
+* java 代码示例
+
+```java
+
+    public static String generateAesKey() {
+        try {
+            KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+            keyGenerator.init(128);
+            SecretKey sk = keyGenerator.generateKey();
+            byte[] b = sk.getEncoded();
+            return byteToHexString(b);
+        }
+        catch (NoSuchAlgorithmException e) {
+            return null;
+        }
+    }
+
+    private static String getAesIv(String aesKey) {
+            String reverseKey = new StringBuilder(aesKey).reverse().toString();
+            return reverseKey.substring(0, 16);
+    }
+
+    public static String encryptByAes(String key, String content) {
+            String result = "";
+            try {
+            Cipher cipher;
+            cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+            byte[] raw = key.getBytes();
+            SecretKeySpec skeySpec = new SecretKeySpec(raw, "AES");
+            IvParameterSpec iv = new IvParameterSpec(getAesIv(key).getBytes());
+            cipher.init(Cipher.ENCRYPT_MODE, skeySpec, iv);
+            byte[] encrypted = cipher.doFinal(content.getBytes(StandardCharsets.UTF_8));
+            result = new BASE64Encoder().encode(encrypted);
+            }
+            catch (Exception e) {
+            return result;
+            }
+            return result;
+            }
+```
 
 # 3 数据字典
 
