@@ -71,7 +71,7 @@
             return result;
             }
             return result;
-            }
+    }
 ```
 ## 1.2 requestData Explanation<a id="requestData"></a>
 
