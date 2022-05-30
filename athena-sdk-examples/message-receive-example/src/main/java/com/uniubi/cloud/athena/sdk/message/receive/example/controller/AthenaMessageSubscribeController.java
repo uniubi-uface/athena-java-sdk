@@ -15,7 +15,7 @@ import java.util.Date;
 /**
  * receive UStar Cloud service pushed message
  *
- * @author 井木
+ * @author jingmu
  * @since 2022/02/24
  */
 @Slf4j
@@ -35,13 +35,15 @@ public class AthenaMessageSubscribeController {
             log.info("Recognition time: [{}], receive message time: [{}]", date, new Date());
             break;
         case 2:
-            log.info("收到回调消息消息 2");
+            // Type 2 is under development
+            log.info("A callback message is received. The message callback type is 2.");
             break;
         case 3:
-            log.info("收到回调消息消息 3");
+            // Type 3 is under development
+            log.info("A callback message is received. The message callback type is 3.");
             break;
         default:
-            log.info("收到不正确的消息");
+            log.info("A callback message is received. The message callback type is {}.", type);
         }
         return new MsgResult(true);
     }
