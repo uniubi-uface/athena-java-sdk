@@ -444,7 +444,7 @@ Ustar cloud will send an HTTP request to the address configured by each developm
 
 > ~~**Note 1：The response data is required to be returned in JSON format**~~
 >
-> ~~**Note 2: When processing a system callback message, the message is processed successfully only if it returns a successful return result ~~correctly, otherwise the system will keep retrying.**
+> ~~**Note 2: When processing a system callback message, the message is processed successfully only if it returns a successful return result correctly, otherwise the system will keep retrying.**~~
 >
 > ~~**Note 3: The consumer needs to do idempotence control.**~~
 >
