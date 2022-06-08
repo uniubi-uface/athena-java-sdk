@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+import java.util.Random;
 
 /**
  * receive UStar Cloud service pushed message
@@ -45,7 +46,16 @@ public class AthenaMessageSubscribeController {
         default:
             log.info("A callback message is received. The message callback type is {}.", type);
         }
-        return new MsgResult(true);
+        boolean randomSuccess = new Random().nextBoolean();
+        if (randomSuccess) {
+            return new MsgResult(true);
+        }
+        // Exceptions thrown will be handled by
+        // com.uniubi.cloud.athena.sdk.message.receive.example.GlobalExceptionHandler
+        // GlobalExceptionHandler will set HTTP status code != 200
+        else {
+            throw new RuntimeException("Simulation exception");
+        }
     }
 
 }
