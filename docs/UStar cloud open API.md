@@ -8,7 +8,8 @@
 
 | SDK Version | Revision Time | Revised by | Content                                              |
 | ------- | -------- | ------ | ------------------------------------------------------------ |
-| 2.3.0 | 2021-11-22 | jingmu | 1.new file |
+| 2.3.0 | 11/22/2021 | jingmu | 1. new file |
+| 2.3.0 | 06/08/2022 | jingmu | 1. update `5 Event Subscription Callback` |
 
 <br/><br/>
 
