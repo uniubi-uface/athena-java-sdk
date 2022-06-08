@@ -433,19 +433,37 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
   | type     | number   | 消息类型 详细请参考数据字典[3.4](#3.4) |
   | content  | String   | 消息内容为事件回调内容的json 字符串    |
 
+> 请求体示例：
+>
+> ```json
+> {
+>     "msgId": "xxxxxxxx",
+>     "type": 1,
+>     "content": "{\"aliveType\":1,\"depNameConcat\":\"name1,name2\",\"departmentNames\":[\"name1\",\"name2\"],\"deviceKey\":\"84E0F42C3BB78702\",\"deviceName\":\"this is device name\",\"empNo\":\"001\",\"id\":3126713,\"name\":\"Joey T\",\"orgId\":97,\"passTimeType\":1,\"permissionTimeType\":1,\"personGuid\":null,\"personId\":8508,\"personType\":1,\"photoUrl\":\"https://uniubi-aiot.s3-eu-west-1.amazonaws.com/pkg365/2005/20050001000506/034000.411/img/ffe1fd7d-eecc-45c3-a6cf-14cee5c3361a.station\",\"recMode\":1,\"recStatus\":null,\"recType\":1,\"showTime\":\"2022-05-20 03:39:59\",\"temperature\":null,\"temperatureState\":null,\"temperatureUnit\":null,\"type\":1}"
+> }
+> ```
+
 * 响应体内容：
 
-  | 字段名称 | 字段类型 | 说明                                                         |
-  | -------- | -------- | ------------------------------------------------------------ |
-  | success  | boolean  | 是否接收成功<br />返回true，系统就不会再处理该消息<br />返回false，系统则会在5分钟后进行重试处理 |
+  | ~~字段名称~~ | ~~字段类型~~ | ~~说明~~                                                     |
+  | ------------ | ------------ | ------------------------------------------------------------ |
+  | ~~success~~  | ~~boolean~~  | ~~是否接收成功<br />返回true，系统就不会再处理该消息<br />返回false，系统则会在5分钟后进行重试处理~~ |
 
-> **注意1：响应数据要求以json格式返回**
+> ~~**注意1：响应数据要求以json格式返回**~~
 >
-> **注意2：处理系统回调消息时，只有正确返回了成功返回结果，才算这个消息处理成功，否则系统会一直重试**
+> ~~**注意2：处理系统回调消息时，只有正确返回了成功返回结果，才算这个消息处理成功，否则系统会一直重试**~~
 >
-> **注意3：消费端需要做好幂等性控制**
+> ~~**注意3：消费端需要做好幂等性控制**~~
 >
-> **注意4：事件消息推送以HTTP的方式进行数据推送，请求中不包含权限和认证信息**
+> ~~**注意4：事件消息推送以HTTP的方式进行数据推送，请求中不包含权限和认证信息**~~
+
+**为了方便对接，UStarCloud将根据请求的 HTTP status code 是否为 200 来决定是否需要重新发送**
+
+> HTTP status code = 200 表示开发平台已成功处理消息推送，UStarCloud将不会重试。
+>
+> HTTP status code != 200 表示开发平台处理消息失败，UStarCloud将继续重试。
+>
+> 所以，朋友们，如果处理消息失败了，请将 HTTP status code 不要设置为200
 
 ## 5.2 回调事件
 

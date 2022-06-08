@@ -438,17 +438,25 @@ Ustar cloud will send an HTTP request to the address configured by each developm
 
 * Response body content:
 
-  | Field Name | Field Type | Explanation                                                  |
-  | ---------- | ---------- | ------------------------------------------------------------ |
-  | success    | boolean    | Whether received successfully<br />If `true` is returned, the system will no longer process the message<br />If `false` is returned, the system will retry after 5 minutes |
+  | ~~Field Name~~ | ~~Field Type~~ | ~~Explanation~~                                              |
+  | -------------- | -------------- | ------------------------------------------------------------ |
+  | ~~success~~    | ~~boolean~~    | ~~Whether received successfully<br />If `true` is returned, the system will no longer process the message<br />If `false` is returned, the system will retry after 5 minutes~~ |
 
-> **Note 1：The response data is required to be returned in JSON format**
+> ~~**Note 1：The response data is required to be returned in JSON format**~~
 >
-> **Note 2: When processing a system callback message, the message is processed successfully only if it returns a successful return result correctly, otherwise the system will keep retrying.**
+> ~~**Note 2: When processing a system callback message, the message is processed successfully only if it returns a successful return result ~~correctly, otherwise the system will keep retrying.**
 >
-> **Note 3: The consumer needs to do idempotence control.**
+> ~~**Note 3: The consumer needs to do idempotence control.**~~
 >
-> **Note 4: Event Message Push sends the data as HTTP, the request does not contain permissions and authentication information.**
+> ~~**Note 4: Event Message Push sends the data as HTTP, the request does not contain permissions and authentication information.**~~
+
+**To facilitate docking, ustarcloud will decide whether to resend according to whether the HTTP status code returned by the request for pushing data is 200**
+
+> HTTP status code = 200 indicates that the development platform has successfully processed the pushed message, and ustarcloud will not retry.
+>
+> HTTP status code !=  200 indicates that the development platform failed to process the pushed message, and ustarcloud will continue to retry.
+>
+> So, boys, if you fail to process the pushed message, please do not set the HTTP status code to 200
 
 ## 5.2 Callback Event
 
