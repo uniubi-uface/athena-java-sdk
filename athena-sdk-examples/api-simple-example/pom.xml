@@ -30,6 +30,12 @@
             <artifactId>spring-javaformat-checkstyle</artifactId>
             <version>0.0.31</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
