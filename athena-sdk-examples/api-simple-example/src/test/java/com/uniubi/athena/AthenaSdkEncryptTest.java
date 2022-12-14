@@ -26,4 +26,23 @@ public class AthenaSdkEncryptTest {
         String decryptByPublicKey = AthenaSdkEncrypt.decryptByAes(aesKey, secretData);
         System.out.println(decryptByPublicKey);
     }
+
+    @Test
+    public void testGenerateAesKey() {
+        String aesKey = AthenaSdkEncrypt.generateAesKey();
+        System.out.println(aesKey);
+    }
+
+    @Test
+    public void testAesEncrypt() {
+        String key = "298eae75121219e5c05e34d365f7d20b";
+        String content = " {\n" +
+                "      \"requestData\": {\n" +
+                "      \"pageSize\": 10,\n" +
+                "      \"pageNum\": 1\n" +
+                "      }\n" +
+                "   }";
+        String encryptByAes = AthenaSdkEncrypt.encryptByAes(key, content);
+        System.out.println(encryptByAes);
+    }
 }
