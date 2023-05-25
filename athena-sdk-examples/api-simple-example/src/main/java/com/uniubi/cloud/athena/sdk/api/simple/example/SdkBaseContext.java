@@ -10,11 +10,14 @@ import com.uniubi.cloud.athena.sdk.common.RequestConfig;
  */
 public class SdkBaseContext {
 
-    static final String PUBLIC_KEY = "1";
+    static final String PUBLIC_KEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDAafhXuessnsCjdvezDcj1zgt1" +
+            "IYdZj8UyXJFMPdMuRZwEXzTp7EMaXwyPqJz9jh7FI8cBii/EnN5p0h0L26t5owW4" +
+            "feGhK2opEPupXmmFnTa4fcsjWtheQlvxMrcMUBD4AiB9uDdm55uVqt8Q5GL/l52+" +
+            "+npv9lQUirwVUN0SFQIDAQAB";
 
-    static final String ACCESS_KEY = "1";
+    static final String ACCESS_KEY = "804d01106b104ba084cd9aab09e8bdff";
 
-    static final String ACCESS_SECRET = "1";
+    static final String ACCESS_SECRET = "f7d1fe13925e4fafb1e4f5054ff5ef5f";
 
     protected static RequestConfig getRequestConfig() {
         // 1. new RequestConfig
