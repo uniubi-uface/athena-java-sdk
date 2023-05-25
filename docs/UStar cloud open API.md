@@ -134,10 +134,10 @@
 
   | Filed                  | Type         | Desc                                                         |
     | ---------------------- | ------------ | ------------------------------------------------------------ |
-  | personId               | String       | 人员id                                                       |
-  | personNo               | String       | 员工编号                                                     |
-  | name                   | String       | 人员姓名                                                     |
-  | depNames               | String array | 部门名称集合                                                 |
+  | personId               | String       | emp id                                                       |
+  | personNo               | String       | emp no                                                     |
+  | name                   | String       | emp name                                                     |
+  | depNames               | String array | dept names                                                |
   | roleNames              | String array | 职位名称集合                                                 |
   | atDate                 | date         | 日期 yyyy-MM-dd                                              |
   | timeIntervalName       | String       | 时间段名称                                                   |
@@ -249,12 +249,12 @@
 
   | Filed                 | Type         | Desc                                                         |
     | --------------------- | ------------ | ------------------------------------------------------------ |
-  | personId              | String       | 人员id                                                       |
-  | personNo              | String       | 员工编号                                                     |
-  | name                  | String       | 人员姓名                                                     |
-  | depNames              | String array | 部门名称集合                                                 |
-  | roleNames             | String array | 职位名称集合                                                 |
-  | atDate                | date         | 日期 yyyy-MM-dd                                              |
+  | personId              | String       | emp id                                                       |
+  | personNo              | String       | emp no                                                     |
+  | name                  | String       | emp name                                                     |
+  | depNames              | String array | dept names                                                |
+  | roleNames             | String array | role names                                                |
+  | atDate                | date         | yyyy-MM-dd                                              |
   | workDayOverWorkSecond | long number  | 工作日加班时长 单位秒                                        |
   | restDayOverWorkSecond | long number  | 休息日加班时长 单位秒                                        |
   | holidayOverWorkSecond | long number  | 节假日加班时长 单位秒                                        |
@@ -350,10 +350,10 @@
 
   | Filed                 | Type         | Desc                               |
     | --------------------- | ------------ | ---------------------------------- |
-  | personId              | String       | 人员id                             |
-  | personNo              | String       | 员工编号                           |
-  | name                  | String       | 人员姓名                           |
-  | depNames              | String array | 部门名称集合                       |
+  | personId              | String       | emp id                             |
+  | personNo              | String       | emp no                           |
+  | name                  | String       | emp name                           |
+  | depNames              | String array | dept names                      |
   | roleNames             | String array | 职位名称集合                       |
   | atDate                | date         | 日期 yyyy-MM-dd                    |
   | timeIntervalName      | String       | 时间段名称                         |
@@ -434,10 +434,10 @@
 
   | Filed      | Type     | Desc                       |
     | --------------- | ------------ | ---------------------------- |
-  | personId        | String       | 人员id                       |
-  | personNo        | String       | 员工编号                     |
-  | name            | String       | 人员姓名                     |
-  | depNames        | String array | 部门名称集合                 |
+  | personId        | String       | emp id                       |
+  | personNo        | String       | emp no                     |
+  | name            | String       | emp name                     |
+  | depNames        | String array | dept names                |
   | roleNames       | String array | 职位名称集合                 |
   | atDate          | date         | 日期 yyyy-MM-dd              |
   | recognitionTime | Date         | 打卡时间 yyyy-MM-dd HH:mm:ss |
@@ -526,10 +526,10 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
   | personType         | number       | 识别记录类型<br />1:员工;<br />2:访客;<br />3:陌生人         |
   | deviceKey          | String       | 识别设备序列号                                               |
   | deviceName         | String       | 设备名称                                                     |
-  | personId           | Long         | 人员id或者访客id                                             |
+  | personId           | Long         | emp id或者访客id                                             |
   | empNo              | String       | 人员编号                                                     |
   | departmentNames    | string array | 所属部门名称（用于员工）                                     |
-  | name               | String       | 人员姓名                                                     |
+  | name               | String       | emp name                                                     |
   | showTime           | Date         | 识别时间，格式：yyyy-MM-dd HH:mm:ss                          |
   | temperatureUnit    | number       | 体温单位 <br />1：摄氏度 <br />2：华氏度                     |
   | temperatureState   | number       | 体温状态 <br />1：正常 <br />2：异常 <br />3：未设置<br />4：未测量体温 (兼容null的情况，null也是未测量或者无测温功能)**** |
