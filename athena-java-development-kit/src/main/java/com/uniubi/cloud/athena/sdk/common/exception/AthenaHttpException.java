@@ -2,7 +2,6 @@ package com.uniubi.cloud.athena.sdk.common.exception;
 
 /**
  * com.uniubi.medusa.ares.develop.common.http.AthenaHttpException
- *
  * @author jingmu
  * @since 2020/6/17
  */

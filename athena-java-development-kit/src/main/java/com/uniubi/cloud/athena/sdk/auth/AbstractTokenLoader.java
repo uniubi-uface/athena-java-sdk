@@ -1,9 +1,11 @@
 package com.uniubi.cloud.athena.sdk.auth;
 
+import cn.hutool.core.util.RandomUtil;
+import cn.hutool.crypto.digest.MD5;
 import com.uniubi.cloud.athena.sdk.common.SdkLang;
 import com.uniubi.cloud.athena.sdk.common.TokenLoader;
 import com.uniubi.cloud.athena.sdk.common.constant.DeveloperConstants;
-import com.uniubi.cloud.athena.sdk.common.exception.UniUbiAresSDKException;
+import com.uniubi.cloud.athena.sdk.common.exception.UniUbiAthenaSDKException;
 import com.uniubi.cloud.athena.sdk.common.http.UniUbiHttpClient;
 import com.uniubi.cloud.athena.sdk.common.models.request.AuthRequest;
 import com.uniubi.cloud.athena.sdk.common.models.response.AuthResponseModel;
@@ -14,7 +16,6 @@ import java.util.Map;
 
 /**
  * 抽象tokenLoader实现
- *
  * @author jingmu
  * @since 2020/4/2
  */
@@ -31,7 +32,7 @@ public abstract class AbstractTokenLoader implements TokenLoader {
     private final SdkLang sdkLang;
 
     public AbstractTokenLoader(UniUbiHttpClient uniUbiHttpClient, String accessKey, String accessSecret,
-            String requestUrl, SdkLang sdkLang) {
+                               String requestUrl, SdkLang sdkLang) {
         this.uniUbiHttpClient = uniUbiHttpClient;
         this.accessKey = accessKey;
         this.accessSecret = accessSecret;
@@ -51,22 +52,20 @@ public abstract class AbstractTokenLoader implements TokenLoader {
             // 鉴权请求不经过加密处理
             Map<String, String> authHeader = getAuthHeader();
             authResponseModel = uniUbiHttpClient.sendPostRequest(requestUrl, authRequest, authHeader,
-                    AuthResponseModel.class);
-        }
-        catch (Exception e) {
-            throw new UniUbiAresSDKException(e);
+                AuthResponseModel.class);
+        } catch (Exception e) {
+            throw new UniUbiAthenaSDKException(e);
         }
         if (authResponseModel.isSuccess()) {
             return authResponseModel.getData();
-        }
-        else {
-            throw new UniUbiAresSDKException(MessageFormat.format("load accessToken failed with : {0}({1})",
-                    authResponseModel.getMsg(), authResponseModel.getCode()));
+        } else {
+            throw new UniUbiAthenaSDKException(MessageFormat.format("load accessToken failed with : {0}({1})",
+                authResponseModel.getMsg(), authResponseModel.getCode()));
         }
     }
 
     protected Map<String, String> getAuthHeader() {
-        Map<String, String> header = new HashMap<>(2);
+        Map<String, String> header = new HashMap<>(8);
         header.put(DeveloperConstants.HEADER_REQUEST_KEY_NAME, DeveloperConstants.AUTH_REQUEST_KEY);
         header.put(DeveloperConstants.HEADER_REQUEST_KEY_VERSION, DeveloperConstants.DEFAULT_REQUEST_KEY_VERSION);
         header.put(DeveloperConstants.HEADER_LANG_NAME, sdkLang.getValue());
@@ -76,7 +75,11 @@ public abstract class AbstractTokenLoader implements TokenLoader {
     private AuthRequest getAuthRequest() {
         AuthRequest authRequest = new AuthRequest();
         authRequest.setAccessKey(accessKey);
-        authRequest.setAccessSecret(accessSecret);
+        String nonce = RandomUtil.randomString(8);
+        authRequest.setNonce(nonce);
+        authRequest.setEncrypted(accessSecret);
+        String digestHex = MD5.create().digestHex(accessSecret + nonce);
+        authRequest.setEncrypted(digestHex);
         return authRequest;
     }
 

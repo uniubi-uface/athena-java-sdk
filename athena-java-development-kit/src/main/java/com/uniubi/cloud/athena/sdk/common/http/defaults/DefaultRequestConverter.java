@@ -8,7 +8,6 @@ import java.util.Map;
 
 /**
  * 默认请求转换器 使用fastJson直接将对象转为字符串
- *
  * @author jingmu
  * @since 2020/3/26
  */
@@ -35,8 +34,7 @@ public class DefaultRequestConverter implements RequestConverter {
         if (requestBody == null) {
             // 如果请求体为空，返回固定空请求体
             requestBody = EMPTY_PARAM;
-        }
-        else {
+        } else {
             if (requestBody instanceof String) {
                 return (String) requestBody;
             }

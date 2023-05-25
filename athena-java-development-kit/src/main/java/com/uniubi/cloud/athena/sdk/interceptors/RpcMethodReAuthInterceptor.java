@@ -8,7 +8,6 @@ import com.uniubi.cloud.athena.sdk.common.models.SdkResult;
 /**
  * 远程方法拦截器：重新授权 该拦截器作用就是当拦截到返回结果是token无效时，会进行一次重新授权（刷新token），再重试调用操
  * 该拦截器设计是与SimpleTokenLoader搭配，防止服务端token丢失导致sdk调用失败
- *
  * @author jingmu
  * @since 2020/5/7
  */

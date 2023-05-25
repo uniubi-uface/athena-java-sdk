@@ -15,7 +15,6 @@ import java.util.Random;
 
 /**
  * receive UStar Cloud service pushed message
- *
  * @author jingmu
  * @since 2022/02/24
  */
@@ -29,22 +28,22 @@ public class AthenaMessageSubscribeController {
         log.info("Receive UStar cloud message ==> {}", JSON.toJSONString(msgContentBO));
         Byte type = msgContentBO.getType();
         switch (type) {
-        case 1:
-            JSONObject jsonObject = JSON.parseObject(msgContentBO.getContent());
-            Long showTime = jsonObject.getLong("showTime");
-            Date date = new Date(showTime);
-            log.info("Recognition time: [{}], receive message time: [{}]", date, new Date());
-            break;
-        case 2:
-            // Type 2 is under development
-            log.info("A callback message is received. The message callback type is 2.");
-            break;
-        case 3:
-            // Type 3 is under development
-            log.info("A callback message is received. The message callback type is 3.");
-            break;
-        default:
-            log.info("A callback message is received. The message callback type is {}.", type);
+            case 1:
+                JSONObject jsonObject = JSON.parseObject(msgContentBO.getContent());
+                Long showTime = jsonObject.getLong("showTime");
+                Date date = new Date(showTime);
+                log.info("Recognition time: [{}], receive message time: [{}]", date, new Date());
+                break;
+            case 2:
+                // Type 2 is under development
+                log.info("A callback message is received. The message callback type is 2.");
+                break;
+            case 3:
+                // Type 3 is under development
+                log.info("A callback message is received. The message callback type is 3.");
+                break;
+            default:
+                log.info("A callback message is received. The message callback type is {}.", type);
         }
         boolean randomSuccess = new Random().nextBoolean();
         if (randomSuccess) {

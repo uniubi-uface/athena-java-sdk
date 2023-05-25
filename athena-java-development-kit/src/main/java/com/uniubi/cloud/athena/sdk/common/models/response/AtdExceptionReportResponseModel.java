@@ -8,7 +8,6 @@ import java.util.List;
 
 /**
  * 考勤异常打卡数据展示对象
- *
  * @author jingmu
  */
 public class AtdExceptionReportResponseModel {
@@ -158,9 +157,9 @@ public class AtdExceptionReportResponseModel {
     @Override
     public String toString() {
         return "AtdExceptionReportResponseModel{" + "personId='" + personId + '\'' + ", personNo='" + personNo + '\''
-                + ", name='" + name + '\'' + ", depNames=" + depNames + ", roleNames=" + roleNames + ", atDate="
-                + atDate + ", recognitionTime=" + recognitionTime + ", clockPhotoId='" + clockPhotoId + '\''
-                + ", deviceKey='" + deviceKey + '\'' + ", deviceName='" + deviceName + '\'' + '}';
+            + ", name='" + name + '\'' + ", depNames=" + depNames + ", roleNames=" + roleNames + ", atDate="
+            + atDate + ", recognitionTime=" + recognitionTime + ", clockPhotoId='" + clockPhotoId + '\''
+            + ", deviceKey='" + deviceKey + '\'' + ", deviceName='" + deviceName + '\'' + '}';
     }
 
 }

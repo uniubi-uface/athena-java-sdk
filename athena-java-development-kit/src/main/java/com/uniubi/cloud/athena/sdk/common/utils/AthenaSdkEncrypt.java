@@ -58,7 +58,7 @@ public class AthenaSdkEncrypt {
         // base64编码的公钥
         byte[] decoded = Base64.getDecoder().decode(publicKey.getBytes(StandardCharsets.UTF_8));
         RSAPublicKey pubKey = (RSAPublicKey) KeyFactory.getInstance("RSA")
-                .generatePublic(new X509EncodedKeySpec(decoded));
+            .generatePublic(new X509EncodedKeySpec(decoded));
         // RSA加密
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.ENCRYPT_MODE, pubKey);
@@ -78,7 +78,7 @@ public class AthenaSdkEncrypt {
         // base64编码的私钥
         byte[] decoded = Base64.getDecoder().decode(privateKey);
         RSAPrivateKey priKey = (RSAPrivateKey) KeyFactory.getInstance("RSA")
-                .generatePrivate(new PKCS8EncodedKeySpec(decoded));
+            .generatePrivate(new PKCS8EncodedKeySpec(decoded));
         // RSA解密
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.DECRYPT_MODE, priKey);
@@ -96,7 +96,7 @@ public class AthenaSdkEncrypt {
         // base64编码的公钥
         byte[] decoded = Base64.getDecoder().decode(privateKey.getBytes(StandardCharsets.UTF_8));
         RSAPrivateKey priKey = (RSAPrivateKey) KeyFactory.getInstance("RSA")
-                .generatePrivate(new PKCS8EncodedKeySpec(decoded));
+            .generatePrivate(new PKCS8EncodedKeySpec(decoded));
         // RSA加密
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.ENCRYPT_MODE, priKey);
@@ -116,7 +116,7 @@ public class AthenaSdkEncrypt {
         // base64编码的私钥
         byte[] decoded = Base64.getDecoder().decode(publicKey);
         RSAPublicKey pubKey = (RSAPublicKey) KeyFactory.getInstance("RSA")
-                .generatePublic(new X509EncodedKeySpec(decoded));
+            .generatePublic(new X509EncodedKeySpec(decoded));
         // RSA解密
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.DECRYPT_MODE, pubKey);
@@ -131,8 +131,7 @@ public class AthenaSdkEncrypt {
             SecretKey sk = keyGenerator.generateKey();
             byte[] b = sk.getEncoded();
             return byteToHexString(b);
-        }
-        catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException e) {
             return null;
         }
     }
@@ -143,12 +142,10 @@ public class AthenaSdkEncrypt {
             String strHex = Integer.toHexString(aByte);
             if (strHex.length() > 3) {
                 sb.append(strHex.substring(6));
-            }
-            else {
+            } else {
                 if (strHex.length() < 2) {
                     sb.append("0").append(strHex);
-                }
-                else {
+                } else {
                     sb.append(strHex);
                 }
             }
@@ -176,8 +173,7 @@ public class AthenaSdkEncrypt {
             cipher.init(Cipher.ENCRYPT_MODE, skeySpec, iv);
             byte[] encrypted = cipher.doFinal(content.getBytes(StandardCharsets.UTF_8));
             result = new BASE64Encoder().encode(encrypted);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return result;
         }
         return result;
@@ -194,8 +190,7 @@ public class AthenaSdkEncrypt {
             byte[] encrypted1 = new BASE64Decoder().decodeBuffer(content);
             byte[] original = cipher.doFinal(encrypted1);
             return new String(original, StandardCharsets.UTF_8);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return null;
         }
     }

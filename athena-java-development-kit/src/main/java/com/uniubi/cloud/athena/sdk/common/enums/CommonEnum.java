@@ -2,7 +2,6 @@ package com.uniubi.cloud.athena.sdk.common.enums;
 
 /**
  * 通用枚举基础类
- *
  * @author Niancheng
  * @since 2019/6/29
  */

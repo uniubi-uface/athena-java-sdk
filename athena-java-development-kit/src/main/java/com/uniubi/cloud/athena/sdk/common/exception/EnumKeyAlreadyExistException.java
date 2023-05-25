@@ -6,7 +6,6 @@ import java.text.MessageFormat;
  * 枚举类型key值重复异常
  * <p>
  * description: default
- *
  * @author 阿秋@niancheng
  * @since 2019/12/9
  */

@@ -6,7 +6,6 @@ import java.util.List;
 
 /**
  * 识别记录查询对象
- *
  * @author jingmu
  */
 public class RecognitionPageQueryRequest extends SdkBasePageRequest {
@@ -102,8 +101,8 @@ public class RecognitionPageQueryRequest extends SdkBasePageRequest {
     @Override
     public String toString() {
         return "RecognitionPageQueryRequest{" + "personType=" + personType + ", startTimeMillis=" + startTimeMillis
-                + ", endTimeMillis=" + endTimeMillis + ", deviceSearch='" + deviceSearch + '\'' + ", personSearch='"
-                + personSearch + '\'' + ", personIdList=" + personIdList + ", depIds=" + depIds + '}';
+            + ", endTimeMillis=" + endTimeMillis + ", deviceSearch='" + deviceSearch + '\'' + ", personSearch='"
+            + personSearch + '\'' + ", personIdList=" + personIdList + ", depIds=" + depIds + '}';
     }
 
 }

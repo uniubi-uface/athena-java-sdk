@@ -1,23 +1,8 @@
-<div style="text-align: center; font-size: 36px; font-weight: bold">UStar Cloud SDK 接口文档</div>
-
-<br/><br/>
-
-# 0 修订记录
-
-> 接口文档版本与UStarCloud的版本号对应
-
-| SDK版本 | 修改时间 | 修改人 | 修改内容                                                     |
-| ------- | -------- | ------ | ------------------------------------------------------------ |
-| 2.3.0 | 2021-11-22 | 井木   | 1.新增 |
-| 2.3.0 | 2022-06-08 | 井木 | 1. 更新第5章节中消息推送的说明 |
-
-<br/><br/>
-
 # 1 请求说明
 
 ## 1.1 请求地址
 
-**统一路径: `https://www.ustar-cloud.com/api/develop/sdk/unify`**
+**统一路径: `https://www.ustar-cloud.com/api/develop/sdk/unify/v2`**
 
 * 请求方法为`POST`
 * 请求头：`Content-Type: application/json;charset=UTF-8`
@@ -25,118 +10,11 @@
 | 字段名称            | 位置   | 类型   | 是否必须 | 说明                                                         |
 | ------------------- | ------ | ------ | -------- | ------------------------------------------------------------ |
 | sdkRequestKey     | header | String | Y        | 请求KEY                                                      |
-| requestKeyVersion | header | String | Y        | 请求接口的版本，默认为`v1`                                               |
+| requestKeyVersion | header | String | Y        | 请求接口的版本                                              |
 | sdkAccessToken    | header | String | Y        | 从服务端获取的token                                          |
-| sdkSecretKey      | header | String | Y        | AES KEY经过[RSA publicKey](#2)加密后的密文                   |
-| lang                | header | String | Y        | 语言种类，具体请看[字典3.1](#3.1)                            |
-| requestData         | body   | String | Y        | requestData分为加密和不加密两种，具体请参考[requestData说明](#requestData) |
+| lang                | header | String | Y        | en / zh_CN                            |
 
 * `sdkAccessToken`: 有效期为1天，失效后可重新获取
-
-* `AES KEY`: AES KEY由开发者自己生成，每次请求key建议不同，生成规则参见[2.2](#2.2)
-
-## 1.2 requestData说明<a id="requestData"></a>
-
-### 1.2.1 加密接口
-
-接口的参数作为json对象requestData的值，即
-
-```json
-   {
-      "requestData": {
-      "pageSize": 10,
-      "empNo": "58693",
-      "pageNum": 1
-      }
-   }
-```
-
-再将上述json字符串进行AES加密后的密文作为请求body
-
- ```
- PK0AgL+Ws/TCzw2/PPzPhJnCgXqwb0ZddQ4o+EDGDhXhibTj2KXEqF2CXRKZ8OOgqZuktd1uvEHA
- 0VBz9I8iZw==
- ```
-
-Postman中request body 示例
-![Postman body img1](./img/image1.png)
-
-### 1.2.2 不加密接口
-
-不加密接口：直接将接口参数作为json对象requestData的值
-
-```json
-  {
-    "requestData": {
-      "accessKey": "1dc8908e728b445d91c4d133ef40c92a",
-      "accessSecret": "09555323806d4e809eee1617082ea6b1"
-    }
-  }
-```
-上述json字符串作为请求body
-
-Postman中request body 示例
-
-![Postman body img2](./img/image2.png)
-
-# 2 密钥<a id="2"></a>
-
-> 管理员在UStarCloud开发者接入平台页面，创建一个新的开发者平台
-> 系统会自动为该新平台生成` accessKey `和 `accessSecret`，还有数据加解密用的 `publicKey`
-> 其中`accessKey`和`accessSecret`用于权限认证生成`sdkAccessToken`
-
-## 2.1 RSA
-
-RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获取RSA公钥。公钥用来加解密AES key
-
-## 2.2 AES<a id="2.2"></a>
-
-* AES key 由开发者自己生成，使用`128 bit` 即`16 byte`
-* 偏移量`iv` 从`AES key`中获取，规则为：第一步将`AES key`反转（倒序）后取前`16`位
-* java 代码示例
-
-```java
-
-    public static String generateAesKey() {
-        try {
-            KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-            keyGenerator.init(128);
-            SecretKey sk = keyGenerator.generateKey();
-            byte[] b = sk.getEncoded();
-            return byteToHexString(b);
-        }
-        catch (NoSuchAlgorithmException e) {
-            return null;
-        }
-    }
-
-    private static String getAesIv(String aesKey) {
-            String reverseKey = new StringBuilder(aesKey).reverse().toString();
-            return reverseKey.substring(0, 16);
-    }
-
-    public static String encryptByAes(String key, String content) {
-            String result = "";
-            try {
-            Cipher cipher;
-            cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            byte[] raw = key.getBytes();
-            SecretKeySpec skeySpec = new SecretKeySpec(raw, "AES");
-            IvParameterSpec iv = new IvParameterSpec(getAesIv(key).getBytes());
-            cipher.init(Cipher.ENCRYPT_MODE, skeySpec, iv);
-            byte[] encrypted = cipher.doFinal(content.getBytes(StandardCharsets.UTF_8));
-            result = new BASE64Encoder().encode(encrypted);
-            }
-            catch (Exception e) {
-            return result;
-            }
-            return result;
-    }
-```
-
-# 3 数据字典
-
-> 各字典数据包括但不限于以下字典项
 
 ## 3.1 语言<a id ="3.1"></a>
 
@@ -239,7 +117,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 * 响应参数说明：
 
   | 字段名称 | 字段类型 | 说明                   |
-  | -------- | -------- | ---------------------- |
+                  | -------- | -------- | ---------------------- |
   | 无       | String   | Hey boy, welcome to UStar Cloud! |
 
 ## 4.3 鉴权API
@@ -251,7 +129,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 * 请求参数说明
 
   | 字段名称     | 字段类型 | 是否必须 | 说明                   |
-  | ------------ | -------- | -------- | ---------------------- |
+                  | ------------ | -------- | -------- | ---------------------- |
   | accessKey    | String   | Y        | 开发者接入平台页面获取 |
   | accessSecret | String   | Y        | 开发者接入平台页面获取 |
 
@@ -267,7 +145,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 * 响应参数说明
 
   | 字段名称 | 字段类型 | 说明                                                         |
-  | -------- | -------- | ------------------------------------------------------------ |
+                  | -------- | -------- | ------------------------------------------------------------ |
   | 无       | String   | 返回的字符串为请求其他接口的凭证，放在request header中sdkAccessToken项 |
 
   > **注意：token未进行加密，有效期为1天**
@@ -281,7 +159,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 * 请求参数说明
 
   | 字段名称  | 字段类型 | 是否必须 | 说明                |
-  | --------- | -------- | -------- | ------------------- |
+                  | --------- | -------- | -------- | ------------------- |
   | pageNum   | Integer  | Y        | 页码                |
   | pageSize  | Integer  | Y        | 每页限制条数        |
   | deptId    | String   | N        | 部门id              |
@@ -292,7 +170,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 * 响应参数说明
 
   | 字段名称               | 字段类型     | 说明                                                         |
-  | ---------------------- | ------------ | ------------------------------------------------------------ |
+                  | ---------------------- | ------------ | ------------------------------------------------------------ |
   | personId               | String       | 人员id                                                       |
   | personNo               | String       | 员工编号                                                     |
   | name                   | String       | 人员姓名                                                     |
@@ -315,7 +193,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
   | workDayOverWorkSecond  | long number  | 工作日加班时长 单位秒                                        |
   | restDayOverWorkSecond  | long number  | 休息日加班时长 单位秒                                        |
   | holidayOverWorkSecond  | long number  | 节假日加班时长 单位秒                                        |
-  | dateType               | number       | 日期类型  字典数据[3.5](#3.5)                                |
+  | dateType               | number       | 日期类型 字典数据[3.5](#3.5)                                |
   | signInStart            | Date         | 开始签到时间,当且仅当dateType=2时有值                        |
   | signInEnd              | Date         | 结束签到时间,当且仅当dateType=2时有值                        |
 
@@ -326,7 +204,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 * 请求参数说明
 
   | 字段名称  | 字段类型 | 是否必须 | 说明                |
-  | --------- | -------- | -------- | ------------------- |
+                  | --------- | -------- | -------- | ------------------- |
   | pageNum   | Integer  | Y        | 页码                |
   | pageSize  | Integer  | Y        | 每页限制条数        |
   | deptId    | String   | N        | 部门id              |
@@ -337,7 +215,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 * 响应参数说明
 
   | 字段名称              | 字段类型     | 说明                          |
-  | --------------------- | ------------ | ----------------------------- |
+                  | --------------------- | ------------ | ----------------------------- |
   | personId              | String       | 人员id                        |
   | personNo              | String       | 员工编号                      |
   | name                  | String       | 人员姓名                      |
@@ -347,7 +225,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
   | workDayOverWorkSecond | long number  | 工作日加班时长 单位秒         |
   | restDayOverWorkSecond | long number  | 休息日加班时长 单位秒         |
   | holidayOverWorkSecond | long number  | 节假日加班时长 单位秒         |
-  | dateType              | number       | 日期类型  字典数据[3.5](#3.5) |
+  | dateType              | number       | 日期类型 字典数据[3.5](#3.5) |
 
 ### 4.4.3 考勤休息报表
 
@@ -356,7 +234,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 * 请求参数说明
 
   | 字段名称  | 字段类型 | 是否必须 | 说明                |
-  | --------- | -------- | -------- | ------------------- |
+                  | --------- | -------- | -------- | ------------------- |
   | pageNum   | Integer  | Y        | 页码                |
   | pageSize  | Integer  | Y        | 每页限制条数        |
   | deptId    | String   | N        | 部门id              |
@@ -367,7 +245,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 * 响应参数说明
 
   | 字段名称              | 字段类型     | 说明                               |
-  | --------------------- | ------------ | ---------------------------------- |
+                  | --------------------- | ------------ | ---------------------------------- |
   | personId              | String       | 人员id                             |
   | personNo              | String       | 员工编号                           |
   | name                  | String       | 人员姓名                           |
@@ -389,7 +267,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 * 请求参数说明
 
   | 字段名称  | 字段类型 | 是否必须 | 说明                |
-  | --------- | -------- | -------- | ------------------- |
+                  | --------- | -------- | -------- | ------------------- |
   | pageNum   | Integer  | Y        | 页码                |
   | pageSize  | Integer  | Y        | 每页限制条数        |
   | deptId    | String   | N        | 部门id              |
@@ -400,7 +278,7 @@ RSA的公钥和私钥由UStarCloud生成，在UStarCloud的对接平台页面获
 * 响应参数说明
 
   | 字段名称        | 字段类型     | 说明                         |
-  | --------------- | ------------ | ---------------------------- |
+                  | --------------- | ------------ | ---------------------------- |
   | personId        | String       | 人员id                       |
   | personNo        | String       | 员工编号                     |
   | name            | String       | 人员姓名                     |
@@ -429,7 +307,7 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
 * 请求体内容：
 
   | 字段名称 | 字段类型 | 说明                                   |
-  | -------- | -------- | -------------------------------------- |
+                  | -------- | -------- | -------------------------------------- |
   | msgId    | String   | 消息id                                 |
   | type     | number   | 消息类型 详细请参考数据字典[3.4](#3.4) |
   | content  | String   | 消息内容为事件回调内容的json 字符串    |
@@ -443,20 +321,6 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
 >     "content": "{\"aliveType\":1,\"depNameConcat\":\"name1,name2\",\"departmentNames\":[\"name1\",\"name2\"],\"deviceKey\":\"84E0F42C3BB78702\",\"deviceName\":\"this is device name\",\"empNo\":\"001\",\"id\":3126713,\"name\":\"Joey T\",\"orgId\":97,\"passTimeType\":1,\"permissionTimeType\":1,\"personGuid\":null,\"personId\":8508,\"personType\":1,\"photoUrl\":\"https://uniubi-aiot.s3-eu-west-1.amazonaws.com/pkg365/2005/20050001000506/034000.411/img/ffe1fd7d-eecc-45c3-a6cf-14cee5c3361a.station\",\"recMode\":1,\"recStatus\":null,\"recType\":1,\"showTime\":\"2022-05-20 03:39:59\",\"temperature\":null,\"temperatureState\":null,\"temperatureUnit\":null,\"type\":1}"
 > }
 > ```
-
-* 响应体内容：
-
-  | ~~字段名称~~ | ~~字段类型~~ | ~~说明~~                                                     |
-  | ------------ | ------------ | ------------------------------------------------------------ |
-  | ~~success~~  | ~~boolean~~  | ~~是否接收成功<br />返回true，系统就不会再处理该消息<br />返回false，系统则会在5分钟后进行重试处理~~ |
-
-> ~~**注意1：响应数据要求以json格式返回**~~
->
-> ~~**注意2：处理系统回调消息时，只有正确返回了成功返回结果，才算这个消息处理成功，否则系统会一直重试**~~
->
-> ~~**注意3：消费端需要做好幂等性控制**~~
->
-> ~~**注意4：事件消息推送以HTTP的方式进行数据推送，请求中不包含权限和认证信息**~~
 
 **为了方便对接，UStarCloud将根据请求的 HTTP status code 是否为 200 来决定是否需要重新发送**
 
@@ -475,7 +339,7 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
 * 事件回调内容：
 
   | 字段名称           | 字段类型     | 说明                                                         |
-  | ------------------ | ------------ | ------------------------------------------------------------ |
+                  | ------------------ | ------------ | ------------------------------------------------------------ |
   | id                 | number       | 识别记录id                                                   |
   | orgId              | number       | 公司id                                                       |
   | personType         | number       | 识别记录类型<br />1:员工;<br />2:访客;<br />3:陌生人         |
@@ -498,10 +362,7 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
   | photoUrl           | String       | 现场照URL                                                    |
 
 * 请求体示例：
+
 ```json
-{
-    "msgId": "xxxxxxxx",
-    "type": 1,
-    "content": "{\"aliveType\":1,\"depNameConcat\":\"name1,name2\",\"departmentNames\":[\"name1\",\"name2\"],\"deviceKey\":\"84E0F42C3BB78702\",\"deviceName\":\"this is device name\",\"empNo\":\"001\",\"id\":3126713,\"name\":\"Joey T\",\"orgId\":97,\"passTimeType\":1,\"permissionTimeType\":1,\"personGuid\":null,\"personId\":8508,\"personType\":1,\"photoUrl\":\"https://uniubi-aiot.s3-eu-west-1.amazonaws.com/pkg365/2005/20050001000506/034000.411/img/ffe1fd7d-eecc-45c3-a6cf-14cee5c3361a.station\",\"recMode\":1,\"recStatus\":null,\"recType\":1,\"showTime\":\"2022-05-20 03:39:59\",\"temperature\":null,\"temperatureState\":null,\"temperatureUnit\":null,\"type\":1}"
-}
+
 ```

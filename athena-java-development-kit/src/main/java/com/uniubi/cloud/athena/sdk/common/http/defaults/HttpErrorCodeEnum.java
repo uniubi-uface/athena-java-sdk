@@ -5,7 +5,6 @@ import com.uniubi.cloud.athena.sdk.common.utils.UniUbiEnumUtils;
 
 /**
  * 消息状态
- *
  * @author huanghuizhou ClassName Http error code enum.
  * @version V1.0.
  * @since 2020.07.10 09:51:53
@@ -25,7 +24,7 @@ public enum HttpErrorCodeEnum implements CommonEnum<Integer> {
     /**
      * Code 401 http error code enum.
      */
-    CODE_401(401, "回调请求身份验证失败"),
+    CODE_401(401, "NOT FOUND"),
 
     /**
      * Code 402 http error code enum.
@@ -45,7 +44,7 @@ public enum HttpErrorCodeEnum implements CommonEnum<Integer> {
     /**
      * Code 408 http error code enum.
      */
-    CODE_408(408, "回调超时"),
+    CODE_408(408, "超时"),
 
     /**
      * Code 500 http error code enum.

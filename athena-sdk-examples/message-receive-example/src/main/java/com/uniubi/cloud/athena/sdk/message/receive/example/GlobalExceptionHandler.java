@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * ExceptionHandler
- *
  * @author jingmu
  * @since 2022/06/08
  */

@@ -17,7 +17,6 @@ public class AthenaSdkEncryptTest {
         System.out.println(decryptByPublicKey);
     }
 
-
     @Test
     public void testDecryptAes() throws Exception {
         String iv = "3f2b171a62400534";
@@ -36,13 +35,10 @@ public class AthenaSdkEncryptTest {
     @Test
     public void testAesEncrypt() {
         String key = "298eae75121219e5c05e34d365f7d20b";
-        String content = " {\n" +
-                "      \"requestData\": {\n" +
-                "      \"pageSize\": 10,\n" +
-                "      \"pageNum\": 1\n" +
-                "      }\n" +
-                "   }";
+        String content = " {\n" + "      \"requestData\": {\n" + "      \"pageSize\": 10,\n" + "      \"pageNum\": 1\n"
+            + "      }\n" + "   }";
         String encryptByAes = AthenaSdkEncrypt.encryptByAes(key, content);
         System.out.println(encryptByAes);
     }
+
 }

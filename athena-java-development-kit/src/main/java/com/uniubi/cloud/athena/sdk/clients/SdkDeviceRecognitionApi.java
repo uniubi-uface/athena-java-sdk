@@ -11,7 +11,6 @@ import com.uniubi.cloud.athena.sdk.common.models.response.RecognitionResponseMod
  * <p>
  * The equipment identification record query API provides a method for querying equipment
  * identification records
- *
  * @author jingmu
  * @since 2020/5/18
  */
@@ -24,8 +23,8 @@ public interface SdkDeviceRecognitionApi {
      * @param queryRecognitionPageRequest query params
      * @return <code>SdkResult<SdkPageInfo<RecognitionResponseModel>></code>
      */
-    @RequestMark(name = "queryRecognitionPage", version = "v1", desc = "分页查询识别记录")
+    @RequestMark(name = "queryRecognitionPage", version = "v2", desc = "分页查询识别记录")
     SdkResult<SdkPageInfo<RecognitionResponseModel>> queryRecognitionPage(
-            RecognitionPageQueryRequest queryRecognitionPageRequest);
+        RecognitionPageQueryRequest queryRecognitionPageRequest);
 
 }

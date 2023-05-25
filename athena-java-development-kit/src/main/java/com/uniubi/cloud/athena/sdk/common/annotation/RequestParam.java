@@ -7,7 +7,6 @@ import java.lang.annotation.Target;
 
 /**
  * 请求参数 用于设置简单参数的注解
- *
  * @author jingmu
  * @since 2020/3/31
  */
