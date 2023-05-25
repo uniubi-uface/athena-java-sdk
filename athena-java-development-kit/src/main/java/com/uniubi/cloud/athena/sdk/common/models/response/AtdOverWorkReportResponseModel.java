@@ -175,10 +175,10 @@ public class AtdOverWorkReportResponseModel {
     @Override
     public String toString() {
         return "AtdOverWorkReportResponseModel{" + "personId='" + personId + '\'' + ", personNo='" + personNo + '\''
-                + ", name='" + name + '\'' + ", depNames=" + depNames + ", roleNames=" + roleNames + ", atDate="
-                + atDate + ", workDayOverWorkSecond=" + workDayOverWorkSecond + ", restDayOverWorkSecond="
-                + restDayOverWorkSecond + ", holidayOverWorkSecond=" + holidayOverWorkSecond + ", dateType=" + dateType
-                + '}';
+            + ", name='" + name + '\'' + ", depNames=" + depNames + ", roleNames=" + roleNames + ", atDate="
+            + atDate + ", workDayOverWorkSecond=" + workDayOverWorkSecond + ", restDayOverWorkSecond="
+            + restDayOverWorkSecond + ", holidayOverWorkSecond=" + holidayOverWorkSecond + ", dateType=" + dateType
+            + '}';
     }
 
 }

@@ -7,7 +7,6 @@ import com.uniubi.cloud.athena.sdk.common.UniUbiSdkClientProxyFactory;
  * UStarCloud API 的客户端，动态代理创建API 客户端
  * <p>
  * UStarCloud API client, dynamic proxy creates API client
- *
  * @author jingmu
  * @since 2020/5/7
  */

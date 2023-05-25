@@ -11,7 +11,7 @@ import com.uniubi.cloud.athena.sdk.common.models.response.AtdDetailReportRespons
  * @author 井木
  * @since 2022/12/14
  */
-public class SdkAtdReportApiExample extends SdkBaseContext{
+public class SdkAtdReportApiExample extends SdkBaseContext {
 
     public static void main(String[] args) {
         SdkAtdReportApi sdkApi = getSdkApi();
@@ -29,4 +29,5 @@ public class SdkAtdReportApiExample extends SdkBaseContext{
         // 6. get api instance
         return athenaSdkApiClient.createSdkAtdReportApi();
     }
+
 }

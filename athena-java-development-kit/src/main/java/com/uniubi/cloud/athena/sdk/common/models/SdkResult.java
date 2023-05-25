@@ -2,7 +2,6 @@ package com.uniubi.cloud.athena.sdk.common.models;
 
 /**
  * sdk统一返回结果对象
- *
  * @author jingmu
  * @since 2020/5/6
  */
@@ -63,7 +62,7 @@ public class SdkResult<T> {
     @Override
     public String toString() {
         return "SdkResult{" + "success=" + success + ", code='" + code + '\'' + ", msg='" + msg + '\'' + ", data="
-                + data + '}';
+            + data + '}';
     }
 
 }

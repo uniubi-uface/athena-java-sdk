@@ -4,7 +4,6 @@ import java.util.List;
 
 /**
  * com.uniubi.medusa.ares.develop.models.response.RecognitionResponseModel
- *
  * @author jingmu
  * @since 2020/5/18
  */
@@ -340,12 +339,12 @@ public class RecognitionResponseModel {
     @Override
     public String toString() {
         return "RecognitionResponseModel{" + "id=" + id + ", personType=" + personType + ", deviceKey='" + deviceKey
-                + '\'' + ", deviceName='" + deviceName + '\'' + ", personId=" + personId + ", empNo='" + empNo + '\''
-                + ", departmentNames=" + departmentNames + ", name='" + name + '\'' + ", recTimeMillis=" + recTimeMillis
-                + ", aliveType=" + aliveType + ", recMode=" + recMode + ", recStatus=" + recStatus + ", recType="
-                + recType + ", type=" + type + ", photoUrl='" + photoUrl + '\'' + ", permissionTimeType="
-                + permissionTimeType + ", passTimeType=" + passTimeType + ", temperature=" + temperature
-                + ", temperatureState=" + temperatureState + ", temperatureUnit=" + temperatureUnit + '}';
+            + '\'' + ", deviceName='" + deviceName + '\'' + ", personId=" + personId + ", empNo='" + empNo + '\''
+            + ", departmentNames=" + departmentNames + ", name='" + name + '\'' + ", recTimeMillis=" + recTimeMillis
+            + ", aliveType=" + aliveType + ", recMode=" + recMode + ", recStatus=" + recStatus + ", recType="
+            + recType + ", type=" + type + ", photoUrl='" + photoUrl + '\'' + ", permissionTimeType="
+            + permissionTimeType + ", passTimeType=" + passTimeType + ", temperature=" + temperature
+            + ", temperatureState=" + temperatureState + ", temperatureUnit=" + temperatureUnit + '}';
     }
 
 }

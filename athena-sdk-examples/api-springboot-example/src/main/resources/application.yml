@@ -1,7 +1,0 @@
-server:
-  port: 10010
-athena:
-  sdk:
-    public-key:
-    access-key:
-    access-secret:

@@ -445,16 +445,16 @@ public class AtdDetailReportResponseModel {
     @Override
     public String toString() {
         return "AtdDetailReportResponseModel{" + "personId='" + personId + '\'' + ", personNo='" + personNo + '\''
-                + ", name='" + name + '\'' + ", depNames=" + depNames + ", roleNames=" + roleNames + ", atDate="
-                + atDate + ", timeIntervalName='" + timeIntervalName + '\'' + ", planSignInDatetime="
-                + planSignInDatetime + ", planSignOutDatetime=" + planSignOutDatetime + ", planTimeIntervalSecond="
-                + planTimeIntervalSecond + ", realSignInTime=" + realSignInTime + ", signInStatus=" + signInStatus
-                + ", realSignOutTime=" + realSignOutTime + ", signOutStatus=" + signOutStatus + ", realWorkTimeSecond="
-                + realWorkTimeSecond + ", normalWorkSecond=" + normalWorkSecond + ", realLateSecond=" + realLateSecond
-                + ", realLeaveEarlySecond=" + realLeaveEarlySecond + ", realAbsenteeismSecond=" + realAbsenteeismSecond
-                + ", workDayOverWorkSecond=" + workDayOverWorkSecond + ", restDayOverWorkSecond="
-                + restDayOverWorkSecond + ", holidayOverWorkSecond=" + holidayOverWorkSecond + ", dateType=" + dateType
-                + ", signInStart=" + signInStart + ", signInEnd=" + signInEnd + '}';
+            + ", name='" + name + '\'' + ", depNames=" + depNames + ", roleNames=" + roleNames + ", atDate="
+            + atDate + ", timeIntervalName='" + timeIntervalName + '\'' + ", planSignInDatetime="
+            + planSignInDatetime + ", planSignOutDatetime=" + planSignOutDatetime + ", planTimeIntervalSecond="
+            + planTimeIntervalSecond + ", realSignInTime=" + realSignInTime + ", signInStatus=" + signInStatus
+            + ", realSignOutTime=" + realSignOutTime + ", signOutStatus=" + signOutStatus + ", realWorkTimeSecond="
+            + realWorkTimeSecond + ", normalWorkSecond=" + normalWorkSecond + ", realLateSecond=" + realLateSecond
+            + ", realLeaveEarlySecond=" + realLeaveEarlySecond + ", realAbsenteeismSecond=" + realAbsenteeismSecond
+            + ", workDayOverWorkSecond=" + workDayOverWorkSecond + ", restDayOverWorkSecond="
+            + restDayOverWorkSecond + ", holidayOverWorkSecond=" + holidayOverWorkSecond + ", dateType=" + dateType
+            + ", signInStart=" + signInStart + ", signInEnd=" + signInEnd + '}';
     }
 
 }

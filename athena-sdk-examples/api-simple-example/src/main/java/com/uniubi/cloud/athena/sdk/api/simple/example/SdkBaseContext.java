@@ -1,6 +1,5 @@
 package com.uniubi.cloud.athena.sdk.api.simple.example;
 
-
 import com.uniubi.cloud.athena.sdk.clients.AthenaSdkApiClient;
 import com.uniubi.cloud.athena.sdk.common.RequestConfig;
 
@@ -10,11 +9,11 @@ import com.uniubi.cloud.athena.sdk.common.RequestConfig;
  */
 public class SdkBaseContext {
 
-    static final String PUBLIC_KEY = "1";
+    static final String PUBLIC_KEY = "";
 
-    static final String ACCESS_KEY = "1";
+    static final String ACCESS_KEY = "fff4b1d9f7054bd8bab523b43004ad3b";
 
-    static final String ACCESS_SECRET = "1";
+    static final String ACCESS_SECRET = "fa9283ce171145be817d6f8b99ff3b37";
 
     protected static RequestConfig getRequestConfig() {
         // 1. new RequestConfig
@@ -25,12 +24,18 @@ public class SdkBaseContext {
         // 3. set your public key
         requestConfig.setPublicKey(PUBLIC_KEY);
         // 4. set service end point if necessary
-        requestConfig.setEndPoint("https://www.ustar-cloud.com/api");
+        requestConfig.setEndPoint("http://127.0.0.1:8080");
         return requestConfig;
     }
 
     protected static AthenaSdkApiClient athenaSdkApiClient() {
+        System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.SimpleLog");
+        System.setProperty("org.apache.commons.logging.simplelog.showdatetime", "true");
+        System.setProperty("org.apache.commons.logging.simplelog.log.httpclient.wire.header", "debug");
+        System.setProperty("org.apache.commons.logging.simplelog.log.org.apache.commons.httpclient", "debug");
+        System.setProperty("org.apache.commons.logging.simplelog.defaultlog", "debug");
         // 5. create the AthenaSdkApiClient
         return new AthenaSdkApiClient(ACCESS_KEY, ACCESS_SECRET, getRequestConfig());
     }
+
 }

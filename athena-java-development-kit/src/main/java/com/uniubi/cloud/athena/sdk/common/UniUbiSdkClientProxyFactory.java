@@ -6,10 +6,7 @@ import com.uniubi.cloud.athena.sdk.common.annotation.RequestParam;
 import com.uniubi.cloud.athena.sdk.common.constant.DeveloperConstants;
 import com.uniubi.cloud.athena.sdk.common.http.ClientConfig;
 import com.uniubi.cloud.athena.sdk.common.http.UniUbiHttpClient;
-import com.uniubi.cloud.athena.sdk.common.http.defaults.DefaultRequestConverter;
 import com.uniubi.cloud.athena.sdk.common.http.defaults.DefaultUniUbiHttpClient;
-import com.uniubi.cloud.athena.sdk.common.utils.AthenaSdkEncrypt;
-import com.uniubi.cloud.athena.sdk.decrypt.DecryptResponseConverter;
 import com.uniubi.cloud.athena.sdk.interceptors.RpcMethodReAuthInterceptor;
 
 import java.lang.reflect.InvocationHandler;
@@ -23,11 +20,10 @@ import java.util.Map;
 
 /**
  * sdk客户端代理工厂 用来创建接口的动态代理对象 该类的createProxy()方法会将传入的接口进行处理： 把该接口标注有RequestMark注解的方法代理处理
- *
  * @author jingmu
- * @since 2020/3/26
  * @see RequestMark 请求方法标注
  * @see RequestParam 请求方法简单参数标注
+ * @since 2020/3/26
  */
 public class UniUbiSdkClientProxyFactory {
 
@@ -39,36 +35,31 @@ public class UniUbiSdkClientProxyFactory {
     }
 
     private ClientProxyConfig createClientProxyConfig(String accessKey, String accessSecret,
-            RequestConfig requestConfig) {
+                                                      RequestConfig requestConfig) {
         ClientProxyConfig clientProxyConfig = new ClientProxyConfig();
         // 解析requestUrl
         clientProxyConfig.requestUrl = requestConfig.getEndPoint() + DeveloperConstants.ATHENA_SDK_UNIFY_URL;
         // 获取客户端配置
         ClientConfig clientConfig = getClientConfig(requestConfig);
         // 创建http请求client
-        clientProxyConfig.defaultRequestConverter = new DefaultRequestConverter();
-        clientProxyConfig.uniUbiHttpClient = new DefaultUniUbiHttpClient(clientProxyConfig.defaultRequestConverter,
-                new DecryptResponseConverter(requestConfig.getPublicKey()), clientConfig);
+        clientProxyConfig.uniUbiHttpClient = new DefaultUniUbiHttpClient(clientConfig);
         // 获取语言
         if (requestConfig.getSdkLang() == null) {
             clientProxyConfig.sdkLang = SdkLang.CN;
-        }
-        else {
+        } else {
             clientProxyConfig.sdkLang = requestConfig.getSdkLang();
         }
         // 获取tokenLoader
         if (requestConfig.getTokenLoader() != null) {
             clientProxyConfig.tokenLoader = requestConfig.getTokenLoader();
-        }
-        else {
+        } else {
             clientProxyConfig.tokenLoader = new SimpleTokenLoader(clientProxyConfig.uniUbiHttpClient,
-                    clientProxyConfig.requestUrl, accessKey, accessSecret, clientProxyConfig.sdkLang);
+                clientProxyConfig.requestUrl, accessKey, accessSecret, clientProxyConfig.sdkLang);
         }
         // 获取方法拦截器
         if (requestConfig.getRpcMethodInterceptor() != null) {
             clientProxyConfig.rpcMethodInterceptor = requestConfig.getRpcMethodInterceptor();
-        }
-        else {
+        } else {
             clientProxyConfig.rpcMethodInterceptor = new RpcMethodReAuthInterceptor();
         }
         clientProxyConfig.publicKey = requestConfig.getPublicKey();
@@ -79,7 +70,7 @@ public class UniUbiSdkClientProxyFactory {
     public <T> T createProxy(Class<T> sdkClientType) {
         ClientProxy clientProxy = new ClientProxy(clientProxyConfig);
         return (T) Proxy.newProxyInstance(UniUbiSdkClientProxyFactory.class.getClassLoader(),
-                new Class[] { sdkClientType }, clientProxy);
+            new Class[] { sdkClientType }, clientProxy);
     }
 
     private ClientConfig getClientConfig(RequestConfig requestConfig) {
@@ -105,18 +96,12 @@ public class UniUbiSdkClientProxyFactory {
 
         private final SdkLang sdkLang;
 
-        private final String publicKey;
-
-        private final DefaultRequestConverter defaultRequestConverter;
-
         private ClientProxy(ClientProxyConfig clientProxyConfig) {
             this.tokenLoader = clientProxyConfig.tokenLoader;
             this.uniUbiHttpClient = clientProxyConfig.uniUbiHttpClient;
             this.requestUrl = clientProxyConfig.requestUrl;
             this.rpcMethodInterceptor = clientProxyConfig.rpcMethodInterceptor;
             this.sdkLang = clientProxyConfig.sdkLang;
-            this.publicKey = clientProxyConfig.publicKey;
-            this.defaultRequestConverter = clientProxyConfig.defaultRequestConverter;
         }
 
         @Override
@@ -128,15 +113,10 @@ public class UniUbiSdkClientProxyFactory {
             }
             String requestKey = requestMark.name();
             String version = requestMark.version();
-            String aesKey = AthenaSdkEncrypt.generateAesKey();
-            assert aesKey != null;
-            String secretKey = AthenaSdkEncrypt.encrypt(aesKey, publicKey);
             // 获取请求header，将token和请求key都放进header中
-            Map<String, String> headers = getHeader(requestKey, version, secretKey);
+            Map<String, String> headers = getHeader(requestKey, version);
             // 获取请求参数
             Object requestBody = getRequestBody(args, method);
-            String requestContent = defaultRequestConverter.converter(requestBody);
-            String secretContent = AthenaSdkEncrypt.encryptByAes(aesKey, requestContent);
             // 获取该方法的返回值
             Type genericReturnType = method.getGenericReturnType();
             // @formatter:off
@@ -145,7 +125,7 @@ public class UniUbiSdkClientProxyFactory {
             rpcMethod.setArgs(args);
             rpcMethod.setMethod(method);
             rpcMethod.setHeaders(headers);
-            rpcMethod.setRequestBody(secretContent);
+            rpcMethod.setRequestBody(requestBody);
             rpcMethod.setRequestUrl(requestUrl);
             rpcMethod.setReturnType(genericReturnType);
             rpcMethod.setTokenLoader(tokenLoader);
@@ -171,8 +151,7 @@ public class UniUbiSdkClientProxyFactory {
                 if (requestParam != null) {
                     requestBody = Collections.singletonMap(requestParam.value(), args[0]);
                 }
-            }
-            else {
+            } else {
                 requestBody = null;
             }
             return requestBody;
@@ -182,17 +161,15 @@ public class UniUbiSdkClientProxyFactory {
          * 获取请求头
          * @param requestKey 请求key
          * @param version 请求key version
-         * @param secretKey 密钥
          * @return 返回构建后的请求头
          */
-        private Map<String, String> getHeader(String requestKey, String version, String secretKey) {
+        private Map<String, String> getHeader(String requestKey, String version) {
             Map<String, String> headers = new HashMap<>(2);
             String token = tokenLoader.loadToken();
             headers.put(DeveloperConstants.HEADER_REQUEST_KEY_NAME, requestKey);
             headers.put(DeveloperConstants.HEADER_REQUEST_KEY_VERSION, version);
             headers.put(DeveloperConstants.HEADER_ACCESS_TOKEN_NAME, token);
             headers.put(DeveloperConstants.HEADER_LANG_NAME, sdkLang.getValue());
-            headers.put(DeveloperConstants.HEADER_SECRET_KEY_NAME, secretKey);
             return headers;
         }
 
@@ -213,9 +190,8 @@ public class UniUbiSdkClientProxyFactory {
 
         private SdkLang sdkLang;
 
+        @Deprecated
         private String publicKey;
-
-        private DefaultRequestConverter defaultRequestConverter;
 
     }
 

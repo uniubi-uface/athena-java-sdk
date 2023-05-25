@@ -4,11 +4,10 @@ import com.uniubi.cloud.athena.sdk.common.http.defaults.DefaultRequestConverter;
 
 /**
  * 请求转换器 UniUbiHttpClient 使用该类对请求体进行序列化操作
- *
  * @author jingmu
- * @since 2020/3/26
  * @see UniUbiHttpClient 宇泛httpClient，用于发送sdk请求到服务端的http实现
  * @see DefaultRequestConverter
+ * @since 2020/3/26
  */
 public interface RequestConverter {
 

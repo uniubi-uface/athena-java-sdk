@@ -2,7 +2,6 @@ package com.uniubi.cloud.athena.sdk.common.http;
 
 /**
  * 请求配置
- *
  * @author jingmu
  * @since 2020/3/31
  */
@@ -41,7 +40,7 @@ public class ClientConfig {
     @Override
     public String toString() {
         return "ClientConfig{" + "connectionTimeoutMills=" + connectionTimeoutMills + ", readTimeoutMills="
-                + readTimeoutMills + ", writeTimeoutMills=" + writeTimeoutMills + '}';
+            + readTimeoutMills + ", writeTimeoutMills=" + writeTimeoutMills + '}';
     }
 
 }
