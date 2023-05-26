@@ -8,15 +8,15 @@
 
 * request data desc
 
-
-| Filed             | Location | Type   | Required | Desc                                        |
-    | ----------------- | -------- | ------ | -------- | ------------------------------------------- |
-| accessKey         | body     | String | true     | get from developer web page                 |
-| nonce             | body     | String | true     | random number                                      |
-| encrypted         | body     | String | true     | MD5(accessSecret+nonce)                    |
-| sdkRequestKey     | header   | String | true     | sdkRequestKey ,please put in request header |
-| requestKeyVersion | header   | String | true     | v2                                          |
-| Content-Type      | header   | String | true     | application/json                            |
+  | Filed             | Location | Type   | Required | Desc                                        |
+      | ----------------- | -------- | ------ | -------- | ------------------------------------------- |
+  | accessKey         | body     | String | true     | get from developer web page                 |
+  | nonce             | body     | String | true     | random number                                      |
+  | encrypted         | body     | String | true     | MD5(accessSecret+nonce)                    |
+  | sdkRequestKey     | header   | String | true     | sdkRequestKey ,please put in request header |
+  | requestKeyVersion | header   | String | true     | v2                                          |
+  | Content-Type      | header   | String | true     | application/json                            |
+  
 
 * request example
 
