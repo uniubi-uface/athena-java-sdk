@@ -13,8 +13,8 @@
   | Filed             | Location | Type   | Required | Desc                                        |
     | ----------------- | -------- | ------ | -------- | ------------------------------------------- |
   | accessKey         | body     | String | true     | get from developer web page                 |
-  | nonce             | body     | String | true     | 随机数                                      |
-  | encrypted         | body     | String | true     | MD5(accessSecret+nonce )                    |
+  | nonce             | body     | String | true     | random number                                      |
+  | encrypted         | body     | String | true     | MD5(accessSecret+nonce)                    |
   | sdkRequestKey     | header   | String | true     | sdkRequestKey ,please put in request header |
   | requestKeyVersion | header   | String | true     | v2                                          |
   | Content-Type      | header   | String | true     | application/json                            |
@@ -138,29 +138,29 @@
   | personNo               | String       | emp no                                                     |
   | name                   | String       | emp name                                                     |
   | depNames               | String array | dept names                                                |
-  | roleNames              | String array | 职位名称集合                                                 |
-  | atDate                 | date         | 日期 yyyy-MM-dd                                              |
-  | timeIntervalName       | String       | 时间段名称                                                   |
-  | planSignInDatetime     | Date         | 应签到时间 yyyy-MM-dd HH:mm:ss                               |
-  | planSignOutDatetime    | Date         | 应签退时间 yyyy-MM-dd HH:mm:ss                               |
-  | planTimeIntervalSecond | long number  | 时间段计划工作时长，单位秒                                   |
-  | realSignInTime         | Date         | 实际签到时间 yyyy-MM-dd HH:mm:ss                             |
-  | signInStatus           | number       | 签到状态<br />1:正常<br />2:缺卡<br />3:迟到<br />4:早退<br />5:未打卡(缺卡)<br />6:加班 |
-  | realSignOutTime        | date         | 实际签退时间 yyyy-MM-dd HH:mm:ss                             |
-  | signOutStatus          | number       | 签退状态<br />1:正常<br />2:缺卡<br />3:迟到<br />4:早退<br />5:未打卡(缺卡)<br />6:加班 |
-  | realWorkTimeSecond     | long number  | 实际工作时长 单位秒                                          |
-  | normalWorkSecond       | long number  | 正常工作时长 单位秒                                          |
-  | realLateSecond         | long number  | 迟到时长 单位秒                                              |
-  | realLeaveEarlySecond   | long number  | 早退时长 单位秒                                              |
-  | realAbsenteeismSecond  | long number  | 旷工时长 单位秒                                              |
-  | workDayOverWorkSecond  | long number  | 工作日加班时长 单位秒                                        |
-  | restDayOverWorkSecond  | long number  | 休息日加班时长 单位秒                                        |
-  | holidayOverWorkSecond  | long number  | 节假日加班时长 单位秒                                        |
-  | dateType               | number       | 1 工作日(普通时间段)<br />2 工作日(弹性时间段)<br />3 休息日<br />4 节假日<br />5 未排班<br /> |
-  | signInStart            | Date         | 开始签到时间,当且仅当dateType=2时有值                        |
-  | signInEnd              | Date         | 结束签到时间,当且仅当dateType=2时有值                        |
+  | roleNames              | String array | role Names                                                 |
+  | atDate                 | date         | date yyyy-MM-dd                                              |
+  | timeIntervalName       | String       | Time period name                                                   |
+  | planSignInDatetime     | Date         | Expected check-in time yyyy-MM-dd HH:mm:ss                               |
+  | planSignOutDatetime    | Date         | Time for signing out yyyy-MM-dd HH:mm:ss                               |
+  | planTimeIntervalSecond | long number  | Planned working hours during the time period, in seconds                                  |
+  | realSignInTime         | Date         | Actual check-in time yyyy-MM-dd HH:mm:ss                             |
+  | signInStatus           | number       | Sign-in status<br />1:normal<br />2:Lack of cards<br />3:late<br />4:Early retirement<br />5:No clock in (missing card)<br />6:work overtime |
+  | realSignOutTime        | date         | Actual check-out time yyyy-MM-dd HH:mm:ss                             |
+  | signOutStatus          | number       | Sign out status<br />1:normal<br />2:Lack of cards<br />3:late<br />4:Early retirement<br />5:No clock in (missing card)<br />6:work overtime |
+  | realWorkTimeSecond     | long number  | Actual working hours in seconds                                          |
+  | normalWorkSecond       | long number  | Normal working hours in seconds                                         |
+  | realLateSecond         | long number  | Delay duration in seconds                                             |
+  | realLeaveEarlySecond   | long number  | Early leave duration in seconds                                              |
+  | realAbsenteeismSecond  | long number  | Absenteeism duration in seconds                                              |
+  | workDayOverWorkSecond  | long number  | Overtime duration on working days in seconds                                        |
+  | restDayOverWorkSecond  | long number  | Overtime duration on rest days in seconds                                        |
+  | holidayOverWorkSecond  | long number  | Overtime duration during holidays in seconds                                        |
+  | dateType               | number       | 1 working day (regular time period)<br />2 working days (flexible time period)<br />3 rest days<br />4 holidays<br />5 Unscheduled shifts<br /> |
+  | signInStart            | Date         | The start check-in time, which has a value only when date type=2                       |
+  | signInEnd              | Date         | End check-in time, with a value only when date type=2                        |
 
-* 响应示例
+* response example
 
   ```json
   {
@@ -211,7 +211,7 @@
 
 
 
-### 2.2 加班报表
+### 2.2 atdOverWorkReport
 
 * sdkRequestKey : `atdOverWorkReport`
 
@@ -219,12 +219,12 @@
 
   | Filed | Location | Type | Required | Desc              |
     | --------- | -------- | -------- | ------------------- | ------------------- |
-  | pageNum   | body | Integer  | Y        | 页码                |
-  | pageSize  | body | Integer  | Y        | 每页限制条数        |
-  | deptId    | body | String   | N        | 部门id              |
-  | empName   | body | String   | N        | 员工名称/编号       |
-  | startDate | body | date     | N        | 开始日期 yyyy-MM-dd |
-  | endDate   | body | date     | N        | 结束日期 yyyy-MM-dd |
+  | pageNum   | body | Integer  | Y        |                 |
+  | pageSize  | body | Integer  | Y        |         |
+  | deptId    | body | String   | N        | Department ID              |
+  | empName   | body | String   | N        | Employee Name        |
+  | startDate | body | date     | N        | yyyy-MM-dd |
+  | endDate   | body | date     | N        | yyyy-MM-dd |
   | sdkRequestKey     | header | String   | true     | sdkRequestKey  please put it in request header |
   | requestKeyVersion | header | String   | true     | v2                         |
   | sdkAccessToken    | header | String   | true     | sdkAccessToken             |
@@ -248,19 +248,19 @@
 * responseDesc
 
   | Filed                 | Type         | Desc                                                         |
-    | --------------------- | ------------ | ------------------------------------------------------------ |
+      | --------------------- | ------------ | ------------------------------------------------------------ |
   | personId              | String       | emp id                                                       |
   | personNo              | String       | emp no                                                     |
   | name                  | String       | emp name                                                     |
   | depNames              | String array | dept names                                                |
   | roleNames             | String array | role names                                                |
   | atDate                | date         | yyyy-MM-dd                                              |
-  | workDayOverWorkSecond | long number  | 工作日加班时长 单位秒                                        |
-  | restDayOverWorkSecond | long number  | 休息日加班时长 单位秒                                        |
-  | holidayOverWorkSecond | long number  | 节假日加班时长 单位秒                                        |
-  | dateType              | number       | 1 工作日(普通时间段)<br />2 工作日(弹性时间段)<br />3 休息日<br />4 节假日<br />5 未排班<br /> |
+  | workDayOverWorkSecond | long number  | Overtime duration on working days in seconds                                        |
+  | restDayOverWorkSecond | long number  | Overtime duration on rest days in seconds                                        |
+  | holidayOverWorkSecond | long number  | Overtime duration during holidays in seconds                                        |
+  | dateType              | number       | 1 working day (regular time period)<br />2 working days (flexible time period)<br />3 rest days<br />4 holidays<br />5 Unscheduled shifts<br /> |
 
-* 响应示例
+* response example
 
   ```json
   {
@@ -309,22 +309,20 @@
   }
   ```
 
-
-
-### 2.3 考勤休息报表
+### 2.3 atdBreakTimeReport
 
 * sdkRequestKey : `atdBreakTimeReport`
 
 * request data desc
 
   | Filed | Location | Type | Required | Desc              |
-    | --------- | ---- | -------- | -------- | ------------------- |
-  | pageNum   | body | Integer  | Y        | 页码                |
-  | pageSize  | body | Integer  | Y        | 每页限制条数        |
-  | deptId    | body | String   | N        | 部门id              |
-  | empName   | body | String   | N        | 员工名称/编号       |
-  | startDate | body | date     | N        | 开始日期 yyyy-MM-dd |
-  | endDate   | body | date     | N        | 结束日期 yyyy-MM-dd |
+      | --------- | ---- | -------- | -------- | ------------------- |
+  | pageNum   | body | Integer  | Y        |                 |
+  | pageSize  | body | Integer  | Y        |         |
+  | deptId    | body | String   | N        | department id              |
+  | empName   | body | String   | N        | emp name       |
+  | startDate | body | date     | N        | yyyy-MM-dd |
+  | endDate   | body | date     | N        | yyyy-MM-dd |
   | sdkRequestKey     | header | String   | true     | sdkRequestKey  please put it in request header |
   | requestKeyVersion | header | String   | true     | v2                         |
   | sdkAccessToken    | header | String   | true     | sdkAccessToken             |
@@ -349,22 +347,22 @@
 * responseDesc
 
   | Filed                 | Type         | Desc                               |
-    | --------------------- | ------------ | ---------------------------------- |
+      | --------------------- | ------------ | ---------------------------------- |
   | personId              | String       | emp id                             |
   | personNo              | String       | emp no                           |
   | name                  | String       | emp name                           |
   | depNames              | String array | dept names                      |
-  | roleNames             | String array | 职位名称集合                       |
-  | atDate                | date         | 日期 yyyy-MM-dd                    |
-  | timeIntervalName      | String       | 时间段名称                         |
-  | breatimeName          | String       | 时间段的休息时段名称               |
-  | planBreakTimeDuration | long number  | 计划休息时长，单位秒               |
-  | realBreakTimeStart    | Date         | 实际开始休息时间 yyyy-MM-dd        |
-  | realBreakTimeEnd      | Date         | 实际结束休息时间 yyyy-MM-dd        |
-  | realBreakTimeDuration | long number  | 实际休息时长，单位秒               |
-  | breakStatus           | number       | 休息状态：0-未结算，1-正常，2-异常 |
+  | roleNames             | String array | role Names                       |
+  | atDate                | date         | attendance date yyyy-MM-dd                    |
+  | timeIntervalName      | String       | Time period name                         |
+  | breatimeName          | String       | The name of the break period for the time period               |
+  | planBreakTimeDuration | long number  | Planned rest duration in seconds               |
+  | realBreakTimeStart    | Date         | Actual start rest time yyyy-MM-dd        |
+  | realBreakTimeEnd      | Date         | Actual end rest time yyyy-MM-dd        |
+  | realBreakTimeDuration | long number  | Actual rest time in seconds               |
+  | breakStatus           | number       | Rest status: 0- unsettled, 1- normal, 2- abnormal |
 
-* 响应示例
+* response example
 
   ```json
   {
@@ -399,22 +397,20 @@
   }
   ```
 
-
-
-### 2.4 考勤异常打卡报表
+### 2.4 atdExceptionReport
 
 * sdkRequestKey : `atdExceptionReport`
 
 * request data desc
 
   | Filed     | Location | Type    | Required | Desc                |
-    | --------- | -------- | ------- | -------- | ------------------- |
-  | pageNum   | body     | Integer | Y        | 页码                |
-  | pageSize  | body     | Integer | Y        | 每页限制条数        |
-  | deptId    | body     | String  | N        | 部门id              |
-  | empName   | body     | String  | N        | 员工名称/编号       |
-  | startDate | body     | date    | N        | 开始日期 yyyy-MM-dd |
-  | endDate   | body     | date    | N        | 结束日期 yyyy-MM-dd |
+      | --------- | -------- | ------- | -------- | ------------------- |
+  | pageNum   | body     | Integer | Y        |                 |
+  | pageSize  | body     | Integer | Y        |         |
+  | deptId    | body     | String  | N        | department id              |
+  | empName   | body     | String  | N        | emp name       |
+  | startDate | body     | date    | N        | yyyy-MM-dd |
+  | endDate   | body     | date    | N        | yyyy-MM-dd |
 
 * request example
 
@@ -433,23 +429,23 @@
 * responseDesc
 
   | Filed      | Type     | Desc                       |
-    | --------------- | ------------ | ---------------------------- |
+      | --------------- | ------------ | ---------------------------- |
   | personId        | String       | emp id                       |
   | personNo        | String       | emp no                     |
   | name            | String       | emp name                     |
   | depNames        | String array | dept names                |
-  | roleNames       | String array | 职位名称集合                 |
-  | atDate          | date         | 日期 yyyy-MM-dd              |
-  | recognitionTime | Date         | 打卡时间 yyyy-MM-dd HH:mm:ss |
-  | clockPhotoId    | String       | 卡图片Id                     |
-  | deviceKey       | String       | 设备key                      |
-  | deviceName      | String       | 设备名称                     |
+  | roleNames       | String array | role Names                 |
+  | atDate          | date         | yyyy-MM-dd              |
+  | recognitionTime | Date         | check time yyyy-MM-dd HH:mm:ss |
+  | clockPhotoId    | String       | photo id                     |
+  | deviceKey       | String       | device SN                      |
+  | deviceName      | String       | device Name                     |
   | sdkRequestKey     | header | String   |
   | requestKeyVersion | header | String   |
   | sdkAccessToken    | header | String   |
   | Content-Type      | header | String   |
 
-* 响应示例
+* response example
 
   ```json
   {
@@ -471,29 +467,27 @@
 
 
 
-# 事件订阅回调
+# Event subscription callback
 
-> 管理员登录UStar客户端，在开发者对接平台页面，设置对接平台的回调地址和关注的事件
-> UStar客户端系统内部会监测当这些事件发生时会向关注了这些事件的对接平台发送这些事件的消息
-> 如果消息发送因为网络原因导致了失败，系统会重试发送，目前重试次数最大为20次，每次间隔5分钟
+> The administrator logs in to the UStar client and sets the callback address and following events of the docking platform on the developer docking platform page. When these events occur, the UStar client system will internally monitor and send messages of these events to the docking platform that has followed them. If the message sending fails due to network reasons, the system will retry sending. Currently, the maximum number of retries is 20, with an interval of 5 minutes between each attempt
 
-UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法使用POST。
+UStar Cloud will send HTTP requests to the addresses configured by various development platforms, using POST as the request method.
 
-## 事件消息结构Desc
+## Event Message Structure Desc
 
-* 请求方法：`POST`
+* request method:`POST`
 
-* 请求类型：`application/json`
+* content-type：`application/json`
 
-* 请求体内容：
+* request body：
 
   | Filed   | Type   | Desc                                   |
     | ------- | ------ | -------------------------------------- |
-  | msgId   | String | 消息id                                 |
-  | type    | number | 消息类型 详细请参考数据字典[3.4](#3.4) |
-  | content | String | 消息内容为事件回调内容的json 字符串    |
+  | msgId   | String | message id                                 |
+  | type    | number | message type: 1 recognition |
+  | content | String | JSON string with message content as event callback content    |
 
-> 请求体示例：
+> Example of request body:
 >
 > ```json
 > {
@@ -503,41 +497,40 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
 > }
 > ```
 
-**为了方便对接，UStarCloud将根据请求的 HTTP status code 是否为 200 来决定是否需要重新发送**
+**For the convenience of docking, UStarCloud will determine whether to resend the request based on whether the HTTP status code is 200 or not**
 
-> HTTP status code = 200 表示开发平台已成功处理消息推送，UStarCloud将不会重试。
+> HTTP status code=200 indicates that the development platform has successfully processed the message push, and UStarCloud will not retry.。
 >
-> HTTP status code != 200 表示开发平台处理消息失败，UStarCloud将继续重试。
->
-> 所以，朋友们，如果处理消息失败了，请将 HTTP status code 不要设置为200
+> HTTP status code !=  200 indicates that the development platform failed to process the message, and UStarCloud will continue to retry.
 
-## 回调事件
 
-### 识别记录回调事件
+## Callback Events
 
-* 触发条件：当设备识别记录回调到给系统时
+### Identify and record callback events
 
-* 事件回调内容：
+* Trigger condition: When the device recognition record is recalled to the system
+
+* Event callback content:
 
   | Filed              | Type         | Desc                                                         |
     | ------------------ | ------------ | ------------------------------------------------------------ |
-  | id                 | number       | 识别记录id                                                   |
-  | orgId              | number       | 公司id                                                       |
-  | personType         | number       | 识别记录类型<br />1:员工;<br />2:访客;<br />3:陌生人         |
-  | deviceKey          | String       | 识别设备序列号                                               |
-  | deviceName         | String       | 设备名称                                                     |
-  | personId           | Long         | emp id或者访客id                                             |
-  | empNo              | String       | 人员编号                                                     |
-  | departmentNames    | string array | 所属部门名称（用于员工）                                     |
+  | id                 | number       | recognition id                                                   |
+  | orgId              | number       | organization id                                                       |
+  | personType         | number       | Identify Record Types<br />1:emp;<br />2:visitor;<br />3:stranger         |
+  | deviceKey          | String       | device Key                                               |
+  | deviceName         | String       | device Name                                                     |
+  | personId           | Long         | emp id or visitor id                                             |
+  | empNo              | String       | emp no                                                     |
+  | departmentNames    | string array | Department name (for employees)                                     |
   | name               | String       | emp name                                                     |
-  | showTime           | Date         | 识别时间，格式：yyyy-MM-dd HH:mm:ss                          |
-  | temperatureUnit    | number       | 体温单位 <br />1：摄氏度 <br />2：华氏度                     |
-  | temperatureState   | number       | 体温状态 <br />1：正常 <br />2：异常 <br />3：未设置<br />4：未测量体温 (兼容null的情况，null也是未测量或者无测温功能)**** |
-  | aliveBody          | number       | 活体判断 <br />1：活体<br />2：非活体<br />3：未进行活体判断 |
-  | permissionTimeType | number       | 有效时间段判断 <br />1:准入时间内<br />2:未在准入时间内<br />3:未进行有效期判断 |
-  | passTimeType       | number       | 有效日期判断 <br />1:有效期内<br />2:未在有效期内<br />3:未进行时间段判断 |
-  | recMode            | number       | 识别模式<br />1:刷脸,<br />2:刷卡,<br />3:脸&卡双重认证<br />4:人证比对 |
-  | recStatus          | number       | 识别模式对比结果 <br />1:成功 <br />2:失败                   |
-  | recType            | number       | 1:本地识别<br />2云端识别                                    |
-  | type               | number       | 识别结果 <br />1:成功;<br />2:失败                           |
-  | photoUrl           | String       | 现场照URL                                                    |
+  | showTime           | Date         | Identification time：yyyy-MM-dd HH:mm:ss                          |
+  | temperatureUnit    | number       | Body temperature unit <br />1: Degrees Celsius <br />2: Fahrenheit degree                     |
+  | temperatureState   | number       | Body temperature status <br />1: Normal<br />2: Abnormal <br />3: Not set<br />4: Body temperature not measured (In the case of compatibility with null, null is also unmeasured or has no temperature measurement function)**** |
+  | aliveBody          | number       | Living body judgment <br />1: Living body<br />2: Non living body<br />3: No live body assessment conducted |
+  | permissionTimeType | number       | Effective time period judgment <br />1: Within the admission period<br />2: Not within the admission time<br />3: Failure to determine expiration date |
+  | passTimeType       | number       | Effective date judgment <br />1: Within the validity period<br />2: Not within the validity period<br />3: Time period judgment not performed |
+  | recMode            | number       | Recognition mode<br />1: Brush your face,<br />2: Swipe card,<br />3: Face&Card two-factor authentication<br />4: Witness comparison |
+  | recStatus          | number       | Recognition pattern comparison results <br />1: Success <br />2: Failed                  |
+  | recType            | number       | 1: Local identification<br />2 Cloud recognition                                    |
+  | type               | number       | Identification results <br />1: Success;<br />2: Failed                           |
+  | photoUrl           | String       | photo URL                                                    |
