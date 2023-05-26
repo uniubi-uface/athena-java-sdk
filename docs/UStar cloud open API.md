@@ -45,15 +45,12 @@
 
   ```json
     {
-    "success": true,
-    "code": "1000_SUS",
-    "msg": "successful operation!",
-    "data": "d3b86512301c456ca96a90c4be1eccf4"
+      "success": true,
+      "code": "1000_SUS",
+      "msg": "successful operation!",
+      "data": "d3b86512301c456ca96a90c4be1eccf4"
     }
   ```
-
-
-
 
 ### 1.2 Test API
 
@@ -91,8 +88,6 @@
   }
   ```
 
-
-
 ## 2 Attendance API
 
 ### 2.1 atdDetailReport
@@ -127,8 +122,6 @@
       "pageNum": 1
   }'
   ```
-
-
 
 * responseDesc
 
@@ -209,8 +202,6 @@
   }
   ```
 
-
-
 ### 2.2 atdOverWorkReport
 
 * sdkRequestKey : `atdOverWorkReport`
@@ -242,8 +233,6 @@
       "pageNum": 1
   }'
   ```
-
-
 
 * responseDesc
 
@@ -341,8 +330,6 @@
       "pageNum": 1
   }'
   ```
-
-
 
 * responseDesc
 
@@ -464,8 +451,6 @@
       "secret": null
   }
   ```
-
-
 
 # Event subscription callback
 
