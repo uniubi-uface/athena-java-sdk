@@ -122,7 +122,7 @@
   curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
   --header 'sdkRequestKey: atdDetailReport' \
   --header 'requestKeyVersion: v2' \
-  --header 'sdkAccessToken: {{accessToken}}' \
+  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
   --header 'Content-Type: application/json' \
   --data '{
       "pageSize": 1,
@@ -239,7 +239,7 @@
   curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
   --header 'sdkRequestKey: atdOverWorkReport' \
   --header 'requestKeyVersion: v2' \
-  --header 'sdkAccessToken: {{accessToken}}' \
+  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
   --header 'Content-Type: application/json' \
   --data '{
       "pageSize": 2,
@@ -342,7 +342,7 @@
   curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
   --header 'sdkRequestKey: atdBreakTimeReport' \
   --header 'requestKeyVersion: v2' \
-  --header 'sdkAccessToken: xxxxxxxx' \
+  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
   --header 'Content-Type: application/json' \
   --data '{
       "pageSize": 1,
@@ -430,7 +430,7 @@
   curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
   --header 'sdkRequestKey: atdExceptionReport' \
   --header 'requestKeyVersion: v2' \
-  --header 'sdkAccessToken: {{accessToken}}' \
+  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
   --header 'Content-Type: application/json' \
   --data '{
       "pageSize": 2,
