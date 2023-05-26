@@ -389,8 +389,9 @@
 
 * request data desc
 
+
   | Filed     | Location | Type    | Required | Desc                |
-        | --------- | -------- | ------- | -------- | ------------------- |
+          | --------- | -------- | ------- | -------- | ------------------- |
   | pageNum   | body     | Integer | Y        |                 |
   | pageSize  | body     | Integer | Y        |         |
   | deptId    | body     | String  | N        | department id              |
@@ -414,8 +415,9 @@
 
 * responseDesc
 
+
   | Filed      | Type     | Desc                       |
-        | --------------- | ------------ | ---------------------------- |
+          | --------------- | ------------ | ---------------------------- |
   | personId        | String       | emp id                       |
   | personNo        | String       | emp no                     |
   | name            | String       | emp name                     |
@@ -467,7 +469,7 @@ request method.
 * request body：
 
   | Filed   | Type   | Desc                                   |
-      | ------- | ------ | -------------------------------------- |
+        | ------- | ------ | -------------------------------------- |
   | msgId   | String | message id                                 |
   | type    | number | message type: 1 recognition |
   | content | String | JSON string with message content as event callback content    |
@@ -498,7 +500,7 @@ status code is 200 or not**
 * Event callback content:
 
   | Filed              | Type         | Desc                                                         |
-      | ------------------ | ------------ | ------------------------------------------------------------ |
+        | ------------------ | ------------ | ------------------------------------------------------------ |
   | id                 | number       | recognition id                                                   |
   | orgId              | number       | organization id                                                       |
   | personType         | number       | Identify Record Types<br />1:emp;<br />2:visitor;<br />3:stranger         |
