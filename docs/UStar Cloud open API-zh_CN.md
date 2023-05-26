@@ -44,12 +44,12 @@
 * 响应参数说明
 
   ```json
-{
-"success": true,
-"code": "1000_SUS",
-"msg": "successful operation!",
-"data": "d3b86512301c456ca96a90c4be1eccf4"
-}
+    {
+      "success": true,
+      "code": "1000_SUS",
+      "msg": "successful operation!",
+      "data": "d3b86512301c456ca96a90c4be1eccf4"
+    }
   ```
 
 
