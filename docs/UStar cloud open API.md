@@ -1,5 +1,3 @@
-
-
 # API
 
 ## 1 Auth API
@@ -10,14 +8,14 @@
 
 * request data desc
 
-  | Filed             | Location | Type   | Required | Desc                                        |
+| Filed             | Location | Type   | Required | Desc                                        |
     | ----------------- | -------- | ------ | -------- | ------------------------------------------- |
-  | accessKey         | body     | String | true     | get from developer web page                 |
-  | nonce             | body     | String | true     | random number                                      |
-  | encrypted         | body     | String | true     | MD5(accessSecret+nonce)                    |
-  | sdkRequestKey     | header   | String | true     | sdkRequestKey ,please put in request header |
-  | requestKeyVersion | header   | String | true     | v2                                          |
-  | Content-Type      | header   | String | true     | application/json                            |
+| accessKey         | body     | String | true     | get from developer web page                 |
+| nonce             | body     | String | true     | random number                                      |
+| encrypted         | body     | String | true     | MD5(accessSecret+nonce)                    |
+| sdkRequestKey     | header   | String | true     | sdkRequestKey ,please put in request header |
+| requestKeyVersion | header   | String | true     | v2                                          |
+| Content-Type      | header   | String | true     | application/json                            |
 
 * request example
 
@@ -34,12 +32,12 @@
   ```
 * response
 
-  | Filed   | Type    | Desc                                            |
+| Filed   | Type    | Desc                                            |
     | :------ | :------ | :---------------------------------------------- |
-  | code    | String  | 1000_SUS means ok                               |
-  | success | boolean | true or false                                   |
-  | msg     | String  | `successful operation!`  or `operation failed!` |
-  | data    | String  | sdkAccessToken, expired 24 hours                |
+| code    | String  | 1000_SUS means ok                               |
+| success | boolean | true or false                                   |
+| msg     | String  | `successful operation!`  or `operation failed!` |
+| data    | String  | sdkAccessToken, expired 24 hours                |
 
 * responseDesc
 
@@ -58,14 +56,14 @@
 
 * request data desc：
 
-  | Filed             | Location | Type   | Required | Desc                                           |
+| Filed             | Location | Type   | Required | Desc                                           |
   | ----------------- | -------- | ------ | -------- | ---------------------------------------------- |
-  | sdkRequestKey     | header   | String | true     | sdkRequestKey  please put it in request header |
-  | requestKeyVersion | header   | String | true     | v2                                             |
+| sdkRequestKey     | header   | String | true     | sdkRequestKey  please put it in request header |
+| requestKeyVersion | header   | String | true     | v2                                             |
 | sdkAccessToken    | header   | String | true     | sdkAccessToken                                 |
-  | Content-Type      | header   | String | true     | application/json                               |
-  |                   | body     | String |          |                                                |
-  
+| Content-Type      | header   | String | true     | application/json                               |
+|                   | body     | String |          |                                                |
+
 * request example
 
   ```shell
@@ -96,18 +94,18 @@
 
 * request data desc
 
-  | Filed             | Location | Type    | Required | Desc                                           |
+| Filed             | Location | Type    | Required | Desc                                           |
     | ----------------- | -------- | ------- | -------- | ---------------------------------------------- |
-  | pageNum           | body     | Integer | Y        |                                                |
-  | pageSize          | body     | Integer | Y        |                                                |
-  | deptId            | body     | String  | N        | department id                                  |
-  | empName           | body     | String  | N        | emp name                                       |
-  | startDate         | body     | date    | N        | yyyy-MM-dd                                     |
-  | endDate           | body     | date    | N        | yyyy-MM-dd                                     |
-  | sdkRequestKey     | header   | String  | true     | sdkRequestKey  please put it in request header |
-  | requestKeyVersion | header   | String  | true     | v2                                             |
-  | sdkAccessToken    | header   | String  | true     | sdkAccessToken                                 |
-  | Content-Type      | header   | String  | true     | application/json                               |
+| pageNum           | body     | Integer | Y        |                                                |
+| pageSize          | body     | Integer | Y        |                                                |
+| deptId            | body     | String  | N        | department id                                  |
+| empName           | body     | String  | N        | emp name                                       |
+| startDate         | body     | date    | N        | yyyy-MM-dd                                     |
+| endDate           | body     | date    | N        | yyyy-MM-dd                                     |
+| sdkRequestKey     | header   | String  | true     | sdkRequestKey  please put it in request header |
+| requestKeyVersion | header   | String  | true     | v2                                             |
+| sdkAccessToken    | header   | String  | true     | sdkAccessToken                                 |
+| Content-Type      | header   | String  | true     | application/json                               |
 
 * request example
 
@@ -125,33 +123,33 @@
 
 * responseDesc
 
-  | Filed                  | Type         | Desc                                                         |
+| Filed                  | Type         | Desc                                                         |
     | ---------------------- | ------------ | ------------------------------------------------------------ |
-  | personId               | String       | emp id                                                       |
-  | personNo               | String       | emp no                                                     |
-  | name                   | String       | emp name                                                     |
-  | depNames               | String array | dept names                                                |
-  | roleNames              | String array | role Names                                                 |
-  | atDate                 | date         | date yyyy-MM-dd                                              |
-  | timeIntervalName       | String       | Time period name                                                   |
-  | planSignInDatetime     | Date         | Expected check-in time yyyy-MM-dd HH:mm:ss                               |
-  | planSignOutDatetime    | Date         | Time for signing out yyyy-MM-dd HH:mm:ss                               |
-  | planTimeIntervalSecond | long number  | Planned working hours during the time period, in seconds                                  |
-  | realSignInTime         | Date         | Actual check-in time yyyy-MM-dd HH:mm:ss                             |
-  | signInStatus           | number       | Sign-in status<br />1:normal<br />2:Lack of cards<br />3:late<br />4:Early retirement<br />5:No clock in (missing card)<br />6:work overtime |
-  | realSignOutTime        | date         | Actual check-out time yyyy-MM-dd HH:mm:ss                             |
-  | signOutStatus          | number       | Sign out status<br />1:normal<br />2:Lack of cards<br />3:late<br />4:Early retirement<br />5:No clock in (missing card)<br />6:work overtime |
-  | realWorkTimeSecond     | long number  | Actual working hours in seconds                                          |
-  | normalWorkSecond       | long number  | Normal working hours in seconds                                         |
-  | realLateSecond         | long number  | Delay duration in seconds                                             |
-  | realLeaveEarlySecond   | long number  | Early leave duration in seconds                                              |
-  | realAbsenteeismSecond  | long number  | Absenteeism duration in seconds                                              |
-  | workDayOverWorkSecond  | long number  | Overtime duration on working days in seconds                                        |
-  | restDayOverWorkSecond  | long number  | Overtime duration on rest days in seconds                                        |
-  | holidayOverWorkSecond  | long number  | Overtime duration during holidays in seconds                                        |
-  | dateType               | number       | 1 working day (regular time period)<br />2 working days (flexible time period)<br />3 rest days<br />4 holidays<br />5 Unscheduled shifts<br /> |
-  | signInStart            | Date         | The start check-in time, which has a value only when date type=2                       |
-  | signInEnd              | Date         | End check-in time, with a value only when date type=2                        |
+| personId               | String       | emp id                                                       |
+| personNo               | String       | emp no                                                     |
+| name                   | String       | emp name                                                     |
+| depNames               | String array | dept names                                                |
+| roleNames              | String array | role Names                                                 |
+| atDate                 | date         | date yyyy-MM-dd                                              |
+| timeIntervalName       | String       | Time period name                                                   |
+| planSignInDatetime     | Date         | Expected check-in time yyyy-MM-dd HH:mm:ss                               |
+| planSignOutDatetime    | Date         | Time for signing out yyyy-MM-dd HH:mm:ss                               |
+| planTimeIntervalSecond | long number  | Planned working hours during the time period, in seconds                                  |
+| realSignInTime         | Date         | Actual check-in time yyyy-MM-dd HH:mm:ss                             |
+| signInStatus           | number       | Sign-in status<br />1:normal<br />2:Lack of cards<br />3:late<br />4:Early retirement<br />5:No clock in (missing card)<br />6:work overtime |
+| realSignOutTime        | date         | Actual check-out time yyyy-MM-dd HH:mm:ss                             |
+| signOutStatus          | number       | Sign out status<br />1:normal<br />2:Lack of cards<br />3:late<br />4:Early retirement<br />5:No clock in (missing card)<br />6:work overtime |
+| realWorkTimeSecond     | long number  | Actual working hours in seconds                                          |
+| normalWorkSecond       | long number  | Normal working hours in seconds                                         |
+| realLateSecond         | long number  | Delay duration in seconds                                             |
+| realLeaveEarlySecond   | long number  | Early leave duration in seconds                                              |
+| realAbsenteeismSecond  | long number  | Absenteeism duration in seconds                                              |
+| workDayOverWorkSecond  | long number  | Overtime duration on working days in seconds                                        |
+| restDayOverWorkSecond  | long number  | Overtime duration on rest days in seconds                                        |
+| holidayOverWorkSecond  | long number  | Overtime duration during holidays in seconds                                        |
+| dateType               | number       | 1 working day (regular time period)<br />2 working days (flexible time period)<br />3 rest days<br />4 holidays<br />5 Unscheduled shifts<br /> |
+| signInStart            | Date         | The start check-in time, which has a value only when date type=2                       |
+| signInEnd              | Date         | End check-in time, with a value only when date type=2                        |
 
 * response example
 
@@ -208,18 +206,19 @@
 
 * request data desc
 
-  | Filed | Location | Type | Required | Desc              |
+| Filed | Location | Type | Required | Desc              |
     | --------- | -------- | -------- | ------------------- | ------------------- |
-  | pageNum   | body | Integer  | Y        |                 |
-  | pageSize  | body | Integer  | Y        |         |
-  | deptId    | body | String   | N        | Department ID              |
-  | empName   | body | String   | N        | Employee Name        |
-  | startDate | body | date     | N        | yyyy-MM-dd |
-  | endDate   | body | date     | N        | yyyy-MM-dd |
-  | sdkRequestKey     | header | String   | true     | sdkRequestKey  please put it in request header |
-  | requestKeyVersion | header | String   | true     | v2                         |
-  | sdkAccessToken    | header | String   | true     | sdkAccessToken             |
-  | Content-Type      | header | String   | true     | application/json           |
+| pageNum   | body | Integer  | Y        |                 |
+| pageSize  | body | Integer  | Y        |         |
+| deptId    | body | String   | N        | Department ID              |
+| empName   | body | String   | N        | Employee Name        |
+| startDate | body | date     | N        | yyyy-MM-dd |
+| endDate   | body | date     | N        | yyyy-MM-dd |
+| sdkRequestKey     | header | String   | true     | sdkRequestKey  please put it in request header |
+| requestKeyVersion | header | String   | true     | v2                         |
+| sdkAccessToken    | header | String   | true     | sdkAccessToken             |
+| Content-Type      | header | String   | true     | application/json           |
+
 * request example
 
   ```shell
@@ -236,18 +235,18 @@
 
 * responseDesc
 
-  | Filed                 | Type         | Desc                                                         |
+| Filed                 | Type         | Desc                                                         |
       | --------------------- | ------------ | ------------------------------------------------------------ |
-  | personId              | String       | emp id                                                       |
-  | personNo              | String       | emp no                                                     |
-  | name                  | String       | emp name                                                     |
-  | depNames              | String array | dept names                                                |
-  | roleNames             | String array | role names                                                |
-  | atDate                | date         | yyyy-MM-dd                                              |
-  | workDayOverWorkSecond | long number  | Overtime duration on working days in seconds                                        |
-  | restDayOverWorkSecond | long number  | Overtime duration on rest days in seconds                                        |
-  | holidayOverWorkSecond | long number  | Overtime duration during holidays in seconds                                        |
-  | dateType              | number       | 1 working day (regular time period)<br />2 working days (flexible time period)<br />3 rest days<br />4 holidays<br />5 Unscheduled shifts<br /> |
+| personId              | String       | emp id                                                       |
+| personNo              | String       | emp no                                                     |
+| name                  | String       | emp name                                                     |
+| depNames              | String array | dept names                                                |
+| roleNames             | String array | role names                                                |
+| atDate                | date         | yyyy-MM-dd                                              |
+| workDayOverWorkSecond | long number  | Overtime duration on working days in seconds                                        |
+| restDayOverWorkSecond | long number  | Overtime duration on rest days in seconds                                        |
+| holidayOverWorkSecond | long number  | Overtime duration during holidays in seconds                                        |
+| dateType              | number       | 1 working day (regular time period)<br />2 working days (flexible time period)<br />3 rest days<br />4 holidays<br />5 Unscheduled shifts<br /> |
 
 * response example
 
@@ -304,18 +303,18 @@
 
 * request data desc
 
-  | Filed | Location | Type | Required | Desc              |
+| Filed | Location | Type | Required | Desc              |
       | --------- | ---- | -------- | -------- | ------------------- |
-  | pageNum   | body | Integer  | Y        |                 |
-  | pageSize  | body | Integer  | Y        |         |
-  | deptId    | body | String   | N        | department id              |
-  | empName   | body | String   | N        | emp name       |
-  | startDate | body | date     | N        | yyyy-MM-dd |
-  | endDate   | body | date     | N        | yyyy-MM-dd |
-  | sdkRequestKey     | header | String   | true     | sdkRequestKey  please put it in request header |
-  | requestKeyVersion | header | String   | true     | v2                         |
-  | sdkAccessToken    | header | String   | true     | sdkAccessToken             |
-  | Content-Type      | header | String   | true     | application/json           |
+| pageNum   | body | Integer  | Y        |                 |
+| pageSize  | body | Integer  | Y        |         |
+| deptId    | body | String   | N        | department id              |
+| empName   | body | String   | N        | emp name       |
+| startDate | body | date     | N        | yyyy-MM-dd |
+| endDate   | body | date     | N        | yyyy-MM-dd |
+| sdkRequestKey     | header | String   | true     | sdkRequestKey  please put it in request header |
+| requestKeyVersion | header | String   | true     | v2                         |
+| sdkAccessToken    | header | String   | true     | sdkAccessToken             |
+| Content-Type      | header | String   | true     | application/json           |
 
 * request example
 
@@ -333,21 +332,21 @@
 
 * responseDesc
 
-  | Filed                 | Type         | Desc                               |
+| Filed                 | Type         | Desc                               |
       | --------------------- | ------------ | ---------------------------------- |
-  | personId              | String       | emp id                             |
-  | personNo              | String       | emp no                           |
-  | name                  | String       | emp name                           |
-  | depNames              | String array | dept names                      |
-  | roleNames             | String array | role Names                       |
-  | atDate                | date         | attendance date yyyy-MM-dd                    |
-  | timeIntervalName      | String       | Time period name                         |
-  | breatimeName          | String       | The name of the break period for the time period               |
-  | planBreakTimeDuration | long number  | Planned rest duration in seconds               |
-  | realBreakTimeStart    | Date         | Actual start rest time yyyy-MM-dd        |
-  | realBreakTimeEnd      | Date         | Actual end rest time yyyy-MM-dd        |
-  | realBreakTimeDuration | long number  | Actual rest time in seconds               |
-  | breakStatus           | number       | Rest status: 0- unsettled, 1- normal, 2- abnormal |
+| personId              | String       | emp id                             |
+| personNo              | String       | emp no                           |
+| name                  | String       | emp name                           |
+| depNames              | String array | dept names                      |
+| roleNames             | String array | role Names                       |
+| atDate                | date         | attendance date yyyy-MM-dd                    |
+| timeIntervalName      | String       | Time period name                         |
+| breatimeName          | String       | The name of the break period for the time period               |
+| planBreakTimeDuration | long number  | Planned rest duration in seconds               |
+| realBreakTimeStart    | Date         | Actual start rest time yyyy-MM-dd        |
+| realBreakTimeEnd      | Date         | Actual end rest time yyyy-MM-dd        |
+| realBreakTimeDuration | long number  | Actual rest time in seconds               |
+| breakStatus           | number       | Rest status: 0- unsettled, 1- normal, 2- abnormal |
 
 * response example
 
@@ -391,7 +390,7 @@
 * request data desc
 
   | Filed     | Location | Type    | Required | Desc                |
-      | --------- | -------- | ------- | -------- | ------------------- |
+        | --------- | -------- | ------- | -------- | ------------------- |
   | pageNum   | body     | Integer | Y        |                 |
   | pageSize  | body     | Integer | Y        |         |
   | deptId    | body     | String  | N        | department id              |
@@ -416,7 +415,7 @@
 * responseDesc
 
   | Filed      | Type     | Desc                       |
-      | --------------- | ------------ | ---------------------------- |
+        | --------------- | ------------ | ---------------------------- |
   | personId        | String       | emp id                       |
   | personNo        | String       | emp no                     |
   | name            | String       | emp name                     |
@@ -456,7 +455,8 @@
 
 > The administrator logs in to the UStar client and sets the callback address and following events of the docking platform on the developer docking platform page. When these events occur, the UStar client system will internally monitor and send messages of these events to the docking platform that has followed them. If the message sending fails due to network reasons, the system will retry sending. Currently, the maximum number of retries is 20, with an interval of 5 minutes between each attempt
 
-UStar Cloud will send HTTP requests to the addresses configured by various development platforms, using POST as the request method.
+UStar Cloud will send HTTP requests to the addresses configured by various development platforms, using POST as the
+request method.
 
 ## Event Message Structure Desc
 
@@ -467,7 +467,7 @@ UStar Cloud will send HTTP requests to the addresses configured by various devel
 * request body：
 
   | Filed   | Type   | Desc                                   |
-    | ------- | ------ | -------------------------------------- |
+      | ------- | ------ | -------------------------------------- |
   | msgId   | String | message id                                 |
   | type    | number | message type: 1 recognition |
   | content | String | JSON string with message content as event callback content    |
@@ -482,12 +482,12 @@ UStar Cloud will send HTTP requests to the addresses configured by various devel
 > }
 > ```
 
-**For the convenience of docking, UStarCloud will determine whether to resend the request based on whether the HTTP status code is 200 or not**
+**For the convenience of docking, UStarCloud will determine whether to resend the request based on whether the HTTP
+status code is 200 or not**
 
 > HTTP status code=200 indicates that the development platform has successfully processed the message push, and UStarCloud will not retry.。
 >
-> HTTP status code !=  200 indicates that the development platform failed to process the message, and UStarCloud will continue to retry.
-
+> HTTP status code != 200 indicates that the development platform failed to process the message, and UStarCloud will continue to retry.
 
 ## Callback Events
 
@@ -498,7 +498,7 @@ UStar Cloud will send HTTP requests to the addresses configured by various devel
 * Event callback content:
 
   | Filed              | Type         | Desc                                                         |
-    | ------------------ | ------------ | ------------------------------------------------------------ |
+      | ------------------ | ------------ | ------------------------------------------------------------ |
   | id                 | number       | recognition id                                                   |
   | orgId              | number       | organization id                                                       |
   | personType         | number       | Identify Record Types<br />1:emp;<br />2:visitor;<br />3:stranger         |
