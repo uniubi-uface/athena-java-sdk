@@ -66,7 +66,7 @@
   | ----------------- | ------ | -------- | -------- | -------------------------- |
   | sdkRequestKey     | header | String   | true     | sdkRequestKey 放在请求头中 |
   | requestKeyVersion | header | String   | true     | v2                         |
-| sdkAccessToken    | header | String   | true     | sdkAccessToken             |
+  | sdkAccessToken    | header | String   | true     | sdkAccessToken             |
   | Content-Type      | header | String   | true     | application/json           |
   |                   | body   | String   |          | 随意输入                   |
   
