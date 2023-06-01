@@ -6,7 +6,7 @@
 
 	<groupId>com.uniubi.cloud</groupId>
 	<artifactId>athena-sdk-examples</artifactId>
-	<version>3.0.0.RELEASE</version>
+	<version>3.0.1.RELEASE</version>
 	<name>athena-sdk-examples</name>
 
 	<description>UStar cloud open api SDK example pom</description>
@@ -114,23 +114,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
 				<version>3.7.1</version>
-			</plugin>
-			<plugin>
-				<groupId>io.spring.javaformat</groupId>
-				<artifactId>spring-javaformat-maven-plugin</artifactId>
-				<version>0.0.31</version>
-				<executions>
-					<execution>
-						<phase>validate</phase>
-						<configuration>
-							<skip>false</skip>
-						</configuration>
-						<goals>
-							<goal>apply</goal>
-							<goal>validate</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
