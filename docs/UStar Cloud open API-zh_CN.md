@@ -454,80 +454,10 @@
   }
   ```
 
-# 事件订阅回调
 
-> 管理员登录UStar客户端，在开发者对接平台页面，设置对接平台的回调地址和关注的事件
-> UStar客户端系统内部会监测当这些事件发生时会向关注了这些事件的对接平台发送这些事件的消息
-> 如果消息发送因为网络原因导致了失败，系统会重试发送，目前重试次数最大为20次，每次间隔5分钟
+## 3 员工服务相关API
 
-UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法使用POST。
-
-## 事件消息结构说明
-
-* 请求方法：`POST`
-
-* 请求类型：`application/json`
-
-* 请求体内容：
-
-| 字段名称 | 字段类型 | 说明                                   |
-    | -------- | -------- | -------------------------------------- |
-| msgId    | String   | 消息id                                 |
-| type     | number   | 消息类型 详细请参考数据字典[3.4](#3.4) |
-| content  | String   | 消息内容为事件回调内容的json 字符串    |
-
-> 请求体示例：
->
-> ```json
-> {
->     "msgId": "xxxxxxxx",
->     "type": 1,
->     "content": "{\"aliveType\":1,\"depNameConcat\":\"name1,name2\",\"departmentNames\":[\"name1\",\"name2\"],\"deviceKey\":\"84E0F42C3BB78702\",\"deviceName\":\"this is device name\",\"empNo\":\"001\",\"id\":3126713,\"name\":\"Joey T\",\"orgId\":97,\"passTimeType\":1,\"permissionTimeType\":1,\"personGuid\":null,\"personId\":8508,\"personType\":1,\"photoUrl\":\"https://uniubi-aiot.s3-eu-west-1.amazonaws.com/pkg365/2005/20050001000506/034000.411/img/ffe1fd7d-eecc-45c3-a6cf-14cee5c3361a.station\",\"recMode\":1,\"recStatus\":null,\"recType\":1,\"showTime\":\"2022-05-20 03:39:59\",\"temperature\":null,\"temperatureState\":null,\"temperatureUnit\":null,\"type\":1}"
-> }
-> ```
-
-**为了方便对接，UStarCloud将根据请求的 HTTP status code 是否为 200 来决定是否需要重新发送**
-
-> HTTP status code = 200 表示开发平台已成功处理消息推送，UStarCloud将不会重试。
->
-> HTTP status code != 200 表示开发平台处理消息失败，UStarCloud将继续重试。
->
-> 所以，朋友们，如果处理消息失败了，请将 HTTP status code 不要设置为200
-
-## 回调事件
-
-### 识别记录回调事件
-
-* 触发条件：当设备识别记录回调到给系统时
-
-* 事件回调内容：
-
-| 字段名称           | 字段类型     | 说明                                                         |
-    | ------------------ | ------------ | ------------------------------------------------------------ |
-| id                 | number       | 识别记录id                                                   |
-| orgId              | number       | 公司id                                                       |
-| personType         | number       | 识别记录类型<br />1:员工;<br />2:访客;<br />3:陌生人         |
-| deviceKey          | String       | 识别设备序列号                                               |
-| deviceName         | String       | 设备名称                                                     |
-| personId           | Long         | 人员id或者访客id                                             |
-| empNo              | String       | 人员编号                                                     |
-| departmentNames    | string array | 所属部门名称（用于员工）                                     |
-| name               | String       | 人员姓名                                                     |
-| showTime           | Date         | 识别时间，格式：yyyy-MM-dd HH:mm:ss                          |
-| temperatureUnit    | number       | 体温单位 <br />1：摄氏度 <br />2：华氏度                     |
-| temperatureState   | number       | 体温状态 <br />1：正常 <br />2：异常 <br />3：未设置<br />4：未测量体温 (兼容null的情况，null也是未测量或者无测温功能)**** |
-| aliveBody          | number       | 活体判断 <br />1：活体<br />2：非活体<br />3：未进行活体判断 |
-| permissionTimeType | number       | 有效时间段判断 <br />1:准入时间内<br />2:未在准入时间内<br />3:未进行有效期判断 |
-| passTimeType       | number       | 有效日期判断 <br />1:有效期内<br />2:未在有效期内<br />3:未进行时间段判断 |
-| recMode            | number       | 识别模式<br />1:刷脸,<br />2:刷卡,<br />3:脸&卡双重认证<br />4:人证比对 |
-| recStatus          | number       | 识别模式对比结果 <br />1:成功 <br />2:失败                   |
-| recType            | number       | 1:本地识别<br />2云端识别                                    |
-| type               | number       | 识别结果 <br />1:成功;<br />2:失败                           |
-| photoUrl           | String       | 现场照URL                                                    |
-
-## 5 员工服务相关API
-
-### 5.1 新注册员工信息
+### 3.1 新注册员工信息
 
 * sdkRequestKey : `registerEmployee`
 
@@ -588,7 +518,7 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
   }
   ```
 
-### 5.2 添加员工照片
+### 3.2 添加员工照片
 
 * sdkRequestKey : `addEmployeeFace`
 
@@ -634,7 +564,7 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
   ```
 
 
-### 5.3 编辑修改员工信息
+### 3.3 编辑修改员工信息
 
 * sdkRequestKey : `editEmployee`
 
@@ -698,7 +628,7 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
   ```
 
 
-### 5.4 查询员工信息
+### 3.4 查询员工信息
 
 * sdkRequestKey : `queryEmployeeInfo`
 
@@ -816,7 +746,7 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
 }
   ```
 
-### 5.5 删除员工
+### 3.5 删除员工
 
 * sdkRequestKey : `deleteEmployee`
 
@@ -859,7 +789,7 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
   }
   ```
 
-### 5.6 删除员工照片
+### 3.6 删除员工照片
 
 * sdkRequestKey : `deleteEmployee`
 
@@ -905,9 +835,9 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
   ```
 
 
-## 6 访客服务相关API
+## 4 访客服务相关API
 
-###65.1 添加访客信息
+### 4.1 添加访客信息
 
 * sdkRequestKey : `addVisitor`
 
@@ -984,7 +914,7 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
   }
   ```
 
-### 6.2 添加访客照片
+### 4.2 添加访客照片
 
 * sdkRequestKey : `addVisitorFace`
 
@@ -1030,7 +960,7 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
   ```
 
 
-### 6.3 编辑修改员工信息
+### 4.3 编辑修改员工信息
 
 * sdkRequestKey : `editVisitor`
 
@@ -1102,7 +1032,7 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
   ```
 
 
-### 5.4 查询访客信息
+### 4.4 查询访客信息
 
 * sdkRequestKey : `queryVisitorInfo`
 
@@ -1203,7 +1133,7 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
   ```
  
  
-### 5.5 删除访客
+### 4.5 删除访客
 
 * sdkRequestKey : `deleteVisitor`
 
@@ -1246,7 +1176,7 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
   }
   ```
 
-### 5.6 删除访客照片
+### 4.6 删除访客照片
 
 * sdkRequestKey : `deleteVisitorFace`
 
@@ -1289,3 +1219,236 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
       "data": null
   }
   ```
+
+## 5 部门服务相关API
+
+### 5.1 获取企业部门树信息
+
+* sdkRequestKey : `getDepartTree`
+
+* 请求参数说明
+
+| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
+    | ----------------- | ------ | -------- | -------- | -------------------------- |
+| orgId             | body   | Long     | Y        | 企业id        |
+| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
+| requestKeyVersion | header | String   | Y        | v2                         |
+| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
+| Content-Type      | header | String   | Y        | application/json           |
+
+* 请求示例
+
+```shell
+  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
+  --header 'sdkRequestKey: getDepartTree' \
+  --header 'requestKeyVersion: v2' \
+  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
+  --header 'Content-Type: application/json' \
+  --data '{
+        "orgId": 1
+}'
+```
+
+* 响应参数说明
+
+| 字段名称                | 位置   | 字段类型 | 是否必须 | 说明                       |
+| ----------------------| ------ | -------- | -------- | -------------------------- |
+| parentDeptId          | body   | Long     | N        | 父部门id，-1为顶层部门ID                            |
+| deptId                | body   | String   | N        | 部门id                            |
+| deptName              | body   | String   | N        | 部门名称                            |
+| children              | body   | List   | N        | 子部门集合                           |
+| - parentDeptId          | children   | Long     | N        | 父部门id                            |
+| - deptId                | children   | String   | N        | 部门id                            |
+| - deptName              | children   | String   | N        | 部门名称                            |
+| - children              | children   | List   | N        | 子部门集合                           |
+
+* 响应示例
+  
+```json
+  {
+    "success": true,
+    "code": "1000_SUS",
+    "msg": "successful operation!",
+    "data": {
+        "parentDeptId": null,
+        "deptId": 72,
+        "deptName": "Test company",
+        "children": [
+            {
+                "parentDeptId": null,
+                "deptId": 137,
+                "deptName": "AAS",
+                "children": [],
+                "deptEmployeeList": null
+            },
+            {
+                "parentDeptId": null,
+                "deptId": 133,
+                "deptName": "AAS.",
+                "children": [],
+                "deptEmployeeList": null
+            },
+            {
+                "parentDeptId": null,
+                "deptId": 132,
+                "deptName": "ASDI",
+                "children": [],
+                "deptEmployeeList": null
+            },
+            {
+                "parentDeptId": null,
+                "deptId": 131,
+                "deptName": "ASDI.",
+                "children": [],
+                "deptEmployeeList": null
+            },
+            {
+                "parentDeptId": null,
+                "deptId": 79,
+                "deptName": "Product design",
+                "children": [
+                    {
+                        "parentDeptId": null,
+                        "deptId": 80,
+                        "deptName": "Product group",
+                        "children": [
+                            {
+                                "parentDeptId": null,
+                                "deptId": 81,
+                                "deptName": "Document group",
+                                "children": [],
+                                "deptEmployeeList": null
+                            }
+                        ],
+                        "deptEmployeeList": null
+                    }
+                ],
+                "deptEmployeeList": null
+            },
+            {
+                "parentDeptId": null,
+                "deptId": 74,
+                "deptName": "chanpinjishubu",
+                "children": [
+                    {
+                        "parentDeptId": null,
+                        "deptId": 136,
+                        "deptName": "AAA",
+                        "children": [],
+                        "deptEmployeeList": null
+                    },
+                    {
+                        "parentDeptId": null,
+                        "deptId": 135,
+                        "deptName": "AAA.",
+                        "children": [],
+                        "deptEmployeeList": null
+                    },
+                    {
+                        "parentDeptId": null,
+                        "deptId": 75,
+                        "deptName": "ceshibumen",
+                        "children": [
+                            {
+                                "parentDeptId": null,
+                                "deptId": 77,
+                                "deptName": "guoneizu",
+                                "children": [],
+                                "deptEmployeeList": null
+                            },
+                            {
+                                "parentDeptId": null,
+                                "deptId": 76,
+                                "deptName": "haiwaizu",
+                                "children": [],
+                                "deptEmployeeList": null
+                            }
+                        ],
+                        "deptEmployeeList": null
+                    }
+                ],
+                "deptEmployeeList": null
+            },
+            {
+                "parentDeptId": null,
+                "deptId": 73,
+                "deptName": "-待分配-",
+                "children": [],
+                "deptEmployeeList": null
+            }
+        ],
+        "deptEmployeeList": null
+    }
+}
+  ```
+
+# 事件订阅回调
+
+> 管理员登录UStar客户端，在开发者对接平台页面，设置对接平台的回调地址和关注的事件
+> UStar客户端系统内部会监测当这些事件发生时会向关注了这些事件的对接平台发送这些事件的消息
+> 如果消息发送因为网络原因导致了失败，系统会重试发送，目前重试次数最大为20次，每次间隔5分钟
+
+UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法使用POST。
+
+## 事件消息结构说明
+
+* 请求方法：`POST`
+
+* 请求类型：`application/json`
+
+* 请求体内容：
+
+| 字段名称 | 字段类型 | 说明                                   |
+    | -------- | -------- | -------------------------------------- |
+| msgId    | String   | 消息id                                 |
+| type     | number   | 消息类型 详细请参考数据字典[3.4](#3.4) |
+| content  | String   | 消息内容为事件回调内容的json 字符串    |
+
+> 请求体示例：
+>
+> ```json
+> {
+>     "msgId": "xxxxxxxx",
+>     "type": 1,
+>     "content": "{\"aliveType\":1,\"depNameConcat\":\"name1,name2\",\"departmentNames\":[\"name1\",\"name2\"],\"deviceKey\":\"84E0F42C3BB78702\",\"deviceName\":\"this is device name\",\"empNo\":\"001\",\"id\":3126713,\"name\":\"Joey T\",\"orgId\":97,\"passTimeType\":1,\"permissionTimeType\":1,\"personGuid\":null,\"personId\":8508,\"personType\":1,\"photoUrl\":\"https://uniubi-aiot.s3-eu-west-1.amazonaws.com/pkg365/2005/20050001000506/034000.411/img/ffe1fd7d-eecc-45c3-a6cf-14cee5c3361a.station\",\"recMode\":1,\"recStatus\":null,\"recType\":1,\"showTime\":\"2022-05-20 03:39:59\",\"temperature\":null,\"temperatureState\":null,\"temperatureUnit\":null,\"type\":1}"
+> }
+> ```
+
+**为了方便对接，UStarCloud将根据请求的 HTTP status code 是否为 200 来决定是否需要重新发送**
+
+> HTTP status code = 200 表示开发平台已成功处理消息推送，UStarCloud将不会重试。
+>
+> HTTP status code != 200 表示开发平台处理消息失败，UStarCloud将继续重试。
+>
+> 所以，朋友们，如果处理消息失败了，请将 HTTP status code 不要设置为200
+
+## 回调事件
+
+### 识别记录回调事件
+
+* 触发条件：当设备识别记录回调到给系统时
+
+* 事件回调内容：
+
+| 字段名称           | 字段类型     | 说明                                                         |
+    | ------------------ | ------------ | ------------------------------------------------------------ |
+| id                 | number       | 识别记录id                                                   |
+| orgId              | number       | 公司id                                                       |
+| personType         | number       | 识别记录类型<br />1:员工;<br />2:访客;<br />3:陌生人         |
+| deviceKey          | String       | 识别设备序列号                                               |
+| deviceName         | String       | 设备名称                                                     |
+| personId           | Long         | 人员id或者访客id                                             |
+| empNo              | String       | 人员编号                                                     |
+| departmentNames    | string array | 所属部门名称（用于员工）                                     |
+| name               | String       | 人员姓名                                                     |
+| showTime           | Date         | 识别时间，格式：yyyy-MM-dd HH:mm:ss                          |
+| temperatureUnit    | number       | 体温单位 <br />1：摄氏度 <br />2：华氏度                     |
+| temperatureState   | number       | 体温状态 <br />1：正常 <br />2：异常 <br />3：未设置<br />4：未测量体温 (兼容null的情况，null也是未测量或者无测温功能)**** |
+| aliveBody          | number       | 活体判断 <br />1：活体<br />2：非活体<br />3：未进行活体判断 |
+| permissionTimeType | number       | 有效时间段判断 <br />1:准入时间内<br />2:未在准入时间内<br />3:未进行有效期判断 |
+| passTimeType       | number       | 有效日期判断 <br />1:有效期内<br />2:未在有效期内<br />3:未进行时间段判断 |
+| recMode            | number       | 识别模式<br />1:刷脸,<br />2:刷卡,<br />3:脸&卡双重认证<br />4:人证比对 |
+| recStatus          | number       | 识别模式对比结果 <br />1:成功 <br />2:失败                   |
+| recType            | number       | 1:本地识别<br />2云端识别                                    |
+| type               | number       | 识别结果 <br />1:成功;<br />2:失败                           |
+| photoUrl           | String       | 现场照URL                                                    |
