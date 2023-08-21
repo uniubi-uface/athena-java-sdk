@@ -480,7 +480,6 @@
 | workPlace         | body   | String   | N        | 办公地址        |
 | cardNo            | body   | String   | N        | 卡号        |
 | userPass          | body   | String   | N        | 用户密码        |
-| orgId             | body   | Long     | Y        | 企业id        |
 | sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
 | requestKeyVersion | header | String   | Y        | v2                         |
 | sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
@@ -495,12 +494,21 @@
   --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
   --header 'Content-Type: application/json' \
   --data '{
-        "firstName":"uniubi",
-        "lastName":"feima",
-        "orgId":1,
-        "gender":1,
-        "empNo":"1111",
-        "mail":"feima@uniubi.com"
+        "firstName": "xinyue1234567 ",
+        "lastName": "ceshi1",
+        "gender": 1,
+        "empNo": "10998",
+        "mail": "feima1@uni-ubi.com",
+        "departmentIds": "72",
+        "mobile": "13388617676",
+        "empPositionIds": "7",
+        "entryTime": "2021-03-04 09:00:00",
+        "telNumber": "021-55668888",
+        "empType": "40",
+        "groupId": "18",
+        "workPlace": "地址",
+        "cardNo": "10998",
+        "cardPass": "123456"
 }'
 ```
 
@@ -528,7 +536,6 @@
     | ----------------- | ------ | -------- | -------- | -------------------------- |
 | photoBase64       | body   | String   | Y        | 用户照片base64位编码字符                            |
 | empNo             | body   | String   | Y        | 员工编号                        |
-| orgId             | body   | Long     | Y        | 企业id        |
 | sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
 | requestKeyVersion | header | String   | Y        | v2                         |
 | sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
@@ -544,7 +551,6 @@
   --header 'Content-Type: application/json' \
   --data '{
         "photoBase64":"....",
-        "orgId":1,
         "empNo":"1111"
 }'
 ```
@@ -588,7 +594,6 @@
 | workPlace         | body   | String   | N        | 办公地址        |
 | cardNo            | body   | String   | N        | 卡号        |
 | userPass          | body   | String   | N        | 用户密码        |
-| orgId             | body   | Long     | Y        | 企业id        |
 | sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
 | requestKeyVersion | header | String   | Y        | v2                         |
 | sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
@@ -598,7 +603,7 @@
 
 ```shell
   curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
-  --header 'sdkRequestKey: registerEmployee' \
+  --header 'sdkRequestKey: editEmployee' \
   --header 'requestKeyVersion: v2' \
   --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
   --header 'Content-Type: application/json' \
@@ -606,7 +611,6 @@
         "id":311,
         "firstName":"uni",
         "lastName":"feima",
-        "orgId":1,
         "gender":1,
         "empNo":"1111",
         "mail":"feima@uniubi.com"
@@ -637,7 +641,6 @@
 | 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
     | ----------------- | ------ | -------- | -------- | -------------------------- |
 | empNo             | body   | String   | Y        | 员工编号                        |
-| orgId             | body   | Long     | Y        | 企业id        |
 | sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
 | requestKeyVersion | header | String   | Y        | v2                         |
 | sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
@@ -647,12 +650,11 @@
 
 ```shell
   curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
-  --header 'sdkRequestKey: addEmployeeFace' \
+  --header 'sdkRequestKey: queryEmployeeInfo' \
   --header 'requestKeyVersion: v2' \
   --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
   --header 'Content-Type: application/json' \
   --data '{
-        "orgId":1,
         "empNo":"1111"
 }'
 ```
@@ -683,7 +685,6 @@
 | workPlace         | body   | String   | 办公地址        |
 | cardNo            | body   | String   | 卡号        |
 | userPass          | body   | String   | 用户密码        |
-| orgId             | body   | Long     | 企业id        |
 | personGuid        | body   | String   | 人员guid        |
 | empPhoto          | body   | String   | 员工头像        |
 | empFaceVOList     | body   | List   | 注册照信息集合        |
@@ -755,7 +756,6 @@
 | 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
     | ----------------- | ------ | -------- | -------- | -------------------------- |
 | empNo             | body   | String   | Y        | 员工编号                        |
-| orgId             | body   | Long     | Y        | 企业id        |
 | sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
 | requestKeyVersion | header | String   | Y        | v2                         |
 | sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
@@ -765,12 +765,11 @@
 
 ```shell
   curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
-  --header 'sdkRequestKey: addEmployeeFace' \
+  --header 'sdkRequestKey: deleteEmployee' \
   --header 'requestKeyVersion: v2' \
   --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
   --header 'Content-Type: application/json' \
   --data '{
-        "orgId":1,
         "empNo":"1111"
 }'
 ```
@@ -791,14 +790,13 @@
 
 ### 3.6 删除员工照片
 
-* sdkRequestKey : `deleteEmployee`
+* sdkRequestKey : `deleteEmployeeFace`
 
 * 请求参数说明
 
 | 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
     | ----------------- | ------ | -------- | -------- | -------------------------- |
 | empNo             | body   | String   | Y        | 员工编号                        |
-| orgId             | body   | Long     | Y        | 企业id        |
 | empFaceId         | body   | Long     | Y        | 员工照片id        |
 | sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
 | requestKeyVersion | header | String   | Y        | v2                         |
@@ -809,12 +807,11 @@
 
 ```shell
   curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
-  --header 'sdkRequestKey: addEmployeeFace' \
+  --header 'sdkRequestKey: deleteEmployeeFace' \
   --header 'requestKeyVersion: v2' \
   --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
   --header 'Content-Type: application/json' \
   --data '{
-        "orgId": 1,
         "empNo": "1111",
         "empFaceId": 5
 }'
@@ -846,7 +843,6 @@
 | 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
     | ----------------- | ------ | -------- | -------- | -------------------------- |
 | visitorName         | body   | String   | Y        | 访客姓名                            |
-| orgId               | body   | Long     | Y        | 企业id        |
 | mail                | body   | String   | N        | 邮箱                           |
 | phone               | body   | String   | N        | 手机号                          |
 | gender              | body   | Byte     | N        | 性别 1:男 2:女                  |
@@ -880,7 +876,6 @@
   --data '{
           "visitorName":"feima2",
           "phone":"13388888888",
-          "orgId":14,
           "gender":1,
           "mail":"fff@uniubi.com",
           "employeeInfoJson":"[{\"empId\":1,\"empNo\":\"001\",\"name\":\"犀婴 \"},{{\"empId\":2,\"empNo\":\"10065\",\"name\":\"卡卡西 \"}]",
@@ -897,8 +892,8 @@
 
 | 字段名称          | 位置   | 字段类型 | 说明                       |
     | ----------------- | ------ | -------- | -------------------------- |
-| recordId                | body   | Long     | 访问记录id                            |
-| orgName         | body   | String   | 公司名称                            |
+| recordId              | body   | Long     | 访问记录id                            |
+| orgName               | body   | String   | 公司名称                            |
 
 * 响应示例
 
@@ -924,7 +919,6 @@
     | ----------------- | ------ | -------- | -------- | -------------------------- |
 | photoBase64       | body   | String   | Y        | 用户照片base64位编码字符                            |
 | recordId          | body   | Long     | Y        | 访问记录id                        |
-| orgId             | body   | Long     | Y        | 企业id        |
 | sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
 | requestKeyVersion | header | String   | Y        | v2                         |
 | sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
@@ -940,7 +934,6 @@
   --header 'Content-Type: application/json' \
   --data '{
         "photoBase64":"....",
-        "orgId":1,
         "recordId": 311
 }'
 ```
@@ -969,7 +962,6 @@
 | 字段名称                | 位置   | 字段类型 | 是否必须 | 说明                       |
 | ----------------------| ------ | -------- | -------- | -------------------------- |
 | recordId              | body   | Long     | Y        | 访问记录id                            |
-| orgId                 | body   | String   | Y        | 被访人公司id                            |
 | visitorName           | body   | String   | Y        | 访客姓名                            |
 | mail                  | body   | String   | N        | 邮箱                           |
 | phone                 | body   | String   | N        | 手机号                          |
@@ -1005,7 +997,6 @@
           "recordId":1,
           "visitorName":"feima2",
           "phone":"13388888888",
-          "orgId":14,
           "gender":1,
           "mail":"fff@uniubi.com",
           "employeeInfoJson":"[{\"empId\":1,\"empNo\":\"001\",\"name\":\"犀婴 \"},{{\"empId\":2,\"empNo\":\"10065\",\"name\":\"卡卡西 \"}]",
@@ -1041,7 +1032,6 @@
 | 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
     | ----------------- | ------ | -------- | -------- | -------------------------- |
 | recordId          | body   | Long     | Y        | 访问记录id                        |
-| orgId             | body   | Long     | Y        | 企业id        |
 | sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
 | requestKeyVersion | header | String   | Y        | v2                         |
 | sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
@@ -1056,8 +1046,7 @@
   --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
   --header 'Content-Type: application/json' \
   --data '{
-        "recordId":1,
-        "orgId": 1
+        "recordId":1
 }'
 ```
 
@@ -1067,7 +1056,6 @@
 | 字段名称                | 位置   | 字段类型 | 是否必须 | 说明                       |
 | ----------------------| ------ | -------- | -------- | -------------------------- |
 | recordId              | body   | Long     | Y        | 访问记录id                            |
-| orgId                 | body   | String   | Y        | 被访人公司id                            |
 | visitorName           | body   | String   | Y        | 访客姓名                            |
 | mail                  | body   | String   | N        | 邮箱                           |
 | phone                 | body   | String   | N        | 手机号                          |
@@ -1142,7 +1130,6 @@
 | 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
     | ----------------- | ------ | -------- | -------- | -------------------------- |
 | recordId          | body   | Long     | Y        | 访问记录id                        |
-| orgId             | body   | Long     | Y        | 企业id        |
 | sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
 | requestKeyVersion | header | String   | Y        | v2                         |
 | sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
@@ -1152,13 +1139,12 @@
 
 ```shell
   curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
-  --header 'sdkRequestKey: queryVisitorInfo' \
+  --header 'sdkRequestKey: deleteVisitor' \
   --header 'requestKeyVersion: v2' \
   --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
   --header 'Content-Type: application/json' \
   --data '{
-        "recordId":1,
-        "orgId": 1
+        "recordId":1
 }'
 ```
 
@@ -1185,7 +1171,6 @@
 | 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
     | ----------------- | ------ | -------- | -------- | -------------------------- |
 | recordId          | body   | Long     | Y        | 访问记录id                        |
-| orgId             | body   | Long     | Y        | 企业id        |
 | visitorFaceId         | body   | Long     | Y        | 访客照片id        |
 | sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
 | requestKeyVersion | header | String   | Y        | v2                         |
@@ -1196,13 +1181,12 @@
 
 ```shell
   curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
-  --header 'sdkRequestKey: addEmployeeFace' \
+  --header 'sdkRequestKey: deleteVisitorFace' \
   --header 'requestKeyVersion: v2' \
   --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
   --header 'Content-Type: application/json' \
   --data '{
         "recordId": 1,
-        "orgId": 1,
         "visitorFaceId": 5
 }'
 ```
@@ -1230,7 +1214,6 @@
 
 | 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
     | ----------------- | ------ | -------- | -------- | -------------------------- |
-| orgId             | body   | Long     | Y        | 企业id        |
 | sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
 | requestKeyVersion | header | String   | Y        | v2                         |
 | sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
@@ -1244,9 +1227,7 @@
   --header 'requestKeyVersion: v2' \
   --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
   --header 'Content-Type: application/json' \
-  --data '{
-        "orgId": 1
-}'
+  --data '{}'
 ```
 
 * 响应参数说明
