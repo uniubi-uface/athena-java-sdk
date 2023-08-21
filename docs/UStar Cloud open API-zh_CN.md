@@ -454,6 +454,915 @@
   }
   ```
 
+
+## 3 员工服务相关API
+
+### 3.1 新注册员工信息
+
+* sdkRequestKey : `registerEmployee`
+
+* 请求参数说明
+
+| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
+    | ----------------- | ------ | -------- | -------- | -------------------------- |
+| firstName         | body   | String   | Y        | 名                            |
+| lastName          | body   | String   | Y        | 姓                            |
+| departmentIds     | body   | String   | N        | 所属部门id，多个以英文逗号隔开                     |
+| empNo             | body   | String   | Y        | 员工编号                        |
+| mail              | body   | String   | N        | 邮箱                           |
+| mobile            | body   | String   | N        | 手机号                          |
+| gender            | body   | Byte     | N        | 性别 1:男 2:女                  |
+| empPositionIds    | body   | String   | N        | 职称，多个以英文逗号隔开              |
+| entryTime         | body   | date     | N        | 入职日期 yyyy-MM-dd             |
+| telNumber         | body   | String   | N        | 座机        |
+| empType           | body   | Long     | N        | 员工类型        |
+| groupId           | body   | Long     | N        | 人员分组ID        |
+| workPlace         | body   | String   | N        | 办公地址        |
+| cardNo            | body   | String   | N        | 卡号        |
+| userPass          | body   | String   | N        | 用户密码        |
+| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
+| requestKeyVersion | header | String   | Y        | v2                         |
+| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
+| Content-Type      | header | String   | Y        | application/json           |
+
+* 请求示例
+  
+```shell
+  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
+  --header 'sdkRequestKey: registerEmployee' \
+  --header 'requestKeyVersion: v2' \
+  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
+  --header 'Content-Type: application/json' \
+  --data '{
+        "firstName": "xinyue1234567 ",
+        "lastName": "ceshi1",
+        "gender": 1,
+        "empNo": "10998",
+        "mail": "feima1@uni-ubi.com",
+        "departmentIds": "72",
+        "mobile": "13388617676",
+        "empPositionIds": "7",
+        "entryTime": "2021-03-04 09:00:00",
+        "telNumber": "021-55668888",
+        "empType": "40",
+        "groupId": "18",
+        "workPlace": "地址",
+        "cardNo": "10998",
+        "cardPass": "123456"
+}'
+```
+
+
+* 响应参数说明
+
+* 响应示例
+
+  ```json
+  {
+      "success": true,
+      "code": "1000_SUS",
+      "msg": "successful operation!",
+      "data": null
+  }
+  ```
+
+### 3.2 添加员工照片
+
+* sdkRequestKey : `addEmployeeFace`
+
+* 请求参数说明
+
+| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
+    | ----------------- | ------ | -------- | -------- | -------------------------- |
+| photoBase64       | body   | String   | Y        | 用户照片base64位编码字符                            |
+| empNo             | body   | String   | Y        | 员工编号                        |
+| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
+| requestKeyVersion | header | String   | Y        | v2                         |
+| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
+| Content-Type      | header | String   | Y        | application/json           |
+
+* 请求示例
+
+```shell
+  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
+  --header 'sdkRequestKey: addEmployeeFace' \
+  --header 'requestKeyVersion: v2' \
+  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
+  --header 'Content-Type: application/json' \
+  --data '{
+        "photoBase64":"....",
+        "empNo":"1111"
+}'
+```
+
+
+* 响应参数说明
+
+* 响应示例
+
+  ```json
+  {
+      "success": true,
+      "code": "1000_SUS",
+      "msg": "successful operation!",
+      "data": null
+  }
+  ```
+
+
+### 3.3 编辑修改员工信息
+
+* sdkRequestKey : `editEmployee`
+
+* 请求参数说明
+
+| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
+    | ----------------- | ------ | -------- | -------- | -------------------------- |
+| id                | body   | Long     | Y        | 员工id                            |
+| firstName         | body   | String   | Y        | 名                            |
+| lastName          | body   | String   | Y        | 姓                            |
+| departmentIds     | body   | String   | N        | 所属部门id，多个以英文逗号隔开                     |
+| empNo             | body   | String   | Y        | 员工编号                        |
+| mail              | body   | String   | N        | 邮箱                           |
+| mobile            | body   | String   | N        | 手机号                          |
+| gender            | body   | Byte     | N        | 性别 1:男 2:女                  |
+| empPositionIds    | body   | String   | N        | 职称，多个以英文逗号隔开              |
+| entryTime         | body   | date     | N        | 入职日期 yyyy-MM-dd             |
+| telNumber         | body   | String   | N        | 座机        |
+| empType           | body   | Long     | N        | 员工类型        |
+| groupId           | body   | Long     | N        | 人员分组ID        |
+| workPlace         | body   | String   | N        | 办公地址        |
+| cardNo            | body   | String   | N        | 卡号        |
+| userPass          | body   | String   | N        | 用户密码        |
+| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
+| requestKeyVersion | header | String   | Y        | v2                         |
+| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
+| Content-Type      | header | String   | Y        | application/json           |
+
+* 请求示例
+
+```shell
+  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
+  --header 'sdkRequestKey: editEmployee' \
+  --header 'requestKeyVersion: v2' \
+  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
+  --header 'Content-Type: application/json' \
+  --data '{
+        "id":311,
+        "firstName":"uni",
+        "lastName":"feima",
+        "gender":1,
+        "empNo":"1111",
+        "mail":"feima@uniubi.com"
+}'
+```
+
+
+* 响应参数说明
+
+* 响应示例
+
+  ```json
+  {
+      "success": true,
+      "code": "1000_SUS",
+      "msg": "successful operation!",
+      "data": null
+  }
+  ```
+
+
+### 3.4 查询员工信息
+
+* sdkRequestKey : `queryEmployeeInfo`
+
+* 请求参数说明
+
+| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
+    | ----------------- | ------ | -------- | -------- | -------------------------- |
+| empNo             | body   | String   | Y        | 员工编号                        |
+| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
+| requestKeyVersion | header | String   | Y        | v2                         |
+| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
+| Content-Type      | header | String   | Y        | application/json           |
+
+* 请求示例
+
+```shell
+  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
+  --header 'sdkRequestKey: queryEmployeeInfo' \
+  --header 'requestKeyVersion: v2' \
+  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
+  --header 'Content-Type: application/json' \
+  --data '{
+        "empNo":"1111"
+}'
+```
+
+
+* 响应参数说明
+
+* 响应示例
+
+| 字段名称          | 位置   | 字段类型 | 说明                       |
+    | ----------------- | ------ | -------- | -------------------------- |
+| empId                | body   | Long     | 员工id                            |
+| firstName         | body   | String   | 名                            |
+| lastName          | body   | String   | 姓                            |
+| empName           | body   | String   | 员工全名称                            |
+| departmentIds     | body   | String   | 所属部门id，多个以英文逗号隔开                     |
+| empNo             | body   | String   | 员工编号                        |
+| mail              | body   | String   | 邮箱                           |
+| mobile            | body   | String   | 手机号                          |
+| gender            | body   | Byte     | 性别 1:男 2:女                  |
+| genderText        | body   | String     | 性别 1:男 2:女                  |
+| empPhotoUrls      | body   | String     | 注册照地址，多个以英文逗号隔开                 |
+| empPositionIds    | body   | String   | 职称，多个以英文逗号隔开              |
+| entryTime         | body   | date     | 入职日期 yyyy-MM-dd             |
+| telNumber         | body   | String   | 座机        |
+| empType           | body   | Long     | 员工类型        |
+| groupId           | body   | Long     | 人员分组ID        |
+| workPlace         | body   | String   | 办公地址        |
+| cardNo            | body   | String   | 卡号        |
+| userPass          | body   | String   | 用户密码        |
+| personGuid        | body   | String   | 人员guid        |
+| empPhoto          | body   | String   | 员工头像        |
+| empFaceVOList     | body   | List   | 注册照信息集合        |
+| - empFaceId         | empFaceVOList   | Long   | 员工注册照id        |
+| - empFaceUrl        | empFaceVOList   | String   | 员工注册照Url        |
+| - cardNo            | empFaceVOList   | String   | 员工卡号        |
+| departmentDetailVOS     | body   | List   | 部门信息集合        |
+| - departmentId     | empFaceVOList   | Long   | 部门id        |
+| - departmentName     | empFaceVOList   | String   | 部门名称        |
+| - parentId     | empFaceVOList   | Long   | 上级部门 根部门上级为“-1”        |
+| - parentDepartmentName     | empFaceVOList   | String   | 上级部门名称        |
+| - isDefault     | empFaceVOList   | Byte   | 是否是默认部门（0不是默认部门1是默认部门）        |
+| - empBaseList     | empFaceVOList   | List   | 上级部门名称        |
+| -- empId     | empBaseList   | Long   | 员工id        |
+| -- firstName     | empBaseList   | String   | 名        |
+| -- lastName     | empBaseList   | String   | 姓        |
+| -- empName     | empBaseList   | String   | 员工全名称        |
+| -- empNo     | empBaseList   | String   | 员工编号        |
+| positionVOS          | body   | List   | 职称信息        |
+| - positionId     | positionVOS   | Long   | 员工职位ID        |
+| - positionName     | positionVOS   | String   | 员工职位名称        |
+| groupVO          | body   | List   | 人员分组信息        |
+| - groupId     | groupVO   | Long   | 人员分组ID        |
+| - groupName     | groupVO   | Long   | 人员分组名称        |
+
+  ```json
+  {
+  "success": true,
+  "code": "1000_SUS",
+  "msg": "successful operation!",
+  "data": {
+    "empId": 311,
+    "firstName": "shen",
+    "lastName": "feima",
+    "empNo": "1111",
+    "empName": null,
+    "departmentDetailVOS": null,
+    "mail": "fff@uniubi.com",
+    "mobile": null,
+    "gender": 1,
+    "genderText": "男",
+    "empPhotoUrls": null,
+    "empFaceVOList": [],
+    "entryTime": null,
+    "telNumber": null,
+    "positionVOS": null,
+    "typeVO": null,
+    "groupVO": {
+      "groupId": 1,
+      "groupName": "-未分组-"
+    },
+    "workPlace": null,
+    "cardNo": null,
+    "userPass": null,
+    "personGuid": "10CA7FE2EB7143E3877C2211207AE92D",
+    "reason": null,
+    "admin": 0,
+    "empPhoto": null
+  }
+}
+  ```
+
+### 3.5 删除员工
+
+* sdkRequestKey : `deleteEmployee`
+
+* 请求参数说明
+
+| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
+    | ----------------- | ------ | -------- | -------- | -------------------------- |
+| empNo             | body   | String   | Y        | 员工编号                        |
+| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
+| requestKeyVersion | header | String   | Y        | v2                         |
+| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
+| Content-Type      | header | String   | Y        | application/json           |
+
+* 请求示例
+
+```shell
+  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
+  --header 'sdkRequestKey: deleteEmployee' \
+  --header 'requestKeyVersion: v2' \
+  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
+  --header 'Content-Type: application/json' \
+  --data '{
+        "empNo":"1111"
+}'
+```
+
+
+* 响应参数说明
+
+* 响应示例
+
+  ```json
+  {
+      "success": true,
+      "code": "1000_SUS",
+      "msg": "successful operation!",
+      "data": null
+  }
+  ```
+
+### 3.6 删除员工照片
+
+* sdkRequestKey : `deleteEmployeeFace`
+
+* 请求参数说明
+
+| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
+    | ----------------- | ------ | -------- | -------- | -------------------------- |
+| empNo             | body   | String   | Y        | 员工编号                        |
+| empFaceId         | body   | Long     | Y        | 员工照片id        |
+| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
+| requestKeyVersion | header | String   | Y        | v2                         |
+| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
+| Content-Type      | header | String   | Y        | application/json           |
+
+* 请求示例
+
+```shell
+  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
+  --header 'sdkRequestKey: deleteEmployeeFace' \
+  --header 'requestKeyVersion: v2' \
+  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
+  --header 'Content-Type: application/json' \
+  --data '{
+        "empNo": "1111",
+        "empFaceId": 5
+}'
+```
+
+
+* 响应参数说明
+
+* 响应示例
+
+  ```json
+  {
+      "success": true,
+      "code": "1000_SUS",
+      "msg": "successful operation!",
+      "data": null
+  }
+  ```
+
+
+## 4 访客服务相关API
+
+### 4.1 添加访客信息
+
+* sdkRequestKey : `addVisitor`
+
+* 请求参数说明
+
+| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
+    | ----------------- | ------ | -------- | -------- | -------------------------- |
+| visitorName         | body   | String   | Y        | 访客姓名                            |
+| mail                | body   | String   | N        | 邮箱                           |
+| phone               | body   | String   | N        | 手机号                          |
+| gender              | body   | Byte     | N        | 性别 1:男 2:女                  |
+| employeeInfoJson    | body   | String   | N        | 被访人信息，json字符串              |
+| visitorNum          | body   | Integer     | N        | 来访人数             |
+| companyName         | body   | String   | N        | 公司名称              |
+| visitorPlateNum     | body   | String   | N        | 车牌号              |
+| remark    | body    | String   | N        | 备注              |
+| cardNo    | body    | String   | N        | 卡号              |
+| visStartTime        | body   | date     | N        | 预约开始时间 yyyy-MM-dd HH:mm:ss            |
+| visEndTime          | body   | date     | N        | 预约结束时间 yyyy-MM-dd HH:mm:ss            |
+| facePermission      | Byte   | String   | N        | 人员权限 刷脸权限 1：无权限；2：有权限        |
+| idCardPermission    | Byte   | String   | N        | 人员权限 刷卡权限 1：无权限；2：有权限 （刷卡权限和人卡合一不可同时选中）        |
+| faceAndCardPermission         | Byte   | String   | Y        | 人员权限 人卡合一权限 1：无权限；2：有权限 （刷卡权限和人卡合一不可同时选中）       |
+| passwordPermission            | Byte   | String   | Y        | 人员权限 密码开门 1：无权限；2：有权限        |
+| originStr           | body   | String     | N        | 来访事由        |
+| source              | body   | Byte     | N        | 预约登记来源0：web来访登记，1：二维码登记（不填默认web来访登记）        |
+| sdkRequestKey       | header | String   | Y        | sdkRequestKey 放在请求头中 |
+| requestKeyVersion   | header | String   | Y        | v2                         |
+| sdkAccessToken      | header | String   | Y        | sdkAccessToken             |
+| Content-Type        | header | String   | Y        | application/json           |
+
+* 请求示例
+
+```shell
+  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
+  --header 'sdkRequestKey: addVisitor' \
+  --header 'requestKeyVersion: v2' \
+  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
+  --header 'Content-Type: application/json' \
+  --data '{
+          "visitorName":"feima2",
+          "phone":"13388888888",
+          "gender":1,
+          "mail":"fff@uniubi.com",
+          "employeeInfoJson":"[{\"empId\":1,\"empNo\":\"001\",\"name\":\"犀婴 \"},{{\"empId\":2,\"empNo\":\"10065\",\"name\":\"卡卡西 \"}]",
+          "visStartTime": "2023-08-14 10:27:28",
+          "visEndTime": "2023-08-15 10:27:46",
+          "facePermission": 1,
+          "idCardPermission": 1,
+          "faceAndCardPermission": 1
+          }'
+```
+
+
+* 响应参数说明
+
+| 字段名称          | 位置   | 字段类型 | 说明                       |
+    | ----------------- | ------ | -------- | -------------------------- |
+| recordId              | body   | Long     | 访问记录id                            |
+| orgName               | body   | String   | 公司名称                            |
+
+* 响应示例
+
+  ```json
+  {
+      "success": true,
+      "code": "1000_SUS",
+      "msg": "successful operation!",
+      "data": {
+            "recordId": 1,
+            "orgName": "公司名称"
+      }
+  }
+  ```
+
+### 4.2 添加访客照片
+
+* sdkRequestKey : `addVisitorFace`
+
+* 请求参数说明
+
+| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
+    | ----------------- | ------ | -------- | -------- | -------------------------- |
+| photoBase64       | body   | String   | Y        | 用户照片base64位编码字符                            |
+| recordId          | body   | Long     | Y        | 访问记录id                        |
+| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
+| requestKeyVersion | header | String   | Y        | v2                         |
+| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
+| Content-Type      | header | String   | Y        | application/json           |
+
+* 请求示例
+
+```shell
+  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
+  --header 'sdkRequestKey: addVisitorFace' \
+  --header 'requestKeyVersion: v2' \
+  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
+  --header 'Content-Type: application/json' \
+  --data '{
+        "photoBase64":"....",
+        "recordId": 311
+}'
+```
+
+
+* 响应参数说明
+
+* 响应示例
+
+  ```json
+  {
+      "success": true,
+      "code": "1000_SUS",
+      "msg": "successful operation!",
+      "data": null
+  }
+  ```
+
+
+### 4.3 编辑修改员工信息
+
+* sdkRequestKey : `editVisitor`
+
+* 请求参数说明
+
+| 字段名称                | 位置   | 字段类型 | 是否必须 | 说明                       |
+| ----------------------| ------ | -------- | -------- | -------------------------- |
+| recordId              | body   | Long     | Y        | 访问记录id                            |
+| visitorName           | body   | String   | Y        | 访客姓名                            |
+| mail                  | body   | String   | N        | 邮箱                           |
+| phone                 | body   | String   | N        | 手机号                          |
+| gender                | body   | Byte     | N        | 性别 1:男 2:女                  |
+| employeeInfoJson      | body   | String   | N        | 被访人信息，json字符串              |
+| visitorNum            | body   | Integer     | N        | 来访人数             |
+| companyName           | body   | String   | N        | 公司名称              |
+| visitorPlateNum       | body   | String   | N        | 车牌号              |
+| remark                | body    | String   | N        | 备注              |
+| cardNo                | body    | String   | N        | 卡号              |
+| visStartTime          | body   | date     | N        | 预约开始时间 yyyy-MM-dd HH:mm:ss            |
+| visEndTime            | body   | date     | N        | 预约结束时间 yyyy-MM-dd HH:mm:ss            |
+| facePermission        | Byte   | String   | N        | 人员权限 刷脸权限 1：无权限；2：有权限        |
+| idCardPermission      | Byte   | String   | N        | 人员权限 刷卡权限 1：无权限；2：有权限 （刷卡权限和人卡合一不可同时选中）        |
+| faceAndCardPermission         | Byte   | String   | Y        | 人员权限 人卡合一权限 1：无权限；2：有权限 （刷卡权限和人卡合一不可同时选中）       |
+| passwordPermission            | Byte   | String   | Y        | 人员权限 密码开门 1：无权限；2：有权限        |
+| originStr             | body   | String     | N        | 来访事由        |
+| source                | body   | Byte     | N        | 预约登记来源0：web来访登记，1：二维码登记（不填默认web来访登记）        |
+| sdkRequestKey         | header | String   | Y        | sdkRequestKey 放在请求头中 |
+| requestKeyVersion     | header | String   | Y        | v2                         |
+| sdkAccessToken        | header | String   | Y        | sdkAccessToken             |
+| Content-Type          | header | String   | Y        | application/json           |
+
+* 请求示例
+
+```shell
+  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
+  --header 'sdkRequestKey: editVisitor' \
+  --header 'requestKeyVersion: v2' \
+  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
+  --header 'Content-Type: application/json' \
+  --data '{
+          "recordId":1,
+          "visitorName":"feima2",
+          "phone":"13388888888",
+          "gender":1,
+          "mail":"fff@uniubi.com",
+          "employeeInfoJson":"[{\"empId\":1,\"empNo\":\"001\",\"name\":\"犀婴 \"},{{\"empId\":2,\"empNo\":\"10065\",\"name\":\"卡卡西 \"}]",
+          "visStartTime": "2023-08-14 10:27:28",
+          "visEndTime": "2023-08-15 10:27:46",
+          "facePermission": 1,
+          "idCardPermission": 1,
+          "faceAndCardPermission": 1
+}'
+```
+
+
+* 响应参数说明
+
+* 响应示例
+
+  ```json
+  {
+      "success": true,
+      "code": "1000_SUS",
+      "msg": "successful operation!",
+      "data": null
+  }
+  ```
+
+
+### 4.4 查询访客信息
+
+* sdkRequestKey : `queryVisitorInfo`
+
+* 请求参数说明
+
+| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
+    | ----------------- | ------ | -------- | -------- | -------------------------- |
+| recordId          | body   | Long     | Y        | 访问记录id                        |
+| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
+| requestKeyVersion | header | String   | Y        | v2                         |
+| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
+| Content-Type      | header | String   | Y        | application/json           |
+
+* 请求示例
+
+```shell
+  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
+  --header 'sdkRequestKey: queryVisitorInfo' \
+  --header 'requestKeyVersion: v2' \
+  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
+  --header 'Content-Type: application/json' \
+  --data '{
+        "recordId":1
+}'
+```
+
+
+* 响应参数说明
+
+| 字段名称                | 位置   | 字段类型 | 是否必须 | 说明                       |
+| ----------------------| ------ | -------- | -------- | -------------------------- |
+| recordId              | body   | Long     | Y        | 访问记录id                            |
+| visitorName           | body   | String   | Y        | 访客姓名                            |
+| mail                  | body   | String   | N        | 邮箱                           |
+| phone                 | body   | String   | N        | 手机号                          |
+| gender                | body   | Byte     | N        | 性别 1:男 2:女                  |
+| employeeInfoJson      | body   | String   | N        | 被访人信息，json字符串              |
+| visStatus             | body   | Byte     | N        | 访客状态 0未到访 1 访问中 2 已结束 3 已过期             |
+| visStatusText         | body   | Byte     | N        | 访客状态描述             |
+| visitorNum            | body   | Integer     | N        | 来访人数             |
+| companyName           | body   | String   | N        | 公司名称              |
+| visitorPlateNum       | body   | String   | N        | 车牌号              |
+| remark                | body    | String   | N        | 备注              |
+| cardNo                | body    | String   | N        | 卡号              |
+| visStartTime          | body   | date     | N        | 预约开始时间 yyyy-MM-dd HH:mm:ss            |
+| visEndTime            | body   | date     | N        | 预约结束时间 yyyy-MM-dd HH:mm:ss            |
+| facePermission        | Byte   | String   | N        | 人员权限 刷脸权限 1：无权限；2：有权限        |
+| idCardPermission      | Byte   | String   | N        | 人员权限 刷卡权限 1：无权限；2：有权限 （刷卡权限和人卡合一不可同时选中）        |
+| faceAndCardPermission         | Byte   | String   | Y        | 人员权限 人卡合一权限 1：无权限；2：有权限 （刷卡权限和人卡合一不可同时选中）       |
+| passwordPermission            | Byte   | String   | Y        | 人员权限 密码开门 1：无权限；2：有权限        |
+| originStr             | body   | String     | N        | 来访事由        |
+| visitFaceVOS        | body   | List     | N        | 来访人照片信息集合        |
+| - visitorFaceId     | visitFaceVOS   | Long   | 来访人注册照id        |
+| - faceUrl           | visitFaceVOS   | String   | 来访人人脸照片URL        |
+| - cardNo            | visitFaceVOS   | Long   | 访客卡号        |
+| - recordId          | visitFaceVOS   | Long   | 访问记录id        |
+| - orgName           | visitFaceVOS   | Long   | 公司名称        |
+
+* 响应示例
+
+ ```json
+  {
+  "success": true,
+  "code": "1000_SUS",
+  "msg": "successful operation!",
+  "data": {
+    "recordId": 58,
+    "visitFaceVOS": [],
+    "visitorName": "feima2",
+    "phone": "13388888888",
+    "mail": "fff@uniubi.com",
+    "employeeInfoJson": "[{\"firstName\":\"shen\",\"lastName\":\"feima\",\"orgId\":1,\"gender\":1,\"empNo\":1111,\"mail\":\"feima@uniubi.com\"}]",
+    "visStatus": 0,
+    "visStatusText": "未到访",
+    "visStartTime": "2023-08-14T10:27:28",
+    "visEndTime": "2023-08-15T10:27:46",
+    "signInTime": null,
+    "signOutTime": null,
+    "visitorNum": null,
+    "companyName": null,
+    "visitorPlateNum": null,
+    "gender": 1,
+    "remark": null,
+    "cardNo": null,
+    "facePermission": 1,
+    "idCardPermission": 1,
+    "faceAndCardPermission": 1,
+    "idCardFacePermission": 1,
+    "passwordPermission": 1,
+    "originStr": null,
+    "deviceAuthVOS": [],
+    "source": 0
+  }
+}
+  ```
+ 
+ 
+### 4.5 删除访客
+
+* sdkRequestKey : `deleteVisitor`
+
+* 请求参数说明
+
+| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
+    | ----------------- | ------ | -------- | -------- | -------------------------- |
+| recordId          | body   | Long     | Y        | 访问记录id                        |
+| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
+| requestKeyVersion | header | String   | Y        | v2                         |
+| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
+| Content-Type      | header | String   | Y        | application/json           |
+
+* 请求示例
+
+```shell
+  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
+  --header 'sdkRequestKey: deleteVisitor' \
+  --header 'requestKeyVersion: v2' \
+  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
+  --header 'Content-Type: application/json' \
+  --data '{
+        "recordId":1
+}'
+```
+
+
+* 响应参数说明
+
+* 响应示例
+
+  ```json
+  {
+      "success": true,
+      "code": "1000_SUS",
+      "msg": "successful operation!",
+      "data": null
+  }
+  ```
+
+### 4.6 删除访客照片
+
+* sdkRequestKey : `deleteVisitorFace`
+
+* 请求参数说明
+
+| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
+    | ----------------- | ------ | -------- | -------- | -------------------------- |
+| recordId          | body   | Long     | Y        | 访问记录id                        |
+| visitorFaceId         | body   | Long     | Y        | 访客照片id        |
+| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
+| requestKeyVersion | header | String   | Y        | v2                         |
+| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
+| Content-Type      | header | String   | Y        | application/json           |
+
+* 请求示例
+
+```shell
+  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
+  --header 'sdkRequestKey: deleteVisitorFace' \
+  --header 'requestKeyVersion: v2' \
+  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
+  --header 'Content-Type: application/json' \
+  --data '{
+        "recordId": 1,
+        "visitorFaceId": 5
+}'
+```
+
+* 响应参数说明
+
+* 响应示例
+
+  ```json
+  {
+      "success": true,
+      "code": "1000_SUS",
+      "msg": "successful operation!",
+      "data": null
+  }
+  ```
+
+## 5 部门服务相关API
+
+### 5.1 获取企业部门树信息
+
+* sdkRequestKey : `getDepartTree`
+
+* 请求参数说明
+
+| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
+    | ----------------- | ------ | -------- | -------- | -------------------------- |
+| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
+| requestKeyVersion | header | String   | Y        | v2                         |
+| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
+| Content-Type      | header | String   | Y        | application/json           |
+
+* 请求示例
+
+```shell
+  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
+  --header 'sdkRequestKey: getDepartTree' \
+  --header 'requestKeyVersion: v2' \
+  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
+  --header 'Content-Type: application/json' \
+  --data '{}'
+```
+
+* 响应参数说明
+
+| 字段名称                | 位置   | 字段类型 | 是否必须 | 说明                       |
+| ----------------------| ------ | -------- | -------- | -------------------------- |
+| parentDeptId          | body   | Long     | N        | 父部门id，-1为顶层部门ID                            |
+| deptId                | body   | String   | N        | 部门id                            |
+| deptName              | body   | String   | N        | 部门名称                            |
+| children              | body   | List   | N        | 子部门集合                           |
+| - parentDeptId          | children   | Long     | N        | 父部门id                            |
+| - deptId                | children   | String   | N        | 部门id                            |
+| - deptName              | children   | String   | N        | 部门名称                            |
+| - children              | children   | List   | N        | 子部门集合                           |
+
+* 响应示例
+  
+```json
+  {
+    "success": true,
+    "code": "1000_SUS",
+    "msg": "successful operation!",
+    "data": {
+        "parentDeptId": null,
+        "deptId": 72,
+        "deptName": "Test company",
+        "children": [
+            {
+                "parentDeptId": null,
+                "deptId": 137,
+                "deptName": "AAS",
+                "children": [],
+                "deptEmployeeList": null
+            },
+            {
+                "parentDeptId": null,
+                "deptId": 133,
+                "deptName": "AAS.",
+                "children": [],
+                "deptEmployeeList": null
+            },
+            {
+                "parentDeptId": null,
+                "deptId": 132,
+                "deptName": "ASDI",
+                "children": [],
+                "deptEmployeeList": null
+            },
+            {
+                "parentDeptId": null,
+                "deptId": 131,
+                "deptName": "ASDI.",
+                "children": [],
+                "deptEmployeeList": null
+            },
+            {
+                "parentDeptId": null,
+                "deptId": 79,
+                "deptName": "Product design",
+                "children": [
+                    {
+                        "parentDeptId": null,
+                        "deptId": 80,
+                        "deptName": "Product group",
+                        "children": [
+                            {
+                                "parentDeptId": null,
+                                "deptId": 81,
+                                "deptName": "Document group",
+                                "children": [],
+                                "deptEmployeeList": null
+                            }
+                        ],
+                        "deptEmployeeList": null
+                    }
+                ],
+                "deptEmployeeList": null
+            },
+            {
+                "parentDeptId": null,
+                "deptId": 74,
+                "deptName": "chanpinjishubu",
+                "children": [
+                    {
+                        "parentDeptId": null,
+                        "deptId": 136,
+                        "deptName": "AAA",
+                        "children": [],
+                        "deptEmployeeList": null
+                    },
+                    {
+                        "parentDeptId": null,
+                        "deptId": 135,
+                        "deptName": "AAA.",
+                        "children": [],
+                        "deptEmployeeList": null
+                    },
+                    {
+                        "parentDeptId": null,
+                        "deptId": 75,
+                        "deptName": "ceshibumen",
+                        "children": [
+                            {
+                                "parentDeptId": null,
+                                "deptId": 77,
+                                "deptName": "guoneizu",
+                                "children": [],
+                                "deptEmployeeList": null
+                            },
+                            {
+                                "parentDeptId": null,
+                                "deptId": 76,
+                                "deptName": "haiwaizu",
+                                "children": [],
+                                "deptEmployeeList": null
+                            }
+                        ],
+                        "deptEmployeeList": null
+                    }
+                ],
+                "deptEmployeeList": null
+            },
+            {
+                "parentDeptId": null,
+                "deptId": 73,
+                "deptName": "-待分配-",
+                "children": [],
+                "deptEmployeeList": null
+            }
+        ],
+        "deptEmployeeList": null
+    }
+}
+  ```
+
 # 事件订阅回调
 
 > 管理员登录UStar客户端，在开发者对接平台页面，设置对接平台的回调地址和关注的事件
@@ -524,768 +1433,3 @@ UStar Cloud 会向各开发平台配置的地址发送http请求，请求方法�
 | recType            | number       | 1:本地识别<br />2云端识别                                    |
 | type               | number       | 识别结果 <br />1:成功;<br />2:失败                           |
 | photoUrl           | String       | 现场照URL                                                    |
-
-## 5 员工服务相关API
-
-### 5.1 新注册员工信息
-
-* sdkRequestKey : `registerEmployee`
-
-* 请求参数说明
-
-| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
-    | ----------------- | ------ | -------- | -------- | -------------------------- |
-| firstName         | body   | String   | Y        | 名                            |
-| lastName          | body   | String   | Y        | 姓                            |
-| departmentIds     | body   | String   | N        | 所属部门id，多个以英文逗号隔开                     |
-| empNo             | body   | String   | Y        | 员工编号                        |
-| mail              | body   | String   | N        | 邮箱                           |
-| mobile            | body   | String   | N        | 手机号                          |
-| gender            | body   | Byte     | N        | 性别 1:男 2:女                  |
-| empPositionIds    | body   | String   | N        | 职称，多个以英文逗号隔开              |
-| entryTime         | body   | date     | N        | 入职日期 yyyy-MM-dd             |
-| telNumber         | body   | String   | N        | 座机        |
-| empType           | body   | Long     | N        | 员工类型        |
-| groupId           | body   | Long     | N        | 人员分组ID        |
-| workPlace         | body   | String   | N        | 办公地址        |
-| cardNo            | body   | String   | N        | 卡号        |
-| userPass          | body   | String   | N        | 用户密码        |
-| orgId             | body   | Long     | Y        | 企业id        |
-| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
-| requestKeyVersion | header | String   | Y        | v2                         |
-| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
-| Content-Type      | header | String   | Y        | application/json           |
-
-* 请求示例
-  
-```shell
-  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
-  --header 'sdkRequestKey: registerEmployee' \
-  --header 'requestKeyVersion: v2' \
-  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
-  --header 'Content-Type: application/json' \
-  --data '{
-        "firstName":"uniubi",
-        "lastName":"feima",
-        "orgId":1,
-        "gender":1,
-        "empNo":"1111",
-        "mail":"feima@uniubi.com"
-}'
-```
-
-
-* 响应参数说明
-
-* 响应示例
-
-  ```json
-  {
-      "success": true,
-      "code": "1000_SUS",
-      "msg": "successful operation!",
-      "data": null
-  }
-  ```
-
-### 5.2 添加员工照片
-
-* sdkRequestKey : `addEmployeeFace`
-
-* 请求参数说明
-
-| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
-    | ----------------- | ------ | -------- | -------- | -------------------------- |
-| photoBase64       | body   | String   | Y        | 用户照片base64位编码字符                            |
-| empNo             | body   | String   | Y        | 员工编号                        |
-| orgId             | body   | Long     | Y        | 企业id        |
-| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
-| requestKeyVersion | header | String   | Y        | v2                         |
-| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
-| Content-Type      | header | String   | Y        | application/json           |
-
-* 请求示例
-
-```shell
-  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
-  --header 'sdkRequestKey: addEmployeeFace' \
-  --header 'requestKeyVersion: v2' \
-  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
-  --header 'Content-Type: application/json' \
-  --data '{
-        "photoBase64":"....",
-        "orgId":1,
-        "empNo":"1111"
-}'
-```
-
-
-* 响应参数说明
-
-* 响应示例
-
-  ```json
-  {
-      "success": true,
-      "code": "1000_SUS",
-      "msg": "successful operation!",
-      "data": null
-  }
-  ```
-
-
-### 5.3 编辑修改员工信息
-
-* sdkRequestKey : `editEmployee`
-
-* 请求参数说明
-
-| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
-    | ----------------- | ------ | -------- | -------- | -------------------------- |
-| id                | body   | Long     | Y        | 员工id                            |
-| firstName         | body   | String   | Y        | 名                            |
-| lastName          | body   | String   | Y        | 姓                            |
-| departmentIds     | body   | String   | N        | 所属部门id，多个以英文逗号隔开                     |
-| empNo             | body   | String   | Y        | 员工编号                        |
-| mail              | body   | String   | N        | 邮箱                           |
-| mobile            | body   | String   | N        | 手机号                          |
-| gender            | body   | Byte     | N        | 性别 1:男 2:女                  |
-| empPositionIds    | body   | String   | N        | 职称，多个以英文逗号隔开              |
-| entryTime         | body   | date     | N        | 入职日期 yyyy-MM-dd             |
-| telNumber         | body   | String   | N        | 座机        |
-| empType           | body   | Long     | N        | 员工类型        |
-| groupId           | body   | Long     | N        | 人员分组ID        |
-| workPlace         | body   | String   | N        | 办公地址        |
-| cardNo            | body   | String   | N        | 卡号        |
-| userPass          | body   | String   | N        | 用户密码        |
-| orgId             | body   | Long     | Y        | 企业id        |
-| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
-| requestKeyVersion | header | String   | Y        | v2                         |
-| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
-| Content-Type      | header | String   | Y        | application/json           |
-
-* 请求示例
-
-```shell
-  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
-  --header 'sdkRequestKey: registerEmployee' \
-  --header 'requestKeyVersion: v2' \
-  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
-  --header 'Content-Type: application/json' \
-  --data '{
-        "id":311,
-        "firstName":"uni",
-        "lastName":"feima",
-        "orgId":1,
-        "gender":1,
-        "empNo":"1111",
-        "mail":"feima@uniubi.com"
-}'
-```
-
-
-* 响应参数说明
-
-* 响应示例
-
-  ```json
-  {
-      "success": true,
-      "code": "1000_SUS",
-      "msg": "successful operation!",
-      "data": null
-  }
-  ```
-
-
-### 5.4 查询员工信息
-
-* sdkRequestKey : `queryEmployeeInfo`
-
-* 请求参数说明
-
-| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
-    | ----------------- | ------ | -------- | -------- | -------------------------- |
-| empNo             | body   | String   | Y        | 员工编号                        |
-| orgId             | body   | Long     | Y        | 企业id        |
-| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
-| requestKeyVersion | header | String   | Y        | v2                         |
-| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
-| Content-Type      | header | String   | Y        | application/json           |
-
-* 请求示例
-
-```shell
-  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
-  --header 'sdkRequestKey: addEmployeeFace' \
-  --header 'requestKeyVersion: v2' \
-  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
-  --header 'Content-Type: application/json' \
-  --data '{
-        "orgId":1,
-        "empNo":"1111"
-}'
-```
-
-
-* 响应参数说明
-
-* 响应示例
-
-| 字段名称          | 位置   | 字段类型 | 说明                       |
-    | ----------------- | ------ | -------- | -------------------------- |
-| empId                | body   | Long     | 员工id                            |
-| firstName         | body   | String   | 名                            |
-| lastName          | body   | String   | 姓                            |
-| empName           | body   | String   | 员工全名称                            |
-| departmentIds     | body   | String   | 所属部门id，多个以英文逗号隔开                     |
-| empNo             | body   | String   | 员工编号                        |
-| mail              | body   | String   | 邮箱                           |
-| mobile            | body   | String   | 手机号                          |
-| gender            | body   | Byte     | 性别 1:男 2:女                  |
-| genderText        | body   | String     | 性别 1:男 2:女                  |
-| empPhotoUrls      | body   | String     | 注册照地址，多个以英文逗号隔开                 |
-| empPositionIds    | body   | String   | 职称，多个以英文逗号隔开              |
-| entryTime         | body   | date     | 入职日期 yyyy-MM-dd             |
-| telNumber         | body   | String   | 座机        |
-| empType           | body   | Long     | 员工类型        |
-| groupId           | body   | Long     | 人员分组ID        |
-| workPlace         | body   | String   | 办公地址        |
-| cardNo            | body   | String   | 卡号        |
-| userPass          | body   | String   | 用户密码        |
-| orgId             | body   | Long     | 企业id        |
-| personGuid        | body   | String   | 人员guid        |
-| empPhoto          | body   | String   | 员工头像        |
-| empFaceVOList     | body   | List   | 注册照信息集合        |
-| - empFaceId         | empFaceVOList   | Long   | 员工注册照id        |
-| - empFaceUrl        | empFaceVOList   | String   | 员工注册照Url        |
-| - cardNo            | empFaceVOList   | String   | 员工卡号        |
-| departmentDetailVOS     | body   | List   | 部门信息集合        |
-| - departmentId     | empFaceVOList   | Long   | 部门id        |
-| - departmentName     | empFaceVOList   | String   | 部门名称        |
-| - parentId     | empFaceVOList   | Long   | 上级部门 根部门上级为“-1”        |
-| - parentDepartmentName     | empFaceVOList   | String   | 上级部门名称        |
-| - isDefault     | empFaceVOList   | Byte   | 是否是默认部门（0不是默认部门1是默认部门）        |
-| - empBaseList     | empFaceVOList   | List   | 上级部门名称        |
-| -- empId     | empBaseList   | Long   | 员工id        |
-| -- firstName     | empBaseList   | String   | 名        |
-| -- lastName     | empBaseList   | String   | 姓        |
-| -- empName     | empBaseList   | String   | 员工全名称        |
-| -- empNo     | empBaseList   | String   | 员工编号        |
-| positionVOS          | body   | List   | 职称信息        |
-| - positionId     | positionVOS   | Long   | 员工职位ID        |
-| - positionName     | positionVOS   | String   | 员工职位名称        |
-| groupVO          | body   | List   | 人员分组信息        |
-| - groupId     | groupVO   | Long   | 人员分组ID        |
-| - groupName     | groupVO   | Long   | 人员分组名称        |
-
-  ```json
-  {
-  "success": true,
-  "code": "1000_SUS",
-  "msg": "successful operation!",
-  "data": {
-    "empId": 311,
-    "firstName": "shen",
-    "lastName": "feima",
-    "empNo": "1111",
-    "empName": null,
-    "departmentDetailVOS": null,
-    "mail": "fff@uniubi.com",
-    "mobile": null,
-    "gender": 1,
-    "genderText": "男",
-    "empPhotoUrls": null,
-    "empFaceVOList": [],
-    "entryTime": null,
-    "telNumber": null,
-    "positionVOS": null,
-    "typeVO": null,
-    "groupVO": {
-      "groupId": 1,
-      "groupName": "-未分组-"
-    },
-    "workPlace": null,
-    "cardNo": null,
-    "userPass": null,
-    "personGuid": "10CA7FE2EB7143E3877C2211207AE92D",
-    "reason": null,
-    "admin": 0,
-    "empPhoto": null
-  }
-}
-  ```
-
-### 5.5 删除员工
-
-* sdkRequestKey : `deleteEmployee`
-
-* 请求参数说明
-
-| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
-    | ----------------- | ------ | -------- | -------- | -------------------------- |
-| empNo             | body   | String   | Y        | 员工编号                        |
-| orgId             | body   | Long     | Y        | 企业id        |
-| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
-| requestKeyVersion | header | String   | Y        | v2                         |
-| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
-| Content-Type      | header | String   | Y        | application/json           |
-
-* 请求示例
-
-```shell
-  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
-  --header 'sdkRequestKey: addEmployeeFace' \
-  --header 'requestKeyVersion: v2' \
-  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
-  --header 'Content-Type: application/json' \
-  --data '{
-        "orgId":1,
-        "empNo":"1111"
-}'
-```
-
-
-* 响应参数说明
-
-* 响应示例
-
-  ```json
-  {
-      "success": true,
-      "code": "1000_SUS",
-      "msg": "successful operation!",
-      "data": null
-  }
-  ```
-
-### 5.6 删除员工照片
-
-* sdkRequestKey : `deleteEmployee`
-
-* 请求参数说明
-
-| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
-    | ----------------- | ------ | -------- | -------- | -------------------------- |
-| empNo             | body   | String   | Y        | 员工编号                        |
-| orgId             | body   | Long     | Y        | 企业id        |
-| empFaceId         | body   | Long     | Y        | 员工照片id        |
-| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
-| requestKeyVersion | header | String   | Y        | v2                         |
-| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
-| Content-Type      | header | String   | Y        | application/json           |
-
-* 请求示例
-
-```shell
-  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
-  --header 'sdkRequestKey: addEmployeeFace' \
-  --header 'requestKeyVersion: v2' \
-  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
-  --header 'Content-Type: application/json' \
-  --data '{
-        "orgId": 1,
-        "empNo": "1111",
-        "empFaceId": 5
-}'
-```
-
-
-* 响应参数说明
-
-* 响应示例
-
-  ```json
-  {
-      "success": true,
-      "code": "1000_SUS",
-      "msg": "successful operation!",
-      "data": null
-  }
-  ```
-
-
-## 6 访客服务相关API
-
-###65.1 添加访客信息
-
-* sdkRequestKey : `addVisitor`
-
-* 请求参数说明
-
-| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
-    | ----------------- | ------ | -------- | -------- | -------------------------- |
-| visitorName         | body   | String   | Y        | 访客姓名                            |
-| orgId               | body   | Long     | Y        | 企业id        |
-| mail                | body   | String   | N        | 邮箱                           |
-| phone               | body   | String   | N        | 手机号                          |
-| gender              | body   | Byte     | N        | 性别 1:男 2:女                  |
-| employeeInfoJson    | body   | String   | N        | 被访人信息，json字符串              |
-| visitorNum          | body   | Integer     | N        | 来访人数             |
-| companyName         | body   | String   | N        | 公司名称              |
-| visitorPlateNum     | body   | String   | N        | 车牌号              |
-| remark    | body    | String   | N        | 备注              |
-| cardNo    | body    | String   | N        | 卡号              |
-| visStartTime        | body   | date     | N        | 预约开始时间 yyyy-MM-dd HH:mm:ss            |
-| visEndTime          | body   | date     | N        | 预约结束时间 yyyy-MM-dd HH:mm:ss            |
-| facePermission      | Byte   | String   | N        | 人员权限 刷脸权限 1：无权限；2：有权限        |
-| idCardPermission    | Byte   | String   | N        | 人员权限 刷卡权限 1：无权限；2：有权限 （刷卡权限和人卡合一不可同时选中）        |
-| faceAndCardPermission         | Byte   | String   | Y        | 人员权限 人卡合一权限 1：无权限；2：有权限 （刷卡权限和人卡合一不可同时选中）       |
-| passwordPermission            | Byte   | String   | Y        | 人员权限 密码开门 1：无权限；2：有权限        |
-| originStr           | body   | String     | N        | 来访事由        |
-| source              | body   | Byte     | N        | 预约登记来源0：web来访登记，1：二维码登记（不填默认web来访登记）        |
-| sdkRequestKey       | header | String   | Y        | sdkRequestKey 放在请求头中 |
-| requestKeyVersion   | header | String   | Y        | v2                         |
-| sdkAccessToken      | header | String   | Y        | sdkAccessToken             |
-| Content-Type        | header | String   | Y        | application/json           |
-
-* 请求示例
-
-```shell
-  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
-  --header 'sdkRequestKey: addVisitor' \
-  --header 'requestKeyVersion: v2' \
-  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
-  --header 'Content-Type: application/json' \
-  --data '{
-          "visitorName":"feima2",
-          "phone":"13388888888",
-          "orgId":14,
-          "gender":1,
-          "mail":"fff@uniubi.com",
-          "employeeInfoJson":"[{\"empId\":1,\"empNo\":\"001\",\"name\":\"犀婴 \"},{{\"empId\":2,\"empNo\":\"10065\",\"name\":\"卡卡西 \"}]",
-          "visStartTime": "2023-08-14 10:27:28",
-          "visEndTime": "2023-08-15 10:27:46",
-          "facePermission": 1,
-          "idCardPermission": 1,
-          "faceAndCardPermission": 1
-          }'
-```
-
-
-* 响应参数说明
-
-| 字段名称          | 位置   | 字段类型 | 说明                       |
-    | ----------------- | ------ | -------- | -------------------------- |
-| recordId                | body   | Long     | 访问记录id                            |
-| orgName         | body   | String   | 公司名称                            |
-
-* 响应示例
-
-  ```json
-  {
-      "success": true,
-      "code": "1000_SUS",
-      "msg": "successful operation!",
-      "data": {
-            "recordId": 1,
-            "orgName": "公司名称"
-      }
-  }
-  ```
-
-### 6.2 添加访客照片
-
-* sdkRequestKey : `addVisitorFace`
-
-* 请求参数说明
-
-| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
-    | ----------------- | ------ | -------- | -------- | -------------------------- |
-| photoBase64       | body   | String   | Y        | 用户照片base64位编码字符                            |
-| recordId          | body   | Long     | Y        | 访问记录id                        |
-| orgId             | body   | Long     | Y        | 企业id        |
-| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
-| requestKeyVersion | header | String   | Y        | v2                         |
-| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
-| Content-Type      | header | String   | Y        | application/json           |
-
-* 请求示例
-
-```shell
-  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
-  --header 'sdkRequestKey: addVisitorFace' \
-  --header 'requestKeyVersion: v2' \
-  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
-  --header 'Content-Type: application/json' \
-  --data '{
-        "photoBase64":"....",
-        "orgId":1,
-        "recordId": 311
-}'
-```
-
-
-* 响应参数说明
-
-* 响应示例
-
-  ```json
-  {
-      "success": true,
-      "code": "1000_SUS",
-      "msg": "successful operation!",
-      "data": null
-  }
-  ```
-
-
-### 6.3 编辑修改员工信息
-
-* sdkRequestKey : `editVisitor`
-
-* 请求参数说明
-
-| 字段名称                | 位置   | 字段类型 | 是否必须 | 说明                       |
-| ----------------------| ------ | -------- | -------- | -------------------------- |
-| recordId              | body   | Long     | Y        | 访问记录id                            |
-| orgId                 | body   | String   | Y        | 被访人公司id                            |
-| visitorName           | body   | String   | Y        | 访客姓名                            |
-| mail                  | body   | String   | N        | 邮箱                           |
-| phone                 | body   | String   | N        | 手机号                          |
-| gender                | body   | Byte     | N        | 性别 1:男 2:女                  |
-| employeeInfoJson      | body   | String   | N        | 被访人信息，json字符串              |
-| visitorNum            | body   | Integer     | N        | 来访人数             |
-| companyName           | body   | String   | N        | 公司名称              |
-| visitorPlateNum       | body   | String   | N        | 车牌号              |
-| remark                | body    | String   | N        | 备注              |
-| cardNo                | body    | String   | N        | 卡号              |
-| visStartTime          | body   | date     | N        | 预约开始时间 yyyy-MM-dd HH:mm:ss            |
-| visEndTime            | body   | date     | N        | 预约结束时间 yyyy-MM-dd HH:mm:ss            |
-| facePermission        | Byte   | String   | N        | 人员权限 刷脸权限 1：无权限；2：有权限        |
-| idCardPermission      | Byte   | String   | N        | 人员权限 刷卡权限 1：无权限；2：有权限 （刷卡权限和人卡合一不可同时选中）        |
-| faceAndCardPermission         | Byte   | String   | Y        | 人员权限 人卡合一权限 1：无权限；2：有权限 （刷卡权限和人卡合一不可同时选中）       |
-| passwordPermission            | Byte   | String   | Y        | 人员权限 密码开门 1：无权限；2：有权限        |
-| originStr             | body   | String     | N        | 来访事由        |
-| source                | body   | Byte     | N        | 预约登记来源0：web来访登记，1：二维码登记（不填默认web来访登记）        |
-| sdkRequestKey         | header | String   | Y        | sdkRequestKey 放在请求头中 |
-| requestKeyVersion     | header | String   | Y        | v2                         |
-| sdkAccessToken        | header | String   | Y        | sdkAccessToken             |
-| Content-Type          | header | String   | Y        | application/json           |
-
-* 请求示例
-
-```shell
-  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
-  --header 'sdkRequestKey: editVisitor' \
-  --header 'requestKeyVersion: v2' \
-  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
-  --header 'Content-Type: application/json' \
-  --data '{
-          "recordId":1,
-          "visitorName":"feima2",
-          "phone":"13388888888",
-          "orgId":14,
-          "gender":1,
-          "mail":"fff@uniubi.com",
-          "employeeInfoJson":"[{\"empId\":1,\"empNo\":\"001\",\"name\":\"犀婴 \"},{{\"empId\":2,\"empNo\":\"10065\",\"name\":\"卡卡西 \"}]",
-          "visStartTime": "2023-08-14 10:27:28",
-          "visEndTime": "2023-08-15 10:27:46",
-          "facePermission": 1,
-          "idCardPermission": 1,
-          "faceAndCardPermission": 1
-}'
-```
-
-
-* 响应参数说明
-
-* 响应示例
-
-  ```json
-  {
-      "success": true,
-      "code": "1000_SUS",
-      "msg": "successful operation!",
-      "data": null
-  }
-  ```
-
-
-### 5.4 查询访客信息
-
-* sdkRequestKey : `queryVisitorInfo`
-
-* 请求参数说明
-
-| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
-    | ----------------- | ------ | -------- | -------- | -------------------------- |
-| recordId          | body   | Long     | Y        | 访问记录id                        |
-| orgId             | body   | Long     | Y        | 企业id        |
-| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
-| requestKeyVersion | header | String   | Y        | v2                         |
-| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
-| Content-Type      | header | String   | Y        | application/json           |
-
-* 请求示例
-
-```shell
-  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
-  --header 'sdkRequestKey: queryVisitorInfo' \
-  --header 'requestKeyVersion: v2' \
-  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
-  --header 'Content-Type: application/json' \
-  --data '{
-        "recordId":1,
-        "orgId": 1
-}'
-```
-
-
-* 响应参数说明
-
-| 字段名称                | 位置   | 字段类型 | 是否必须 | 说明                       |
-| ----------------------| ------ | -------- | -------- | -------------------------- |
-| recordId              | body   | Long     | Y        | 访问记录id                            |
-| orgId                 | body   | String   | Y        | 被访人公司id                            |
-| visitorName           | body   | String   | Y        | 访客姓名                            |
-| mail                  | body   | String   | N        | 邮箱                           |
-| phone                 | body   | String   | N        | 手机号                          |
-| gender                | body   | Byte     | N        | 性别 1:男 2:女                  |
-| employeeInfoJson      | body   | String   | N        | 被访人信息，json字符串              |
-| visStatus             | body   | Byte     | N        | 访客状态 0未到访 1 访问中 2 已结束 3 已过期             |
-| visStatusText         | body   | Byte     | N        | 访客状态描述             |
-| visitorNum            | body   | Integer     | N        | 来访人数             |
-| companyName           | body   | String   | N        | 公司名称              |
-| visitorPlateNum       | body   | String   | N        | 车牌号              |
-| remark                | body    | String   | N        | 备注              |
-| cardNo                | body    | String   | N        | 卡号              |
-| visStartTime          | body   | date     | N        | 预约开始时间 yyyy-MM-dd HH:mm:ss            |
-| visEndTime            | body   | date     | N        | 预约结束时间 yyyy-MM-dd HH:mm:ss            |
-| facePermission        | Byte   | String   | N        | 人员权限 刷脸权限 1：无权限；2：有权限        |
-| idCardPermission      | Byte   | String   | N        | 人员权限 刷卡权限 1：无权限；2：有权限 （刷卡权限和人卡合一不可同时选中）        |
-| faceAndCardPermission         | Byte   | String   | Y        | 人员权限 人卡合一权限 1：无权限；2：有权限 （刷卡权限和人卡合一不可同时选中）       |
-| passwordPermission            | Byte   | String   | Y        | 人员权限 密码开门 1：无权限；2：有权限        |
-| originStr             | body   | String     | N        | 来访事由        |
-| visitFaceVOS        | body   | List     | N        | 来访人照片信息集合        |
-| - visitorFaceId     | visitFaceVOS   | Long   | 来访人注册照id        |
-| - faceUrl           | visitFaceVOS   | String   | 来访人人脸照片URL        |
-| - cardNo            | visitFaceVOS   | Long   | 访客卡号        |
-| - recordId          | visitFaceVOS   | Long   | 访问记录id        |
-| - orgName           | visitFaceVOS   | Long   | 公司名称        |
-
-* 响应示例
-
- ```json
-  {
-  "success": true,
-  "code": "1000_SUS",
-  "msg": "successful operation!",
-  "data": {
-    "recordId": 58,
-    "visitFaceVOS": [],
-    "visitorName": "feima2",
-    "phone": "13388888888",
-    "mail": "fff@uniubi.com",
-    "employeeInfoJson": "[{\"firstName\":\"shen\",\"lastName\":\"feima\",\"orgId\":1,\"gender\":1,\"empNo\":1111,\"mail\":\"feima@uniubi.com\"}]",
-    "visStatus": 0,
-    "visStatusText": "未到访",
-    "visStartTime": "2023-08-14T10:27:28",
-    "visEndTime": "2023-08-15T10:27:46",
-    "signInTime": null,
-    "signOutTime": null,
-    "visitorNum": null,
-    "companyName": null,
-    "visitorPlateNum": null,
-    "gender": 1,
-    "remark": null,
-    "cardNo": null,
-    "facePermission": 1,
-    "idCardPermission": 1,
-    "faceAndCardPermission": 1,
-    "idCardFacePermission": 1,
-    "passwordPermission": 1,
-    "originStr": null,
-    "deviceAuthVOS": [],
-    "source": 0
-  }
-}
-  ```
- 
- 
-### 5.5 删除访客
-
-* sdkRequestKey : `deleteVisitor`
-
-* 请求参数说明
-
-| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
-    | ----------------- | ------ | -------- | -------- | -------------------------- |
-| recordId          | body   | Long     | Y        | 访问记录id                        |
-| orgId             | body   | Long     | Y        | 企业id        |
-| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
-| requestKeyVersion | header | String   | Y        | v2                         |
-| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
-| Content-Type      | header | String   | Y        | application/json           |
-
-* 请求示例
-
-```shell
-  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
-  --header 'sdkRequestKey: queryVisitorInfo' \
-  --header 'requestKeyVersion: v2' \
-  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
-  --header 'Content-Type: application/json' \
-  --data '{
-        "recordId":1,
-        "orgId": 1
-}'
-```
-
-
-* 响应参数说明
-
-* 响应示例
-
-  ```json
-  {
-      "success": true,
-      "code": "1000_SUS",
-      "msg": "successful operation!",
-      "data": null
-  }
-  ```
-
-### 5.6 删除访客照片
-
-* sdkRequestKey : `deleteVisitorFace`
-
-* 请求参数说明
-
-| 字段名称          | 位置   | 字段类型 | 是否必须 | 说明                       |
-    | ----------------- | ------ | -------- | -------- | -------------------------- |
-| recordId          | body   | Long     | Y        | 访问记录id                        |
-| orgId             | body   | Long     | Y        | 企业id        |
-| visitorFaceId         | body   | Long     | Y        | 访客照片id        |
-| sdkRequestKey     | header | String   | Y        | sdkRequestKey 放在请求头中 |
-| requestKeyVersion | header | String   | Y        | v2                         |
-| sdkAccessToken    | header | String   | Y        | sdkAccessToken             |
-| Content-Type      | header | String   | Y        | application/json           |
-
-* 请求示例
-
-```shell
-  curl --location 'https://www.ustar-cloud.com/api/develop/sdk/unify/v2' \
-  --header 'sdkRequestKey: addEmployeeFace' \
-  --header 'requestKeyVersion: v2' \
-  --header 'sdkAccessToken: d3b86512301c456ca96a90c4be1eccf4' \
-  --header 'Content-Type: application/json' \
-  --data '{
-        "recordId": 1,
-        "orgId": 1,
-        "visitorFaceId": 5
-}'
-```
-
-* 响应参数说明
-
-* 响应示例
-
-  ```json
-  {
-      "success": true,
-      "code": "1000_SUS",
-      "msg": "successful operation!",
-      "data": null
-  }
-  ```
